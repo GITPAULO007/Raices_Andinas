@@ -23,11 +23,11 @@ df = pd.DataFrame({
 
 if selected == "Inicio":
     st.title("📊 Tipología de Clientes de la Cooperativa Raíces Andinas")
-    st.markdown(\"""
+    st.markdown("""
     Este proyecto analiza los perfiles de socios migrantes de la Cooperativa Raíces Andinas entre 2020 y 2025,
     utilizando técnicas de análisis de clúster para identificar segmentos estratégicos en colocación, captación
     y fidelización de servicios financieros.
-    \""")
+    """)
     st.info("Fuente: Informe 'JARDÍN AZUAYO TIPOLOGÍA' 📄")
 
 elif selected == "Base de Datos":
@@ -54,9 +54,9 @@ elif selected == "Transiciones":
 
 elif selected == "Conclusiones":
     st.header("✅ Conclusiones y Recomendaciones")
-    st.markdown(\"""
+    st.markdown("""
     - El cluster 1 representa el grupo más numeroso y con mayores montos promedio.
     - El cluster 2 muestra potencial de captación, pero menor estabilidad.
     - El análisis ayuda a diseñar productos financieros diferenciados por segmento.
-    \""")
+    """)
     st.success("Se recomienda utilizar estos hallazgos para fortalecer la fidelización de socios migrantes.")
