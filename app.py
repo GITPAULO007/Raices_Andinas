@@ -3,22 +3,33 @@ import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu
 from PIL import Image
+import plotly.graph_objects as go
 
-st.set_page_config(page_title="Tipología de Clientes - Raíces Andinas", layout="wide")
+st.set_page_config(page_title="Pitch Empresarial - Raíces Andinas", layout="wide")
 
+# ---------- SIDEBAR E ÍNDICE ----------
 with st.sidebar:
-    # Mostrar el logo arriba del menú
     logo = Image.open("logo_raices.jpg")
     st.image(logo, use_container_width=True)
     selected = option_menu(
-        menu_title="Menú Principal",
-        options=["Inicio", "Base de Datos", "Clusters", "Perfiles", "Transiciones", "Conclusiones"],
-        icons=["house", "table", "diagram-3", "person-lines-fill", "shuffle", "check-circle"],
+        menu_title="Menú Pitch Empresarial",
+        options=[
+            "Hook y Oportunidad",
+            "Quiénes Somos",
+            "Metodología Entretenida",
+            "Resultados y Segmentos",
+            "Simulación y Estrategias",
+            "Conclusiones y Acción"
+        ],
+        icons=[
+            "lightning", "bank", "magic", "bar-chart", "bezier2", "flag"
+        ],
         menu_icon="cast",
         default_index=0,
     )
 
-
+# ---------- DATOS DE DEMO PARA VISUALIZACIÓN ----------
+# Puedes reemplazar con tus datos reales en cada sección
 df = pd.DataFrame({
     "cluster": [0, 1, 2, 0, 1, 2],
     "año": [2020, 2020, 2020, 2021, 2021, 2021],
@@ -26,42 +37,115 @@ df = pd.DataFrame({
     "monto_promedio": [3000, 5200, 4100, 3200, 5300, 4000]
 })
 
-if selected == "Inicio":
-    st.title("📊 Tipología de Clientes de la Cooperativa Raíces Andinas")
+# KPIs para radar chart
+categorias = ["Edad", "Ingresos", "Saldo DPF", "Capital Prestado", "Mora"]
+cluster0 = [45.1, 3558.96, 27597.17, 21576.06, 1.5]
+cluster1 = [38.4, 3759.42, 315.78, 21282.22, 18]
+cluster2 = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
+
+# ---------- SECCIONES DEL PITCH INTERACTIVO ----------
+
+if selected == "Hook y Oportunidad":
+    st.title("🚀 Migrantes: el motor secreto de tu cooperativa")
     st.markdown("""
-    Este proyecto analiza los perfiles de socios migrantes de la Cooperativa Raíces Andinas entre 2020 y 2025,
-    utilizando técnicas de análisis de clúster para identificar segmentos estratégicos en colocación, captación
-    y fidelización de servicios financieros.
+    > “¿Sabías que el 73% de las remesas al Ecuador provienen de migrantes, pero solo el 18% usa servicios financieros formales?”  
+    >  
+    > *La competencia ya lo sabe. ¿Y tú?*  
     """)
-    st.info("Fuente: Informe 'JARDÍN AZUAYO TIPOLOGÍA' 📄")
+    st.success("En los datos hay oro: la clave es saber cómo extraerlo y fidelizar antes que los bancos y fintech lo hagan.")
+    st.image("logo_raices.jpg", width=200)
+    st.caption("Fuente: Jardín Azuayo Tipología, pág. 14 y 15.")
 
-elif selected == "Base de Datos":
-    st.header("🔍 Vista previa de la base de datos")
-    st.dataframe(df)
-
-elif selected == "Clusters":
-    st.header("📈 Distribución de Clusters por Año")
-    fig = px.bar(df, x="año", y="clientes", color="cluster", barmode="group",
-                 title="Clientes por Cluster y Año")
-    st.plotly_chart(fig, use_container_width=True)
-
-elif selected == "Perfiles":
-    st.header("🧬 Perfil Financiero Promedio por Cluster")
-    perfil = df.groupby("cluster").mean(numeric_only=True).reset_index()
-    fig = px.bar(perfil, x="cluster", y="monto_promedio", color="cluster",
-                 title="Monto Promedio por Cluster", text_auto=True)
-    st.plotly_chart(fig, use_container_width=True)
-    st.dataframe(perfil)
-
-elif selected == "Transiciones":
-    st.header("🔀 Análisis de Transiciones entre Clusters")
-    st.markdown("Próximamente: Diagrama de Sankey para visualizar movimientos entre clusters año a año.")
-
-elif selected == "Conclusiones":
-    st.header("✅ Conclusiones y Recomendaciones")
+elif selected == "Quiénes Somos":
+    st.header("🏦 Raíces Andinas: Innovación con historia y visión de futuro")
     st.markdown("""
-    - El cluster 1 representa el grupo más numeroso y con mayores montos promedio.
-    - El cluster 2 muestra potencial de captación, pero menor estabilidad.
-    - El análisis ayuda a diseñar productos financieros diferenciados por segmento.
+    - **Años en el mercado:** 28  
+    - **Socios activos:** 48,000  
+    - **Presencia:** 7 provincias, +30 agencias  
+    - **Productos:** Créditos, ahorros, inversión, servicios digitales, atención a migrantes
     """)
-    st.success("Se recomienda utilizar estos hallazgos para fortalecer la fidelización de socios migrantes.")
+    st.subheader("🔍 Diagnóstico Estratégico")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""
+        **FODA**
+        - Fortaleza: Capital sólido, base migrante fiel, tecnología en expansión
+        - Oportunidad: Remesas en crecimiento, alianzas globales
+        - Debilidad: Bajo uso de canales digitales
+        - Amenaza: Fintech, competencia bancaria agresiva
+        """)
+    with col2:
+        st.markdown("""
+        **PESTEL**
+        - Político: Incentivos migratorios
+        - Económico: Fluctuación de remesas
+        - Social: Envejecimiento base migrante
+        - Tecnológico: Demanda de apps y pagos digitales
+        - Legal: Normativas de inclusión financiera
+        """)
+
+elif selected == "Metodología Entretenida":
+    st.header("🤹 El reto: segmentar para personalizar y crecer")
+    st.markdown("""
+    Imagina una gran feria, con cientos de socios, cada uno con historias, necesidades y potencial distinto.  
+    ¿Cómo encontrar a los socios estrella y a los que necesitan una mano?
+    
+    - **La clave:** El análisis de clústeres, usando K-Means, crea "equipos" de clientes similares.
+    - **¿Por qué K-Means?** Nos permite ver patrones ocultos, detectar riesgos y descubrir oportunidades.
+    - **Componentes Principales:** Es como reducir una foto a sus colores esenciales: nos quedamos solo con lo importante para segmentar de verdad.
+    """)
+    st.info("Un clúster es como un equipo de fútbol: cada uno con su estrategia para ganar el campeonato financiero.")
+    st.image("https://cdn.pixabay.com/photo/2017/01/10/19/05/analytics-1971678_1280.png", width=350)
+    st.subheader("🔍 ¿Quieres ver los resultados de este 'scouting'? Adelante...")
+
+elif selected == "Resultados y Segmentos":
+    st.header("🎯 Perfiles de socios: ¡el mapa de oportunidades!")
+    st.markdown("Los datos revelan tres grandes segmentos dentro de la cooperativa:")
+    perfiles = [
+        {"nombre": "Tradicional 🧓", "color": "#8dd3c7", "desc": "Maduro, ahorrador, poco digital, muy rentable", "oportunidad": "Venta cruzada digital", "riesgo": "Deserción por falta de innovación"},
+        {"nombre": "Riesgo ⚠️", "color": "#ffffb3", "desc": "Masivo, alta mora, poco saldo, riesgo alto", "oportunidad": "Prevención proactiva", "riesgo": "Morosidad y provisiones altas"},
+        {"nombre": "Tech 📱", "color": "#bebada", "desc": "Joven, usa apps, multiproducto, muy rentable", "oportunidad": "Membresía digital", "riesgo": "Competencia fintech"}
+    ]
+    cols = st.columns(3)
+    for i, seg in enumerate(perfiles):
+        with cols[i]:
+            st.markdown(f"<div style='background-color:{seg['color']};border-radius:10px;padding:18px'>"
+                        f"<h3>{seg['nombre']}</h3>"
+                        f"<b>Perfil:</b> {seg['desc']}<br>"
+                        f"<b>Oportunidad:</b> {seg['oportunidad']}<br>"
+                        f"<b>Riesgo:</b> {seg['riesgo']}</div>", unsafe_allow_html=True)
+    st.subheader("📊 Radar de KPIs por segmento")
+    fig = go.Figure()
+    fig.add_trace(go.Scatterpolar(r=cluster0, theta=categorias, fill='toself', name='Tradicional'))
+    fig.add_trace(go.Scatterpolar(r=cluster1, theta=categorias, fill='toself', name='Riesgo'))
+    fig.add_trace(go.Scatterpolar(r=cluster2, theta=categorias, fill='toself', name='Tech'))
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
+    st.plotly_chart(fig, use_container_width=True)
+    st.caption("Fuente: Jardín Azuayo Tipología, pág. 22-23.")
+
+elif selected == "Simulación y Estrategias":
+    st.header("🧪 Simulador y Estrategias: ¿Qué pasa si…?")
+    st.markdown("""
+    **Estrategias recomendadas:**  
+    - **Tradicional:** Programa de fidelización, digitalización asistida
+    - **Riesgo:** Llamadas proactivas, alertas de pago, educación financiera
+    - **Tech:** Membresía premium, apps exclusivas, concursos digitales
+    """)
+    st.success("¡Simula el impacto de las estrategias!")
+    impacto = st.slider("¿Qué porcentaje del cluster 'Riesgo' migramos a 'Tradicional' con llamadas preventivas?", 0, 100, 30)
+    mora_base = 18
+    mora_impacto = mora_base - impacto*0.08
+    st.info(f"Reducirías la mora global de {mora_base} a {mora_impacto:.1f} días (escenario simulado)")
+    st.caption("Fuente: Jardín Azuayo Tipología, pág. 27-28.")
+
+elif selected == "Conclusiones y Acción":
+    st.header("🏁 El futuro de Raíces Andinas: ¡es ahora!")
+    st.markdown("""
+    - Personalizar servicios según segmentos aumenta retención y reduce riesgos.
+    - La segmentación permite lanzar productos a medida y anticipar movimientos de la competencia.
+    - Siguiente paso: conformar equipo para pilotar estrategias en los próximos 6 meses.
+    """)
+    st.balloons()
+    st.info("¿Listos para transformar la cooperativa? El futuro migrante ya llegó. ¡Actuemos juntos!")
+    st.caption("Presentación basada en el informe 'Jardín Azuayo Tipología', 2024.")
+
