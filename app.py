@@ -9,7 +9,7 @@ st.set_page_config(page_title="Tipología de Clientes - Raíces Andinas", layout
 with st.sidebar:
     # Mostrar el logo arriba del menú
     logo = Image.open("logo_raices.jpg")
-    st.image(logo, use_column_width=True)
+    st.image(logo, use_container_width=True)
     selected = option_menu(
         menu_title="Menú Principal",
         options=["Inicio", "Base de Datos", "Clusters", "Perfiles", "Transiciones", "Conclusiones"],
