@@ -1,33 +1,62 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly.graph_objects as go
+import plotly.express as px
+from streamlit_option_menu import option_menu
 
 st.set_page_config(page_title="Tipología de Clientes - Raíces Andinas", layout="wide")
 
-st.title("📊 Tipología de Clientes de la Cooperativa Raíces Andinas")
-st.markdown("Visualización y segmentación de clientes migrantes entre 2020 y 2025.")
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Menú Principal",
+        options=["Inicio", "Base de Datos", "Clusters", "Perfiles", "Transiciones", "Conclusiones"],
+        icons=["house", "table", "diagram-3", "person-lines-fill", "shuffle", "check-circle"],
+        menu_icon="cast",
+        default_index=0,
+    )
 
-# Carga de datos (simulada, cámbiala por la real si hace falta)
 df = pd.DataFrame({
-    "cluster": [0, 1, 2],
-    "año": [2020, 2020, 2020],
-    "clientes": [1500, 4000, 1800]
+    "cluster": [0, 1, 2, 0, 1, 2],
+    "año": [2020, 2020, 2020, 2021, 2021, 2021],
+    "clientes": [1500, 4000, 1800, 1600, 4200, 1700],
+    "monto_promedio": [3000, 5200, 4100, 3200, 5300, 4000]
 })
 
-profile = df.groupby("cluster").mean()
+if selected == "Inicio":
+    st.title("📊 Tipología de Clientes de la Cooperativa Raíces Andinas")
+    st.markdown(\"""
+    Este proyecto analiza los perfiles de socios migrantes de la Cooperativa Raíces Andinas entre 2020 y 2025,
+    utilizando técnicas de análisis de clúster para identificar segmentos estratégicos en colocación, captación
+    y fidelización de servicios financieros.
+    \""")
+    st.info("Fuente: Informe 'JARDÍN AZUAYO TIPOLOGÍA' 📄")
 
-# 1. Mostrar Dataframe
-st.subheader("🔍 Vista previa de la base")
-st.dataframe(df.head(10))
+elif selected == "Base de Datos":
+    st.header("🔍 Vista previa de la base de datos")
+    st.dataframe(df)
 
-# 2. Gráfico de clusters por año
-st.subheader("📈 Distribución de Clusters")
-fig, ax = plt.subplots()
-sns.countplot(x=df["cluster"], palette="Set2", ax=ax)
-st.pyplot(fig)
+elif selected == "Clusters":
+    st.header("📈 Distribución de Clusters por Año")
+    fig = px.bar(df, x="año", y="clientes", color="cluster", barmode="group",
+                 title="Clientes por Cluster y Año")
+    st.plotly_chart(fig, use_container_width=True)
 
-# 3. Mostrar perfil promedio
-st.subheader("🧬 Perfiles Promedio de Cada Cluster")
-st.dataframe(profile.T.style.format("{:.2f}"))
+elif selected == "Perfiles":
+    st.header("🧬 Perfil Financiero Promedio por Cluster")
+    perfil = df.groupby("cluster").mean(numeric_only=True).reset_index()
+    fig = px.bar(perfil, x="cluster", y="monto_promedio", color="cluster",
+                 title="Monto Promedio por Cluster", text_auto=True)
+    st.plotly_chart(fig, use_container_width=True)
+    st.dataframe(perfil)
+
+elif selected == "Transiciones":
+    st.header("🔀 Análisis de Transiciones entre Clusters")
+    st.markdown("Próximamente: Diagrama de Sankey para visualizar movimientos entre clusters año a año.")
+
+elif selected == "Conclusiones":
+    st.header("✅ Conclusiones y Recomendaciones")
+    st.markdown(\"""
+    - El cluster 1 representa el grupo más numeroso y con mayores montos promedio.
+    - El cluster 2 muestra potencial de captación, pero menor estabilidad.
+    - El análisis ayuda a diseñar productos financieros diferenciados por segmento.
+    \""")
+    st.success("Se recomienda utilizar estos hallazgos para fortalecer la fidelización de socios migrantes.")
