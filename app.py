@@ -107,7 +107,7 @@ elif selected == "Quiénes es COAC Raíces Andinas":
         - Legal: Normativas para la inclusión financiera y protección al migrante.
         """)
     st.caption("Fuente: Diagnóstico empresarial interno y 'Raíces Andinas Tipología', 2024.")
-    st.balloons()
+    st.toast("La unión y el trabajo compartido nos hacen fuertes 🤝", icon="🤝")
 
 elif selected == "Metodología":
     st.header("🤹 El reto: segmentar, personalizar y crecer con ciencia de datos")
