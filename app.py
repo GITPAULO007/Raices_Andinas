@@ -46,15 +46,30 @@ cluster2 = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
 # ---------- SECCIONES DEL PITCH INTERACTIVO ----------
 
 if selected == "Hook y Oportunidad":
-    st.title("🚀 Migrantes: el motor secreto de tu cooperativa")
+    st.title("🚀 Migrantes: El mayor activo financiero de Ecuador (¡y tu cooperativa!)")
+    
     st.markdown("""
-    > “¿Sabías que el 73% de las remesas al Ecuador provienen de migrantes, pero solo el 18% usa servicios financieros formales?”  
-    >  
-    > *La competencia ya lo sabe. ¿Y tú?*  
+    > **“Ecuador recibió un récord de USD 5,491 millones en remesas en 2024, más que toda la Inversión Extranjera Directa y que el camarón, el banano o el plátano.”**
+    >
+    > **En 2025, las remesas crecerán aún más: ¡USD 5.821 millones proyectados!**
     """)
-    st.success("En los datos hay oro: la clave es saber cómo extraerlo y fidelizar antes que los bancos y fintech lo hagan.")
+
+    st.markdown("""
+    - 🏦 **El 68%** de las remesas viene de EE.UU. y el **15%** llega solo a la provincia del Azuay.
+    - 🧑‍💼 **Edad promedio de migrantes:** 32,9 años. **Edad promedio socios Raíces Andinas:** 39 años.
+    - 📈 **Más de 21% de los hogares que reciben remesas las invierten en vivienda o terreno.**
+    - 💡 **El 74%** de adultos ecuatorianos ya tiene cuenta bancaria, pero solo la mitad usa pagos digitales: *¡el futuro está en conquistar ese nuevo segmento digital!*
+    """)
+    
+    st.info("Si captamos solo el 5% de las remesas de Azuay, ingresarían más de **USD 10 millones trimestrales** a nuestra cooperativa (solo por migrantes). ¿Vamos a dejarlo pasar?")
+    
+    st.success("Las remesas no son solo dinero: son sueños, familia, futuro y una gigantesca OPORTUNIDAD de negocio social y rentable. Raíces Andinas tiene el potencial y la confianza para ser el puente financiero entre el migrante y el Ecuador.")
+    
     st.image("logo_raices.jpg", width=200)
-    st.caption("Fuente: Jardín Azuayo Tipología, pág. 14 y 15.")
+    
+    st.caption("""
+    Fuentes: Banco Central del Ecuador, Pew Research Center, Migration Policy Institute, “Datos del Migrante” (2025).
+    """)
 
 elif selected == "Quiénes Somos":
     st.header("🏦 Raíces Andinas: Innovación con historia y visión de futuro")
