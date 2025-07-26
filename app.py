@@ -29,7 +29,6 @@ with st.sidebar:
     )
 
 # ---------- DATOS DE DEMO PARA VISUALIZACIÓN ----------
-# Puedes reemplazar con tus datos reales en cada sección
 df = pd.DataFrame({
     "cluster": [0, 1, 2, 0, 1, 2],
     "año": [2020, 2020, 2020, 2021, 2021, 2021],
@@ -47,7 +46,7 @@ cluster2 = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
 
 if selected == "Hook y Oportunidad":
     st.title("🚀 Migrantes: El mayor activo financiero de Ecuador (¡y tu cooperativa!)")
-    
+
     st.markdown("""
     > **“Ecuador recibió un récord de USD 5,491 millones en remesas en 2024, más que toda la Inversión Extranjera Directa y que el camarón, el banano o el plátano.”**
     >
@@ -60,58 +59,61 @@ if selected == "Hook y Oportunidad":
     - 📈 **Más de 21% de los hogares que reciben remesas las invierten en vivienda o terreno.**
     - 💡 **El 74%** de adultos ecuatorianos ya tiene cuenta bancaria, pero solo la mitad usa pagos digitales: *¡el futuro está en conquistar ese nuevo segmento digital!*
     """)
-    
+
     st.info("Si captamos solo el 5% de las remesas de Azuay, ingresarían más de **USD 10 millones trimestrales** a nuestra cooperativa (solo por migrantes). ¿Se lo dejará pasar?")
-    
+
     st.success("Las remesas no son solo dinero: son sueños, familia, futuro y una gigantesca OPORTUNIDAD de negocio social y rentable. Raíces Andinas tiene el potencial y la confianza para ser el puente financiero entre el migrante y el Ecuador.")
-    
+
     st.image("logo_raices.jpg", width=200)
-    
+
     st.caption("""
     Fuentes: Banco Central del Ecuador, Pew Research Center, Migration Policy Institute, “Datos del Migrante” (2025).
     """)
+    st.snow()
 
-elif selected == "Quiénes Somos":
-    st.header("🏦 Raíces Andinas: Innovación con historia y visión de futuro")
+elif selected == "Quiénes es COAC Raíces Andinas":
+    st.header("🏦 Raíces Andinas: Solidez, historia y visión innovadora")
     st.markdown("""
-    - **Años en el mercado:** 28  
-    - **Socios activos:** 48,000  
-    - **Presencia:** 7 provincias, +30 agencias  
-    - **Productos:** Créditos, ahorros, inversión, servicios digitales, atención a migrantes
+    Raíces Andinas es una cooperativa líder en Ecuador, con 28 años de historia y presencia en 7 provincias, sirviendo a más de 48,000 socios activos.
+    - **Productos y servicios:** Créditos, ahorro, inversión, servicios digitales, atención especializada a migrantes.
+    - **Diagnóstico empresarial:** Sólida base de capital, excelente reputación, pero retos en digitalización y competencia fintech.
     """)
     st.subheader("🔍 Diagnóstico Estratégico")
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("""
         **FODA**
-        - Fortaleza: Capital sólido, base migrante fiel, tecnología en expansión
-        - Oportunidad: Remesas en crecimiento, alianzas globales
-        - Debilidad: Bajo uso de canales digitales
-        - Amenaza: Fintech, competencia bancaria agresiva
+        - Fortaleza: Capital sólido, base migrante fiel, tecnología en expansión.
+        - Oportunidad: Remesas crecientes, alianzas globales, nuevos mercados digitales.
+        - Debilidad: Bajo uso de canales digitales, adopción tecnológica lenta.
+        - Amenaza: Fintech y competencia bancaria agresiva, migración de clientes jóvenes.
         """)
     with col2:
         st.markdown("""
         **PESTEL**
-        - Político: Incentivos migratorios
-        - Económico: Fluctuación de remesas
-        - Social: Envejecimiento base migrante
-        - Tecnológico: Demanda de apps y pagos digitales
-        - Legal: Normativas de inclusión financiera
+        - Político: Incentivos y protección a la población migrante.
+        - Económico: Fluctuación de remesas, nuevas fuentes de ingreso.
+        - Social: Envejecimiento de base migrante, familias multigeneracionales.
+        - Tecnológico: Demanda creciente de apps, pagos digitales, banca móvil.
+        - Legal: Normativas para la inclusión financiera y protección al migrante.
         """)
+    st.caption("Fuente: Diagnóstico empresarial interno y 'Jardín Azuayo Tipología', 2024.")
+    st.balloons()
 
-elif selected == "Metodología Entretenida":
-    st.header("🤹 El reto: segmentar para personalizar y crecer")
+elif selected == "Metodología":
+    st.header("🤹 El reto: segmentar, personalizar y crecer con ciencia de datos")
     st.markdown("""
-    Imagina una gran feria, con cientos de socios, cada uno con historias, necesidades y potencial distinto.  
-    ¿Cómo encontrar a los socios estrella y a los que necesitan una mano?
-    
-    - **La clave:** El análisis de clústeres, usando K-Means, crea "equipos" de clientes similares.
-    - **¿Por qué K-Means?** Nos permite ver patrones ocultos, detectar riesgos y descubrir oportunidades.
-    - **Componentes Principales:** Es como reducir una foto a sus colores esenciales: nos quedamos solo con lo importante para segmentar de verdad.
+    ¿Cómo elegir los mejores aliados de negocio entre miles de socios?  
+    Usamos analítica avanzada: agrupamos socios en 'equipos' mediante clústeres con K-Means.
+
+    - **K-Means**: Es como formar equipos de fútbol: juntos los que juegan parecido y tienen química (hábitos financieros, uso de productos, nivel de riesgo).
+    - **Componentes Principales (PCA)**: Es como reducir la foto de grupo a sus colores esenciales, para entender en qué se parecen o diferencian los equipos.
+    - **¿Por qué importa?** Si sabemos quién es quién, diseñamos productos a la medida y evitamos el riesgo de perder a los mejores jugadores.
     """)
-    st.info("Un clúster agrupa automáticamente a los socios según sus dinámicas económicas  - ingresos, servicios utilizados, caracteristicas sociodemográficas - permitiendo que la cooperativa diseñe servicios financieros más focalizados y apropiados para cada segmento.")
+    st.info("En la práctica, un clúster es un 'avatar' de nuestros socios: sabemos qué les gusta, qué les duele, y cómo ayudarlos a crecer.")
     st.image("https://cdn.pixabay.com/photo/2017/01/10/19/05/analytics-1971678_1280.png", width=350)
-    st.subheader("🔍 Los resultados más adelante...")
+    st.caption("Modelo desarrollado con Python, Scikit-learn y análisis multivariado profesional.")
+    st.toast("¡Descubre tus equipos estrella!", icon="⚽")
 
 elif selected == "Resultados y Segmentos":
     st.header("🎯 Perfiles de socios: ¡el mapa de oportunidades!")
@@ -137,14 +139,15 @@ elif selected == "Resultados y Segmentos":
     fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Fuente: Jardín Azuayo Tipología, pág. 22-23.")
+    st.toast("¡Los equipos están listos para el siguiente nivel!", icon="💡")
 
 elif selected == "Simulación y Estrategias":
     st.header("🧪 Simulador y Estrategias: ¿Qué pasa si…?")
     st.markdown("""
     **Estrategias recomendadas:**  
-    - **Tradicional:** Programa de fidelización, digitalización asistida
-    - **Riesgo:** Llamadas proactivas, alertas de pago, educación financiera
-    - **Tech:** Membresía premium, apps exclusivas, concursos digitales
+    - **Tradicional:** Programa de fidelización, digitalización asistida.
+    - **Riesgo:** Llamadas proactivas, alertas de pago, educación financiera.
+    - **Tech:** Membresía premium, apps exclusivas, concursos digitales.
     """)
     st.success("¡Simula el impacto de las estrategias!")
     impacto = st.slider("¿Qué porcentaje del cluster 'Riesgo' migramos a 'Tradicional' con llamadas preventivas?", 0, 100, 30)
@@ -152,6 +155,7 @@ elif selected == "Simulación y Estrategias":
     mora_impacto = mora_base - impacto*0.08
     st.info(f"Reducirías la mora global de {mora_base} a {mora_impacto:.1f} días (escenario simulado)")
     st.caption("Fuente: Jardín Azuayo Tipología, pág. 27-28.")
+    st.toast("¡Toma decisiones con impacto real!", icon="🧪")
 
 elif selected == "Conclusiones y Acción":
     st.header("🏁 El futuro de Raíces Andinas: ¡es ahora!")
@@ -163,4 +167,5 @@ elif selected == "Conclusiones y Acción":
     st.balloons()
     st.info("Los socios migrantes multiplican el impacto cooperativo: transforman sus sacrificios en el exterior en prosperidad compartida para sus familias y su comunidad de origen.")
     st.caption("Presentación basada en el informe 'Jardín Azuayo Tipología', 2024.")
+    st.toast("¡Es el momento de actuar!", icon="🚩")
 
