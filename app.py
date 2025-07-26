@@ -122,7 +122,7 @@ elif selected == "Metodología":
     st.info("En la práctica, un clúster es un 'avatar' de nuestros socios: sabemos qué les gusta, qué les duele, y cómo ayudarlos a crecer.")
     st.image("https://cdn.pixabay.com/photo/2017/01/10/19/05/analytics-1971678_1280.png", width=350)
     st.caption("Modelo desarrollado con Python, Scikit-learn y análisis multivariado profesional.")
-    st.toast("¡Descubre tus equipos estrella!", icon="⚽")
+    st.toast("¡Cuál es el métodolo utilizado", icon="🤔")
 
 elif selected == "Resultados y Segmentos":
     st.header("🎯 Perfiles de socios: ¡el mapa de oportunidades!")
@@ -148,7 +148,7 @@ elif selected == "Resultados y Segmentos":
     fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Fuente: Raíces Andinas Tipología, pág. 22-23.")
-    st.toast("¡Los equipos están listos para el siguiente nivel!", icon="💡")
+    st.toast("¡LOS GRUPOS!!!", icon="💡")
 
 elif selected == "Simulación y Estrategias":
     st.header("🧪 Simulador y Estrategias: ¿Qué pasa si…?")
@@ -164,7 +164,7 @@ elif selected == "Simulación y Estrategias":
     mora_impacto = mora_base - impacto*0.08
     st.info(f"Reducirías la mora global de {mora_base} a {mora_impacto:.1f} días (escenario simulado)")
     st.caption("Fuente: Raíces Andinas Tipología, pág. 27-28.")
-    st.toast("¡Toma decisiones con impacto real!", icon="🧪")
+    st.toast("ES HORA DE TOMAR DECISIONES!", icon="🌟")
 
 elif selected == "Conclusiones y Acción":
     st.header("🏁 El futuro de Raíces Andinas: ¡es ahora!")
