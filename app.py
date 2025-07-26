@@ -12,11 +12,11 @@ with st.sidebar:
     logo = Image.open("logo_raices.jpg")
     st.image(logo, use_container_width=True)
     selected = option_menu(
-        menu_title="Menú Pitch Empresarial",
+        menu_title="Menú",
         options=[
             "Hook y Oportunidad",
-            "Quiénes Somos",
-            "Metodología Entretenida",
+            "Quiénes es COAC Raíces Andinas",
+            "Metodología",
             "Resultados y Segmentos",
             "Simulación y Estrategias",
             "Conclusiones y Acción"
@@ -61,7 +61,7 @@ if selected == "Hook y Oportunidad":
     - 💡 **El 74%** de adultos ecuatorianos ya tiene cuenta bancaria, pero solo la mitad usa pagos digitales: *¡el futuro está en conquistar ese nuevo segmento digital!*
     """)
     
-    st.info("Si captamos solo el 5% de las remesas de Azuay, ingresarían más de **USD 10 millones trimestrales** a nuestra cooperativa (solo por migrantes). ¿Vamos a dejarlo pasar?")
+    st.info("Si captamos solo el 5% de las remesas de Azuay, ingresarían más de **USD 10 millones trimestrales** a nuestra cooperativa (solo por migrantes). ¿Se lo dejará pasar?")
     
     st.success("Las remesas no son solo dinero: son sueños, familia, futuro y una gigantesca OPORTUNIDAD de negocio social y rentable. Raíces Andinas tiene el potencial y la confianza para ser el puente financiero entre el migrante y el Ecuador.")
     
@@ -109,9 +109,9 @@ elif selected == "Metodología Entretenida":
     - **¿Por qué K-Means?** Nos permite ver patrones ocultos, detectar riesgos y descubrir oportunidades.
     - **Componentes Principales:** Es como reducir una foto a sus colores esenciales: nos quedamos solo con lo importante para segmentar de verdad.
     """)
-    st.info("Un clúster es como un equipo de fútbol: cada uno con su estrategia para ganar el campeonato financiero.")
+    st.info("Un clúster agrupa automáticamente a los socios según sus dinámicas económicas  - ingresos, servicios utilizados, caracteristicas sociodemográficas - permitiendo que la cooperativa diseñe servicios financieros más focalizados y apropiados para cada segmento.")
     st.image("https://cdn.pixabay.com/photo/2017/01/10/19/05/analytics-1971678_1280.png", width=350)
-    st.subheader("🔍 ¿Quieres ver los resultados de este 'scouting'? Adelante...")
+    st.subheader("🔍 Los resultados más adelante...")
 
 elif selected == "Resultados y Segmentos":
     st.header("🎯 Perfiles de socios: ¡el mapa de oportunidades!")
@@ -161,6 +161,6 @@ elif selected == "Conclusiones y Acción":
     - Siguiente paso: conformar equipo para pilotar estrategias en los próximos 6 meses.
     """)
     st.balloons()
-    st.info("¿Listos para transformar la cooperativa? El futuro migrante ya llegó. ¡Actuemos juntos!")
+    st.info("Los socios migrantes multiplican el impacto cooperativo: transforman sus sacrificios en el exterior en prosperidad compartida para sus familias y su comunidad de origen.")
     st.caption("Presentación basada en el informe 'Jardín Azuayo Tipología', 2024.")
 
