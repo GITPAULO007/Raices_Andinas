@@ -158,7 +158,7 @@ elif selected == "Simulación y Estrategias":
     - **Riesgo:** Llamadas proactivas, alertas de pago, educación financiera.
     - **Tech:** Membresía premium, apps exclusivas, concursos digitales.
     """)
-    st.success("¡Simula el impacto de las estrategias!")
+    st.success("¡Simula el impacto de las estrategias! (SOLO ES PRUEBA)")
     impacto = st.slider("¿Qué porcentaje del cluster 'Riesgo' migramos a 'Tradicional' con llamadas preventivas?", 0, 100, 30)
     mora_base = 18
     mora_impacto = mora_base - impacto*0.08
