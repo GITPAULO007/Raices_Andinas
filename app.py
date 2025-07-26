@@ -97,7 +97,7 @@ elif selected == "Quiénes es COAC Raíces Andinas":
         - Tecnológico: Demanda creciente de apps, pagos digitales, banca móvil.
         - Legal: Normativas para la inclusión financiera y protección al migrante.
         """)
-    st.caption("Fuente: Diagnóstico empresarial interno y 'Jardín Azuayo Tipología', 2024.")
+    st.caption("Fuente: Diagnóstico empresarial interno y 'Raíces Andinas Tipología', 2024.")
     st.balloons()
 
 elif selected == "Metodología":
@@ -138,7 +138,7 @@ elif selected == "Resultados y Segmentos":
     fig.add_trace(go.Scatterpolar(r=cluster2, theta=categorias, fill='toself', name='Tech'))
     fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
     st.plotly_chart(fig, use_container_width=True)
-    st.caption("Fuente: Jardín Azuayo Tipología, pág. 22-23.")
+    st.caption("Fuente: Raíces Andinas Tipología, pág. 22-23.")
     st.toast("¡Los equipos están listos para el siguiente nivel!", icon="💡")
 
 elif selected == "Simulación y Estrategias":
@@ -154,7 +154,7 @@ elif selected == "Simulación y Estrategias":
     mora_base = 18
     mora_impacto = mora_base - impacto*0.08
     st.info(f"Reducirías la mora global de {mora_base} a {mora_impacto:.1f} días (escenario simulado)")
-    st.caption("Fuente: Jardín Azuayo Tipología, pág. 27-28.")
+    st.caption("Fuente: Raíces Andinas Tipología, pág. 27-28.")
     st.toast("¡Toma decisiones con impacto real!", icon="🧪")
 
 elif selected == "Conclusiones y Acción":
@@ -166,6 +166,6 @@ elif selected == "Conclusiones y Acción":
     """)
     st.balloons()
     st.info("Los socios migrantes multiplican el impacto cooperativo: transforman sus sacrificios en el exterior en prosperidad compartida para sus familias y su comunidad de origen.")
-    st.caption("Presentación basada en el informe 'Jardín Azuayo Tipología', 2024.")
+    st.caption("Presentación basada en el informe 'Raíces Andinas Tipología', 2024.")
     st.toast("¡Es el momento de actuar!", icon="🚩")
 
