@@ -28,6 +28,15 @@ with st.sidebar:
         default_index=0,
     )
 
+    st.markdown("---")  # Línea separadora debajo del menú
+
+    # Logos institucionales en el sidebar (uno debajo del otro)
+    alprode_logo = Image.open("alprode.png")
+    st.image(alprode_logo, width=120, caption="Alprode")
+
+    ucuenca_logo = Image.open("logo_ucuenca.png")
+    st.image(ucuenca_logo, width=120, caption="Universidad de Cuenca")
+
 # ---------- DATOS DE DEMO PARA VISUALIZACIÓN ----------
 df = pd.DataFrame({
     "cluster": [0, 1, 2, 0, 1, 2],
