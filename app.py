@@ -54,26 +54,21 @@ cluster2 = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
 # ---------- SECCIONES DEL PITCH INTERACTIVO ----------
 
 if selected == "Hook y Oportunidad":
-    # Título y GIF en la esquina superior derecha
     col1, col2 = st.columns([4, 1])
     with col1:
         st.title("🚀 Migrantes: El mayor activo financiero de Ecuador (¡y tu cooperativa!)")
         st.markdown(
             """
-            <div style='font-size:50px;line-height:1.4'>
-            🏦<br>
-            <b>USD 5,491 millones</b> en remesas (2024)<br>
-            🇺🇸<br>
-            <b>68%</b> vienen de EE.UU.<br>
-            📈<br>
-            <b>21%</b> de hogares invierten en vivienda/terreno<br>
-            💡<br>
-            <b>74%</b> bancarizados, solo mitad usa pagos digitales
+            <div style='font-size:26px; line-height:1.6;'>
+            <span style='font-size:38px;'>🏦</span> <b>USD 5,491 millones</b> en remesas (2024)<br>
+            <span style='font-size:32px;'>🇺🇸</span> <b>68%</b> vienen de EE.UU.<br>
+            <span style='font-size:32px;'>📈</span> <b>21%</b> de hogares invierten en vivienda/terreno<br>
+            <span style='font-size:32px;'>💡</span> <b>74%</b> bancarizados, solo mitad usa pagos digitales
             </div>
             """, unsafe_allow_html=True
         )
     with col2:
-        st.image("gif_granjero.gif", width=130)
+        st.image("gif_granjero.gif", width=110)
 
     st.markdown("""
     > **“Ecuador recibió un récord de USD 5,491 millones en remesas en 2024, más que toda la Inversión Extranjera Directa y que el camarón, el banano o el plátano.”**
