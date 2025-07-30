@@ -58,8 +58,22 @@ if selected == "Hook y Oportunidad":
     col1, col2 = st.columns([4, 1])
     with col1:
         st.title("🚀 Migrantes: El mayor activo financiero de Ecuador (¡y tu cooperativa!)")
+        st.markdown(
+            """
+            <div style='font-size:50px;line-height:1.4'>
+            🏦<br>
+            <b>USD 5,491 millones</b> en remesas (2024)<br>
+            🇺🇸<br>
+            <b>68%</b> vienen de EE.UU.<br>
+            📈<br>
+            <b>21%</b> de hogares invierten en vivienda/terreno<br>
+            💡<br>
+            <b>74%</b> bancarizados, solo mitad usa pagos digitales
+            </div>
+            """, unsafe_allow_html=True
+        )
     with col2:
-        st.image("gif_granjero.gif", width=110)  # Ajusta el width si quieres más pequeño/grande
+        st.image("gif_granjero.gif", width=130)
 
     st.markdown("""
     > **“Ecuador recibió un récord de USD 5,491 millones en remesas en 2024, más que toda la Inversión Extranjera Directa y que el camarón, el banano o el plátano.”**
@@ -67,19 +81,9 @@ if selected == "Hook y Oportunidad":
     > **En 2025, las remesas crecerán aún más: ¡USD 5.821 millones proyectados!**
     """)
 
-    st.markdown("""
-    - 🏦 **El 68%** de las remesas viene de EE.UU. y el **15%** llega solo a la provincia del Azuay.
-    - 🧑‍💼 **Edad promedio de migrantes:** 32,9 años. **Edad promedio socios Raíces Andinas:** 39 años.
-    - 📈 **Más de 21% de los hogares que reciben remesas las invierten en vivienda o terreno.**
-    - 💡 **El 74%** de adultos ecuatorianos ya tiene cuenta bancaria, pero solo la mitad usa pagos digitales: *¡el futuro está en conquistar ese nuevo segmento digital!*
-    """)
-
     st.info("Si captamos solo el 5% de las remesas de Azuay, ingresarían más de **USD 10 millones trimestrales** a nuestra cooperativa (solo por migrantes). ¿Se lo dejará pasar?")
-
     st.success("Las remesas no son solo dinero: son sueños, familia, futuro y una gigantesca OPORTUNIDAD de negocio social y rentable. Raíces Andinas tiene el potencial y la confianza para ser el puente financiero entre el migrante y el Ecuador.")
-
     st.image("logo_raices.jpg", width=200)
-
     st.caption("""
     Fuentes: Banco Central del Ecuador, Pew Research Center, Migration Policy Institute, “Datos del Migrante” (2025).
     """)
@@ -90,27 +94,20 @@ elif selected == "Quiénes es COAC Raíces Andinas":
     st.markdown("""
     Raíces Andinas es una cooperativa líder en Ecuador, con 28 años de historia y presencia en 7 provincias, sirviendo a más de 48,000 socios activos.
     - **Productos y servicios:** Créditos, ahorro, inversión, servicios digitales, atención especializada a migrantes.
-    - **Diagnóstico empresarial:** Sólida base de capital, excelente reputación, pero retos en digitalización y competencia fintech.
     """)
     st.subheader("🔍 Diagnóstico Estratégico")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        **FODA**
-        - Fortaleza: Capital sólido, base migrante fiel, tecnología en expansión.
-        - Oportunidad: Remesas crecientes, alianzas globales, nuevos mercados digitales.
-        - Debilidad: Bajo uso de canales digitales, adopción tecnológica lenta.
-        - Amenaza: Fintech y competencia bancaria agresiva, migración de clientes jóvenes.
-        """)
-    with col2:
-        st.markdown("""
-        **PESTEL**
-        - Político: Incentivos y protección a la población migrante.
-        - Económico: Fluctuación de remesas, nuevas fuentes de ingreso.
-        - Social: Envejecimiento de base migrante, familias multigeneracionales.
-        - Tecnológico: Demanda creciente de apps, pagos digitales, banca móvil.
-        - Legal: Normativas para la inclusión financiera y protección al migrante.
-        """)
+    # Visual FODA
+    foda_col1, foda_col2 = st.columns(2)
+    with foda_col1:
+        st.markdown(
+            "<div style='background:#e0ffe0;padding:10px;border-radius:8px'><b>Fortalezas:</b><br>Capital sólido, base migrante fiel, tecnología en expansión.</div>"
+            "<div style='background:#e0f7ff;padding:10px;border-radius:8px;margin-top:6px'><b>Oportunidades:</b><br>Remesas crecientes, alianzas globales, nuevos mercados digitales.</div>", 
+            unsafe_allow_html=True)
+    with foda_col2:
+        st.markdown(
+            "<div style='background:#fff0e0;padding:10px;border-radius:8px'><b>Debilidades:</b><br>Bajo uso de canales digitales, adopción tecnológica lenta.</div>"
+            "<div style='background:#ffe0e0;padding:10px;border-radius:8px;margin-top:6px'><b>Amenazas:</b><br>Fintech, competencia bancaria agresiva, migración de clientes jóvenes.</div>",
+            unsafe_allow_html=True)
     st.caption("Fuente: Diagnóstico empresarial interno y 'Raíces Andinas Tipología', 2024.")
     st.toast("La unión y el trabajo compartido nos hacen fuertes 🤝", icon="🤝")
 
@@ -127,24 +124,27 @@ elif selected == "Metodología":
     st.info("En la práctica, un clúster es un 'avatar' de nuestros socios: sabemos qué les gusta, qué les duele, y cómo ayudarlos a crecer.")
     st.image("https://cdn.pixabay.com/photo/2017/01/10/19/05/analytics-1971678_1280.png", width=350)
     st.caption("Modelo desarrollado con Python, Scikit-learn y análisis multivariado profesional.")
-    st.toast("¡Cuál es el métodolo utilizado", icon="🤔")
+    st.toast("¿Cuál es el método utilizado?", icon="🤔")
 
 elif selected == "Resultados y Segmentos":
     st.header("🎯 Perfiles de socios: ¡el mapa de oportunidades!")
     st.markdown("Los datos revelan tres grandes segmentos dentro de la cooperativa:")
     perfiles = [
-        {"nombre": "Tradicional 🧓", "color": "#8dd3c7", "desc": "Maduro, ahorrador, poco digital, muy rentable", "oportunidad": "Venta cruzada digital", "riesgo": "Deserción por falta de innovación"},
-        {"nombre": "Riesgo ⚠️", "color": "#ffffb3", "desc": "Masivo, alta mora, poco saldo, riesgo alto", "oportunidad": "Prevención proactiva", "riesgo": "Morosidad y provisiones altas"},
-        {"nombre": "Tech 📱", "color": "#bebada", "desc": "Joven, usa apps, multiproducto, muy rentable", "oportunidad": "Membresía digital", "riesgo": "Competencia fintech"}
+        {"nombre": "Tradicional", "icono":"🧓", "color": "#8dd3c7", "desc": "Maduro, ahorrador, poco digital, muy rentable", "oportunidad": "Venta cruzada digital", "riesgo": "Deserción por falta de innovación"},
+        {"nombre": "Riesgo", "icono":"⚠️", "color": "#ffffb3", "desc": "Masivo, alta mora, poco saldo, riesgo alto", "oportunidad": "Prevención proactiva", "riesgo": "Morosidad y provisiones altas"},
+        {"nombre": "Tech", "icono":"📱", "color": "#bebada", "desc": "Joven, usa apps, multiproducto, muy rentable", "oportunidad": "Membresía digital", "riesgo": "Competencia fintech"}
     ]
     cols = st.columns(3)
     for i, seg in enumerate(perfiles):
         with cols[i]:
-            st.markdown(f"<div style='background-color:{seg['color']};border-radius:10px;padding:18px'>"
-                        f"<h3>{seg['nombre']}</h3>"
-                        f"<b>Perfil:</b> {seg['desc']}<br>"
-                        f"<b>Oportunidad:</b> {seg['oportunidad']}<br>"
-                        f"<b>Riesgo:</b> {seg['riesgo']}</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div style='background-color:{seg['color']};border-radius:10px;padding:18px;text-align:center'>"
+                f"<span style='font-size:60px'>{seg['icono']}</span><br>"
+                f"<h3>{seg['nombre']}</h3>"
+                f"<b>Perfil:</b> {seg['desc']}<br>"
+                f"<b>Oportunidad:</b> {seg['oportunidad']}<br>"
+                f"<b>Riesgo:</b> {seg['riesgo']}</div>", 
+                unsafe_allow_html=True)
     st.subheader("📊 Radar de KPIs por segmento")
     fig = go.Figure()
     fig.add_trace(go.Scatterpolar(r=cluster0, theta=categorias, fill='toself', name='Tradicional'))
@@ -153,23 +153,31 @@ elif selected == "Resultados y Segmentos":
     fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Fuente: Raíces Andinas Tipología, pág. 22-23.")
-    st.toast("¡LOS GRUPOS!!!", icon="💡")
+    st.toast("¡Los equipos están listos para el siguiente nivel!", icon="💡")
 
 elif selected == "Simulación y Estrategias":
     st.header("🧪 Simulador y Estrategias: ¿Qué pasa si…?")
-    st.markdown("""
-    **Estrategias recomendadas:**  
-    - **Tradicional:** Programa de fidelización, digitalización asistida.
-    - **Riesgo:** Llamadas proactivas, alertas de pago, educación financiera.
-    - **Tech:** Membresía premium, apps exclusivas, concursos digitales.
-    """)
+    st.markdown("<div style='text-align:center;font-size:28px'>"
+                "🧓 Tradicional &nbsp;&nbsp; ⚠️ Riesgo &nbsp;&nbsp; 📱 Tech"
+                "</div>", unsafe_allow_html=True)
+    strat_col1, strat_col2, strat_col3 = st.columns(3)
+    with strat_col1:
+        st.markdown("**Tradicional**<br>Programa de fidelización<br>Digitalización asistida", unsafe_allow_html=True)
+    with strat_col2:
+        st.markdown("**Riesgo**<br>Llamadas proactivas<br>Alertas de pago<br>Educación financiera", unsafe_allow_html=True)
+    with strat_col3:
+        st.markdown("**Tech**<br>Membresía premium<br>Apps exclusivas<br>Concursos digitales", unsafe_allow_html=True)
+
     st.success("¡Simula el impacto de las estrategias! (SOLO ES PRUEBA)")
-    impacto = st.slider("¿Qué porcentaje del cluster 'Riesgo' migramos a 'Tradicional' con llamadas preventivas?", 0, 100, 30)
-    mora_base = 18
-    mora_impacto = mora_base - impacto*0.08
-    st.info(f"Reducirías la mora global de {mora_base} a {mora_impacto:.1f} días (escenario simulado)")
+    sim_col1, sim_col2 = st.columns([2,1])
+    with sim_col1:
+        impacto = st.slider("¿Qué % del cluster 'Riesgo' migramos a 'Tradicional' con llamadas preventivas?", 0, 100, 30)
+    with sim_col2:
+        mora_base = 18
+        mora_impacto = mora_base - impacto*0.08
+        st.metric(label="Mora global (días)", value=f"{mora_impacto:.1f}", delta=f"{mora_base-mora_impacto:.1f} días")
     st.caption("Fuente: Raíces Andinas Tipología, pág. 27-28.")
-    st.toast("ES HORA DE TOMAR DECISIONES!", icon="🌟")
+    st.toast("¡Toma decisiones con impacto real!", icon="🧪")
 
 elif selected == "Conclusiones y Acción":
     st.header("🏁 El futuro de Raíces Andinas: ¡es ahora!")
@@ -178,8 +186,13 @@ elif selected == "Conclusiones y Acción":
     - La segmentación permite lanzar productos a medida y anticipar movimientos de la competencia.
     - Siguiente paso: conformar equipo para pilotar estrategias en los próximos 6 meses.
     """)
+    st.markdown("""
+    **Líneas futuras de investigación y acción:**
+    - Profundizar la integración digital y móvil para migrantes.
+    - Explorar nuevos productos para familias binacionales.
+    - Monitorear el impacto de cada estrategia en el tiempo.
+    """)
     st.balloons()
     st.info("Los socios migrantes multiplican el impacto cooperativo: transforman sus sacrificios en el exterior en prosperidad compartida para sus familias y su comunidad de origen.")
     st.caption("Presentación basada en el informe 'Raíces Andinas Tipología', 2024.")
     st.toast("¡Es el momento de actuar!", icon="🚩")
-
