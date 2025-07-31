@@ -195,47 +195,59 @@ remesas_historicas = [3500, 4200, 4800, 5100, 5491, 5821, 6200, 6600, 7100, 7650
 
 if "🚀 Hook y Oportunidad" in selected:
     # Header impactante con animación
-    st.markdown('<h1 class="main-header">🚀 El Tesoro Oculto de Ecuador</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">🚀 Tipología de socios para la COAC Raíces Andinas</h1>', unsafe_allow_html=True)
     
     # Estadísticas impactantes con tarjetas visuales
     st.markdown("### 💰 El Poder de las Remesas 2024")
+
+st.markdown("""
+<span style='font-size:2.2rem; font-weight:bold; background: linear-gradient(90deg,#FF6B6B,#4ECDC4); -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>El Tesoro Oculto de Ecuador</span>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+💸 <span style='font-size:1.5rem; font-weight:bold; color:#253858;'>El Verdadero Motor Económico del Ecuador Son Sus Migrantes</span>  
+Cada remesa no es solo dinero: es esfuerzo, esperanza y la oportunidad real de transformar comunidades enteras.<br>
+Las cifras no mienten. Los ecuatorianos en el exterior están enviando más capital que toda la inversión extranjera directa y superan a cualquier producto tradicional de exportación.
+""", unsafe_allow_html=True)
+    
     col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.markdown("""
-        <div class="metric-card">
-            <h2>$5.49B</h2>
-            <p>Remesas Totales</p>
-            <small>+8.1% vs 2023</small>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div class="metric-card">
-            <h2>68%</h2>
-            <p>Desde EE.UU.</p>
-            <small>Principal origen</small>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("""
-        <div class="metric-card">
-            <h2>21%</h2>
-            <p>Invierte en Vivienda</p>
-            <small>Oportunidad inmobiliaria</small>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col4:
-        st.markdown("""
-        <div class="metric-card">
-            <h2>74%</h2>
-            <p>Bancarizados</p>
-            <small>Mercado accesible</small>
-        </div>
-        """, unsafe_allow_html=True)
+
+with col1:
+    st.markdown("""
+    <div class="metric-card">
+        <h2>$1,385M</h2>
+        <p>Remesas Q1 2025</p>
+        <small>+9.5% interanual<br>Récord histórico para Ecuador</small>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+    <div class="metric-card">
+        <h2>68%</h2>
+        <p>Desde EE.UU.</p>
+        <small>El migrante ecuatoriano<br>es nuestro mejor aliado</small>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col3:
+    st.markdown("""
+    <div class="metric-card">
+        <h2>15%</h2>
+        <p>Remesas a Azuay</p>
+        <small>$208M recibidos solo en Azuay<br>en 3 meses</small>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col4:
+    st.markdown("""
+    <div class="metric-card">
+        <h2>21%</h2>
+        <p>Inversión Inmobiliaria</p>
+        <small>Una de cada cinco familias<br>invierte sus remesas en vivienda</small>
+    </div>
+    """, unsafe_allow_html=True)
+
 
     # Gráfico de evolución de remesas
     st.markdown("### 📈 Proyección de Remesas Ecuador")
