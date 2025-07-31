@@ -1,229 +1,193 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import plotly.figure_factory as ff
 from streamlit_option_menu import option_menu
 from PIL import Image
-import numpy as np
-import time
-import requests
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-import warnings
-warnings.filterwarnings('ignore')
+import plotly.graph_objects as go
 
-# Opcionales: solo importa si los usas (comentadas para optimizar)
-# import streamlit_lottie as st_lottie
-# from streamlit_autorefresh import st_autorefresh
-# from streamlit_timeline import timeline
+st.set_page_config(page_title="Pitch Empresarial - Raíces Andinas", layout="wide")
 
-# ----- CONFIGURACIÓN DE PÁGINA -----
-st.set_page_config(
-    page_title="🚀 Pitch Empresarial - Raíces Andinas", 
-    page_icon="🏦",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://docs.streamlit.io/',
-        'Report a bug': "mailto:pitch@raicesandinas.com",
-        'About': "# Segmentación Inteligente COAC Raíces Andinas\nPowered by AI & Analytics"
-    }
-)
-
-# ----- ESTILOS AVANZADOS -----
-st.markdown("""
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-    .main-header {font-family: 'Poppins', sans-serif; font-size: 3.5rem; font-weight: 700;
-    text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2rem;
-    animation: glow 2s ease-in-out infinite alternate;}
-    @keyframes glow {from { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5)); }
-    to { filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8)); }}
-    .metric-card {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 25px; border-radius: 20px; color: white; text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: 15px; position: relative; overflow: hidden;}
-    .segment-card {border-radius: 20px; padding: 25px; text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: 15px;}
-    .data-card {background: linear-gradient(145deg, #ffffff 0%, #f0f0f0 100%);
-    border-radius: 15px; padding: 20px; margin: 10px 0; box-shadow: 20px 20px 60px #d9d9d9,
-    -20px -20px 60px #ffffff; transition: all 0.3s ease;}
-    .progress-bar {height: 8px; background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-    border-radius: 10px;}
-    .neon-text {color: #fff; text-shadow: 0 0 5px #667eea, 0 0 10px #667eea,
-    0 0 20px #667eea, 0 0 40px #667eea;}
-</style>
-""", unsafe_allow_html=True)
-
-# ----- FUNCIONES AUXILIARES -----
-@st.cache_data
-def load_lottieurl(url):
-    try:
-        r = requests.get(url)
-        if r.status_code != 200:
-            return None
-        return r.json()
-    except:
-        return None
-
-@st.cache_data
-def generate_enhanced_data():
-    np.random.seed(42)
-    tradicional = pd.DataFrame({
-        'edad': np.random.normal(45, 8, 300),
-        'ingresos': np.random.normal(3559, 800, 300),
-        'saldo_dpf': np.random.normal(27597, 5000, 300),
-        'capital_prestado': np.random.normal(21576, 3000, 300),
-        'mora_dias': np.random.exponential(1.5, 300),
-        'productos_activos': np.random.poisson(2, 300),
-        'antiguedad_anos': np.random.normal(12, 4, 300),
-        'uso_digital': np.random.beta(2, 8, 300),
-        'cluster': 0
-    })
-    riesgo = pd.DataFrame({
-        'edad': np.random.normal(38, 12, 500),
-        'ingresos': np.random.normal(3759, 1200, 500),
-        'saldo_dpf': np.random.normal(316, 200, 500),
-        'capital_prestado': np.random.normal(21282, 4000, 500),
-        'mora_dias': np.random.exponential(18, 500),
-        'productos_activos': np.random.poisson(1.5, 500),
-        'antiguedad_anos': np.random.normal(5, 3, 500),
-        'uso_digital': np.random.beta(3, 7, 500),
-        'cluster': 1
-    })
-    tech = pd.DataFrame({
-        'edad': np.random.normal(40, 6, 200),
-        'ingresos': np.random.normal(3962, 600, 200),
-        'saldo_dpf': np.random.normal(7656, 2000, 200),
-        'capital_prestado': np.random.normal(27803, 2500, 200),
-        'mora_dias': np.random.exponential(10.2, 200),
-        'productos_activos': np.random.poisson(4, 200),
-        'antiguedad_anos': np.random.normal(8, 3, 200),
-        'uso_digital': np.random.beta(8, 2, 200),
-        'cluster': 2
-    })
-    return pd.concat([tradicional, riesgo, tech], ignore_index=True)
-
-def create_3d_scatter(df_enhanced):
-    fig = go.Figure(data=[
-        go.Scatter3d(
-            x=df_enhanced[df_enhanced['cluster']==0]['edad'],
-            y=df_enhanced[df_enhanced['cluster']==0]['ingresos'],
-            z=df_enhanced[df_enhanced['cluster']==0]['saldo_dpf'],
-            mode='markers',
-            marker=dict(size=5, color='#8dd3c7', opacity=0.8),
-            name='🧓 Tradicional',
-        ),
-        go.Scatter3d(
-            x=df_enhanced[df_enhanced['cluster']==1]['edad'],
-            y=df_enhanced[df_enhanced['cluster']==1]['ingresos'],
-            z=df_enhanced[df_enhanced['cluster']==1]['saldo_dpf'],
-            mode='markers',
-            marker=dict(size=5, color='#ffffb3', opacity=0.8),
-            name='⚠️ Riesgo',
-        ),
-        go.Scatter3d(
-            x=df_enhanced[df_enhanced['cluster']==2]['edad'],
-            y=df_enhanced[df_enhanced['cluster']==2]['ingresos'],
-            z=df_enhanced[df_enhanced['cluster']==2]['saldo_dpf'],
-            mode='markers',
-            marker=dict(size=5, color='#bebada', opacity=0.8),
-            name='📱 Tech',
-        )
-    ])
-    fig.update_layout(
-        title="Visualización 3D de Segmentos de Clientes",
-        scene=dict(
-            xaxis_title="Edad",
-            yaxis_title="Ingresos ($)",
-            zaxis_title="Saldo DPF ($)",
-            bgcolor="rgba(0,0,0,0)"
-        ),
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)"
-    )
-    return fig
-
-def create_correlation_heatmap(df_enhanced):
-    numeric_cols = ['edad', 'ingresos', 'saldo_dpf', 'capital_prestado', 'mora_dias', 'productos_activos', 'uso_digital']
-    corr_matrix = df_enhanced[numeric_cols].corr()
-    fig = ff.create_annotated_heatmap(
-        z=corr_matrix.values,
-        x=list(corr_matrix.columns),
-        y=list(corr_matrix.index),
-        annotation_text=corr_matrix.round(2).values,
-        showscale=True,
-        colorscale='RdBu'
-    )
-    fig.update_layout(
-        title="Matriz de Correlaciones - Variables Clave",
-        xaxis_title="Variables",
-        yaxis_title="Variables"
-    )
-    return fig
-
-# ----- DATOS -----
-df_enhanced = generate_enhanced_data()
-
-# ----- SIDEBAR -----
+# ---------- SIDEBAR E ÍNDICE ----------
 with st.sidebar:
-    try:
-        logo = Image.open("logo_raices.jpg")
-        st.image(logo, use_container_width=True)
-    except:
-        st.markdown("### 🏦 COAC Raíces Andinas")
+    logo = Image.open("logo_raices.jpg")
+    st.image(logo, use_container_width=True)
     selected = option_menu(
-        menu_title="🎯 Dashboard Ejecutivo",
+        menu_title="Menú",
         options=[
-            "🚀 Oportunidad Dorada",
-            "🏦 Nuestra Fortaleza",
-            "🔬 IA & Analytics",
-            "🎯 Segmentos Inteligentes"
+            "Hook y Oportunidad",
+            "Quiénes es COAC Raíces Andinas",
+            "Metodología",
+            "Resultados y Segmentos",
+            "Simulación y Estrategias",
+            "Conclusiones y Acción"
         ],
         icons=[
-            "rocket-takeoff-fill", "bank2", "cpu", "bullseye"
+            "lightning", "bank", "magic", "bar-chart", "bezier2", "flag"
         ],
-        menu_icon="grid-3x3-gap-fill",
+        menu_icon="cast",
         default_index=0,
-        styles={
-            "container": {"padding": "10px", "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"},
-            "icon": {"color": "white", "font-size": "20px"}, 
-            "nav-link": {"font-size": "16px", "text-align": "left", "margin":"5px", "color": "white"},
-            "nav-link-selected": {"background-color": "rgba(255,255,255,0.2)", "backdrop-filter": "blur(10px)"},
-        }
     )
-    st.markdown("---")
-    st.markdown("### 📊 Métricas en Vivo")
-    live_socios = 48127 + np.random.randint(-50, 100)
-    live_remesas = 5.49 + np.random.uniform(-0.1, 0.2)
-    live_roi = 245 + np.random.randint(-10, 20)
-    col1, col2 = st.columns(2)
+
+    st.markdown("---")  # Línea separadora debajo del menú
+
+    # Logos institucionales en el sidebar (uno debajo del otro)
+    alprode_logo = Image.open("alprode.png")
+    st.image(alprode_logo, width=120, caption="Alprode")
+
+    ucuenca_logo = Image.open("logo_ucuenca.png")
+    st.image(ucuenca_logo, width=120, caption="Universidad de Cuenca")
+
+# ---------- DATOS DE DEMO PARA VISUALIZACIÓN ----------
+df = pd.DataFrame({
+    "cluster": [0, 1, 2, 0, 1, 2],
+    "año": [2020, 2020, 2020, 2021, 2021, 2021],
+    "clientes": [1500, 4000, 1800, 1600, 4200, 1700],
+    "monto_promedio": [3000, 5200, 4100, 3200, 5300, 4000]
+})
+
+# KPIs para radar chart
+categorias = ["Edad", "Ingresos", "Saldo DPF", "Capital Prestado", "Mora"]
+cluster0 = [45.1, 3558.96, 27597.17, 21576.06, 1.5]
+cluster1 = [38.4, 3759.42, 315.78, 21282.22, 18]
+cluster2 = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
+
+# ---------- SECCIONES DEL PITCH INTERACTIVO ----------
+
+if selected == "Hook y Oportunidad":
+    col1, col2 = st.columns([4, 1])
     with col1:
-        st.metric("Socios", f"{live_socios:,}", f"+{np.random.randint(1,5)}")
+        st.title("🚀 Migrantes: El mayor activo financiero de Ecuador (¡y tu cooperativa!)")
+        st.markdown(
+            """
+            <div style='font-size:26px; line-height:1.6;'>
+            <span style='font-size:38px;'>🏦</span> <b>USD 5,491 millones</b> en remesas (2024)<br>
+            <span style='font-size:32px;'>🇺🇸</span> <b>68%</b> vienen de EE.UU.<br>
+            <span style='font-size:32px;'>📈</span> <b>21%</b> de hogares invierten en vivienda/terreno<br>
+            <span style='font-size:32px;'>💡</span> <b>74%</b> bancarizados, solo mitad usa pagos digitales
+            </div>
+            """, unsafe_allow_html=True
+        )
     with col2:
-        st.metric("Remesas", f"${live_remesas:.2f}B", f"+{np.random.uniform(0.1,0.5):.1f}%")
-    st.metric("ROI Proyectado", f"{live_roi}%", f"+{np.random.randint(1,8)}%")
-    st.markdown("---")
+        st.image("gif_granjero.gif", width=110)
 
-# ----- SECCIONES (¡Agrega tus secciones originales aquí, pegando los bloques del dashboard!) -----
-# Por espacio y claridad no se copian aquí todos los bloques de secciones principales,
-# pero aquí iría la estructura igual que en tu código original.
-# Ejemplo para insertar una sección:
+    st.markdown("""
+    > **“Ecuador recibió un récord de USD 5,491 millones en remesas en 2024, más que toda la Inversión Extranjera Directa y que el camarón, el banano o el plátano.”**
+    >
+    > **En 2025, las remesas crecerán aún más: ¡USD 5.821 millones proyectados!**
+    """)
 
-if selected == "🚀 Oportunidad Dorada":
-    st.markdown('<h1 class="main-header neon-text">🚀 La Mina de Oro Digital de Ecuador</h1>', unsafe_allow_html=True)
-    # ... aquí tu código del dashboard ...
-    # ¡Pega aquí tus secciones tal como las tenías, usando las funciones limpias de arriba!
+    st.info("Si captamos solo el 5% de las remesas de Azuay, ingresarían más de **USD 10 millones trimestrales** a nuestra cooperativa (solo por migrantes). ¿Se lo dejará pasar?")
+    st.success("Las remesas no son solo dinero: son sueños, familia, futuro y una gigantesca OPORTUNIDAD de negocio social y rentable. Raíces Andinas tiene el potencial y la confianza para ser el puente financiero entre el migrante y el Ecuador.")
+    st.image("logo_raices.jpg", width=200)
+    st.caption("""
+    Fuentes: Banco Central del Ecuador, Pew Research Center, Migration Policy Institute, “Datos del Migrante” (2025).
+    """)
+    st.snow()
 
-# Repite para las demás secciones: "🏦 Nuestra Fortaleza", "🔬 IA & Analytics", "🎯 Segmentos Inteligentes", etc.
+elif selected == "Quiénes es COAC Raíces Andinas":
+    st.header("🏦 Raíces Andinas: Solidez, historia y visión innovadora")
+    st.markdown("""
+    Raíces Andinas es una cooperativa líder en Ecuador, con 28 años de historia y presencia en 7 provincias, sirviendo a más de 48,000 socios activos.
+    - **Productos y servicios:** Créditos, ahorro, inversión, servicios digitales, atención especializada a migrantes.
+    """)
+    st.subheader("🔍 Diagnóstico Estratégico")
+    # Visual FODA
+    foda_col1, foda_col2 = st.columns(2)
+    with foda_col1:
+        st.markdown(
+            "<div style='background:#e0ffe0;padding:10px;border-radius:8px'><b>Fortalezas:</b><br>Capital sólido, base migrante fiel, tecnología en expansión.</div>"
+            "<div style='background:#e0f7ff;padding:10px;border-radius:8px;margin-top:6px'><b>Oportunidades:</b><br>Remesas crecientes, alianzas globales, nuevos mercados digitales.</div>", 
+            unsafe_allow_html=True)
+    with foda_col2:
+        st.markdown(
+            "<div style='background:#fff0e0;padding:10px;border-radius:8px'><b>Debilidades:</b><br>Bajo uso de canales digitales, adopción tecnológica lenta.</div>"
+            "<div style='background:#ffe0e0;padding:10px;border-radius:8px;margin-top:6px'><b>Amenazas:</b><br>Fintech, competencia bancaria agresiva, migración de clientes jóvenes.</div>",
+            unsafe_allow_html=True)
+    st.caption("Fuente: Diagnóstico empresarial interno y 'Raíces Andinas Tipología', 2024.")
+    st.toast("La unión y el trabajo compartido nos hacen fuertes 🤝", icon="🤝")
 
-# ----- PIE DE PÁGINA -----
-st.markdown("---")
-st.markdown("""
-<div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px; margin: 20px 0;">
-    <h3>“El futuro pertenece a quienes preparan hoy su éxito con inteligencia y visión”</h3>
-    <p>COAC Raíces Andinas — Agosto 2025</p>
-</div>
-""", unsafe_allow_html=True)
+elif selected == "Metodología":
+    st.header("🤹 El reto: segmentar, personalizar y crecer con ciencia de datos")
+    st.markdown("""
+    ¿Cómo elegir los mejores aliados de negocio entre miles de socios?  
+    Usamos analítica avanzada: agrupamos socios en 'equipos' mediante clústeres con K-Means.
+
+    - **K-Means**: Es como formar equipos de fútbol: juntos los que juegan parecido y tienen química (hábitos financieros, uso de productos, nivel de riesgo).
+    - **Componentes Principales (PCA)**: Es como reducir la foto de grupo a sus colores esenciales, para entender en qué se parecen o diferencian los equipos.
+    - **¿Por qué importa?** Si sabemos quién es quién, diseñamos productos a la medida y evitamos el riesgo de perder a los mejores jugadores.
+    """)
+    st.info("En la práctica, un clúster es un 'avatar' de nuestros socios: sabemos qué les gusta, qué les duele, y cómo ayudarlos a crecer.")
+    st.image("https://cdn.pixabay.com/photo/2017/01/10/19/05/analytics-1971678_1280.png", width=350)
+    st.caption("Modelo desarrollado con Python, Scikit-learn y análisis multivariado profesional.")
+    st.toast("¿Cuál es el método utilizado?", icon="🤔")
+
+elif selected == "Resultados y Segmentos":
+    st.header("🎯 Perfiles de socios: ¡el mapa de oportunidades!")
+    st.markdown("Los datos revelan tres grandes segmentos dentro de la cooperativa:")
+    perfiles = [
+        {"nombre": "Tradicional", "icono":"🧓", "color": "#8dd3c7", "desc": "Maduro, ahorrador, poco digital, muy rentable", "oportunidad": "Venta cruzada digital", "riesgo": "Deserción por falta de innovación"},
+        {"nombre": "Riesgo", "icono":"⚠️", "color": "#ffffb3", "desc": "Masivo, alta mora, poco saldo, riesgo alto", "oportunidad": "Prevención proactiva", "riesgo": "Morosidad y provisiones altas"},
+        {"nombre": "Tech", "icono":"📱", "color": "#bebada", "desc": "Joven, usa apps, multiproducto, muy rentable", "oportunidad": "Membresía digital", "riesgo": "Competencia fintech"}
+    ]
+    cols = st.columns(3)
+    for i, seg in enumerate(perfiles):
+        with cols[i]:
+            st.markdown(
+                f"<div style='background-color:{seg['color']};border-radius:10px;padding:18px;text-align:center'>"
+                f"<span style='font-size:60px'>{seg['icono']}</span><br>"
+                f"<h3>{seg['nombre']}</h3>"
+                f"<b>Perfil:</b> {seg['desc']}<br>"
+                f"<b>Oportunidad:</b> {seg['oportunidad']}<br>"
+                f"<b>Riesgo:</b> {seg['riesgo']}</div>", 
+                unsafe_allow_html=True)
+    st.subheader("📊 Radar de KPIs por segmento")
+    fig = go.Figure()
+    fig.add_trace(go.Scatterpolar(r=cluster0, theta=categorias, fill='toself', name='Tradicional'))
+    fig.add_trace(go.Scatterpolar(r=cluster1, theta=categorias, fill='toself', name='Riesgo'))
+    fig.add_trace(go.Scatterpolar(r=cluster2, theta=categorias, fill='toself', name='Tech'))
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
+    st.plotly_chart(fig, use_container_width=True)
+    st.caption("Fuente: Raíces Andinas Tipología, pág. 22-23.")
+    st.toast("¡Los equipos están listos para el siguiente nivel!", icon="💡")
+
+elif selected == "Simulación y Estrategias":
+    st.header("🧪 Simulador y Estrategias: ¿Qué pasa si…?")
+    st.markdown("<div style='text-align:center;font-size:28px'>"
+                "🧓 Tradicional &nbsp;&nbsp; ⚠️ Riesgo &nbsp;&nbsp; 📱 Tech"
+                "</div>", unsafe_allow_html=True)
+    strat_col1, strat_col2, strat_col3 = st.columns(3)
+    with strat_col1:
+        st.markdown("**Tradicional**<br>Programa de fidelización<br>Digitalización asistida", unsafe_allow_html=True)
+    with strat_col2:
+        st.markdown("**Riesgo**<br>Llamadas proactivas<br>Alertas de pago<br>Educación financiera", unsafe_allow_html=True)
+    with strat_col3:
+        st.markdown("**Tech**<br>Membresía premium<br>Apps exclusivas<br>Concursos digitales", unsafe_allow_html=True)
+
+    st.success("¡Simula el impacto de las estrategias! (SOLO ES PRUEBA)")
+    sim_col1, sim_col2 = st.columns([2,1])
+    with sim_col1:
+        impacto = st.slider("¿Qué % del cluster 'Riesgo' migramos a 'Tradicional' con llamadas preventivas?", 0, 100, 30)
+    with sim_col2:
+        mora_base = 18
+        mora_impacto = mora_base - impacto*0.08
+        st.metric(label="Mora global (días)", value=f"{mora_impacto:.1f}", delta=f"{mora_base-mora_impacto:.1f} días")
+    st.caption("Fuente: Raíces Andinas Tipología, pág. 27-28.")
+    st.toast("¡Toma decisiones con impacto real!", icon="🧪")
+
+elif selected == "Conclusiones y Acción":
+    st.header("🏁 El futuro de Raíces Andinas: ¡es ahora!")
+    st.markdown("""
+    - Personalizar servicios según segmentos aumenta retención y reduce riesgos.
+    - La segmentación permite lanzar productos a medida y anticipar movimientos de la competencia.
+    - Siguiente paso: conformar equipo para pilotar estrategias en los próximos 6 meses.
+    """)
+    st.markdown("""
+    **Líneas futuras de investigación y acción:**
+    - Profundizar la integración digital y móvil para migrantes.
+    - Explorar nuevos productos para familias binacionales.
+    - Monitorear el impacto de cada estrategia en el tiempo.
+    """)
+    st.balloons()
+    st.info("Los socios migrantes multiplican el impacto cooperativo: transforman sus sacrificios en el exterior en prosperidad compartida para sus familias y su comunidad de origen.")
+    st.caption("Presentación basada en el informe 'Raíces Andinas Tipología', 2024.")
+    st.toast("¡Es el momento de actuar!", icon="🚩")
