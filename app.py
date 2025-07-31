@@ -142,14 +142,15 @@ with st.sidebar:
     
     # Logos institucionales mejorados
     try:
-        alprode_logo = Image.open("alprode.jpeg")
-        st.image(alprode_logo, width=120, caption="Alprode")
-        cofin_logo = Image.open("cofin_logo.png")
-        st.image(cofin_logo, width=120, caption="Erasmus+")
-        ucuenca_logo = Image.open("logo_ucuenca.png")
-        st.image(ucuenca_logo, width=120, caption="Universidad de Cuenca")
-    except:
-        st.markdown("**Aliados Estratégicos:**\n- Alprode\n- Universidad de Cuenca")
+    alprode_logo = Image.open("alprode.jpeg")
+    st.image(alprode_logo, use_column_width=True, caption="Alprode")
+    cofin_logo = Image.open("cofin_logo.png")
+    st.image(cofin_logo, use_column_width=True, caption="Erasmus+")
+    ucuenca_logo = Image.open("logo_ucuenca.png")
+    st.image(ucuenca_logo, use_column_width=True, caption="Universidad de Cuenca")
+except:
+    st.markdown("**Aliados Estratégicos:**\n- Alprode\n- Universidad de Cuenca")
+
 
 # ---------- DATOS MEJORADOS PARA VISUALIZACIÓN ----------
 # Datos más realistas y completos
