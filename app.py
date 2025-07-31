@@ -210,7 +210,7 @@ Cada remesa no es solo dinero: es esfuerzo, esperanza y la oportunidad real de t
 Las cifras no mienten. Los ecuatorianos en el exterior están enviando más capital que toda la inversión extranjera directa y superan a cualquier producto tradicional de exportación.
 """, unsafe_allow_html=True)
     
-    col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown("""
