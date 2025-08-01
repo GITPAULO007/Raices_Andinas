@@ -456,7 +456,7 @@ elif "🏦 Quiénes Somos" in selected:
         st.metric("Años de Historia", "28", "Desde 1996")
         st.metric("Provincias", "7", "Cobertura nacional")
     with col2:
-        st.metric("Socios Activos", "48,127", "+2.3% anual")
+        st.metric("Socios Activos", "24,014", "+2.3% anual")
         st.metric("Patrimonio", "$85M", "Sólido respaldo")
     with col3:
         st.metric("Oficinas", "24", "Cerca de ti")
@@ -1323,215 +1323,464 @@ elif "🧪 Simulador Estratégico" in selected:
         else:
             st.warning(f"⚠️ ROI del {roi_total:.1f}% requiere optimización de estrategias")
 
-elif "🏁 Plan de Acción" in selected:
-    st.markdown('<h1 class="main-header">🏁 Hora de la Acción</h1>', unsafe_allow_html=True)
-    st.markdown("### *De insights a resultados: El roadmap hacia el éxito*")
+elif "📋 Plan de Acción" in selected:
+    st.markdown('<h1 class="main-header">📋 Conclusiones y Recomendaciones Estratégicas</h1>', unsafe_allow_html=True)
     
-    # Resumen ejecutivo
-    st.markdown("#### 📋 Resumen Ejecutivo")
-    resumen_col1, resumen_col2 = st.columns([2, 1])
+    # Métricas clave del estudio
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("Socios Analizados", "24,014", "activos en EE.UU.")
+    with col2:
+        st.metric("Perfiles Identificados", "3", "segmentos únicos")
+    with col3:
+        st.metric("Variables Analizadas", "41", "indicadores clave")
+    with col4:
+        st.metric("Período Analizado", "5 años", "2020-2025")
     
-    with resumen_col1:
-        st.markdown("""
-        **La oportunidad es clara:** Ecuador recibirá $5.8B en remesas en 2025, y solo necesitamos capturar el 5% del mercado de Azuay para crecer $10M trimestrales.
-        
-        **La solución es precisa:** Segmentación inteligente nos permite personalizar servicios, reducir riesgos y maximizar rentabilidad con un ROI proyectado del 245%.
-        
-        **El momento es ahora:** Mientras competidores siguen estrategias masivas, nosotros implementamos inteligencia artificial para decisiones personalizadas.
-        """)
-    
-    with resumen_col2:
-        st.markdown("""
-        <div class="metric-card">
-            <h3>ROI Proyectado</h3>
-            <h1>245%</h1>
-            <p>En 12 meses</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    # Roadmap temporal
-    st.markdown("#### 🗓️ Roadmap de Implementación")
-    
-    fases = [
-        {
-            "fase": "Fase 1: Preparación",
-            "tiempo": "Mes 1-2",
-            "objetivos": ["Conformar equipo de datos", "Validar modelo con muestra", "Definir KPIs de éxito"],
-            "entregables": ["Equipo conformado", "Modelo validado", "Dashboard básico"],
-            "responsable": "CTO + Gerencia Comercial"
-        },
-        {
-            "fase": "Fase 2: Piloto",
-            "tiempo": "Mes 3-4", 
-            "objetivos": ["Implementar con 1,000 socios", "Probar estrategias por segmento", "Medir resultados iniciales"],
-            "entregables": ["Campañas personalizadas", "Call center configurado", "Primeros resultados"],
-            "responsable": "Gerencia Comercial + TI"
-        },
-        {
-            "fase": "Fase 3: Escalamiento",
-            "tiempo": "Mes 5-8",
-            "objetivos": ["Desplegar a todos los socios", "Automatizar procesos", "Optimizar estrategias"],
-            "entregables": ["Sistema en producción", "Procesos automatizados", "ROI positivo"],
-            "responsable": "Toda la organización"
-        },
-        {
-            "fase": "Fase 4: Consolidación",
-            "tiempo": "Mes 9-12",
-            "objetivos": ["Análisis de resultados", "Mejora continua", "Expansión a nuevos segmentos"],
-            "entregables": ["Informe de impacto", "Modelo optimizado", "Nuevas oportunidades"],
-            "responsable": "Gerencia General"
-        }
-    ]
-    
-    for i, fase in enumerate(fases):
-        color = ["#4ECDC4", "#667eea", "#FF6B6B", "#95E1D3"][i]
-        st.markdown(f"""
-        <div style="background: linear-gradient(135deg, {color}20 0%, {color}40 100%); 
-                    border-left: 5px solid {color}; padding: 20px; margin: 15px 0; border-radius: 10px;">
-            <h4>{fase['fase']} ({fase['tiempo']})</h4>
-            <p><strong>Responsable:</strong> {fase['responsable']}</p>
-            <p><strong>Objetivos:</strong> {' • '.join(fase['objetivos'])}</p>
-            <p><strong>Entregables:</strong> {' • '.join(fase['entregables'])}</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    # Recursos necesarios
-    st.markdown("#### 💼 Recursos Requeridos")
-    
-    recursos_cols = st.columns(3)
-    
-    with recursos_cols[0]:
-        st.markdown("""
-        ##### 👥 Equipo Humano
-        - **Data Scientist** (1 FTE)
-        - **Analista Marketing** (1 FTE) 
-        - **Especialista Call Center** (2 FTE)
-        - **Desarrollador** (0.5 FTE)
-        - **Consultor externo** (3 meses)
-        
-        **Costo:** $15,000/mes
-        """)
-    
-    with recursos_cols[1]:
-        st.markdown("""
-        ##### 🖥️ Tecnología
-        - **Plataforma Analytics** (Tableau/PowerBI)
-        - **CRM avanzado** (Salesforce/HubSpot)
-        - **Sistema de Llamadas** (upgrade)
-        - **APIs de integración**
-        - **Infraestructura cloud**
-        
-        **Costo:** $25,000 inicial + $5,000/mes
-        """)
-    
-    with recursos_cols[2]:
-        st.markdown("""
-        ##### 📚 Capacitación
-        - **Workshop segmentación** (todo el equipo)
-        - **Certificación CRM** (equipo comercial)
-        - **Análisis de datos** (gerencias)
-        - **Atención personalizada** (call center)
-        
-        **Costo:** $8,000 total
-        """)
-    
-    # Factores críticos de éxito
-    st.markdown("#### 🎯 Factores Críticos de Éxito")
-    
-    factores_cols = st.columns(2)
-    
-    with factores_cols[0]:
-        st.markdown("""
-        ##### ✅ Elementos Clave
-        - **Compromiso directivo:** Apoyo visible de gerencia general
-        - **Calidad de datos:** Información completa y actualizada  
-        - **Adopción del equipo:** Capacitación y cambio cultural
-        - **Medición constante:** KPIs claros y seguimiento semanal
-        - **Flexibilidad:** Capacidad de ajustar estrategias según resultados
-        """)
-    
-    with factores_cols[1]:
-        st.markdown("""
-        ##### ⚠️ Riesgos a Mitigar
-        - **Resistencia al cambio:** Plan de gestión del cambio
-        - **Problemas técnicos:** Testing exhaustivo y plan B
-        - **Sobrecarga operativa:** Implementación gradual
-        - **Competencia:** Velocidad de ejecución
-        - **Regulación:** Cumplimiento normativo constante
-        """)
-    
-    # Métricas de éxito
-    st.markdown("#### 📊 Métricas de Éxito")
-    
-    st.markdown("**KPIs Principales a monitorear mensualmente:**")
-    
-    kpis_data = pd.DataFrame({
-        'KPI': ['Tasa de Respuesta Campañas', 'NPS por Segmento', 'Reducción Mora Segmento Riesgo', 
-               'Adopción Digital', 'Cross-selling Rate', 'Costo por Adquisición'],
-        'Baseline': ['23%', '45 puntos', '18 días', '45%', '15%', '$95'],
-        'Meta 6M': ['35%', '55 puntos', '12 días', '60%', '25%', '$75'],
-        'Meta 12M': ['45%', '65 puntos', '8 días', '75%', '35%', '$60']
-    })
-    
-    st.dataframe(kpis_data, use_container_width=True)
-    
-    # Call to action final
-    st.markdown("#### 🚀 ¡Es Hora de Decidir!")
-    
-    cta_col1, cta_col2 = st.columns([2, 1])
-    
-    with cta_col1:
-        st.markdown("""
-        **La pregunta no es SI debemos implementar segmentación inteligente.**
-        **La pregunta es: ¿Podemos permitirnos NO hacerlo?**
-        
-        - Competidores avanzan hacia personalización masiva
-        - Fintechs capturan clientes jóvenes cada día
-        - Remesas crecen 8% anual sin nuestra participación óptima
-        - ROI del 245% nos espera con datos que ya tenemos
-        """)
-        
-        st.success("✅ **Recomendación:** Aprobar inversión de $670K para capturar oportunidad de $10M+ trimestrales")
-    
-    with cta_col2:
-        st.markdown("""
-        <div class="cta-button" style="text-align: center;">
-            <h3>💰 Inversión Total</h3>
-            <h2>$670,000</h2>
-            <p>ROI: 245% en 12 meses</p>
-            <p>Payback: 4.2 meses</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    # Próximos pasos inmediatos
-    st.markdown("#### 📋 Próximos Pasos Inmediatos")
-    
-    if st.button("🎯 Aprobar Proyecto", type="primary"):
-        st.balloons()
-        st.success("¡Proyecto aprobado! Iniciando Fase 1 - Preparación")
-        
-        proximos_pasos = [
-            "✅ Conformar equipo de proyecto (Semana 1)",
-            "✅ Contratar consultor especializado (Semana 2)", 
-            "✅ Definir arquitectura de datos (Semana 3)",
-            "✅ Iniciar desarrollo de dashboard (Semana 4)",
-            "✅ Primera reunión de seguimiento (Fin de mes)"
-        ]
-        
-        for paso in proximos_pasos:
-            st.write(paso)
-    
-    # Footer inspiracional
     st.markdown("---")
-    st.markdown("""
-    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                color: white; border-radius: 15px; margin: 20px 0;">
-        <h3>"Los datos no mienten, las oportunidades no esperan"</h3>
-        <p>Raíces Andinas tiene todo lo necesario para liderar la revolución financiera cooperativa en Ecuador.</p>
-        <p><strong>El futuro es de quienes actúan hoy con la información correcta.</strong></p>
-    </div>
-    """, unsafe_allow_html=True)
     
-    # Información de contacto del proyecto
-    st.markdown("---")
-    st.markdown("**Contacto del Proyecto:** [email] | **Fecha:** Julio 2025 | **Versión:** 2.0")
+    # Tabs principales
+    tabs = st.tabs(["🎯 Conclusiones Clave", "💡 Recomendaciones Estratégicas", "📊 Hallazgos por Perfil", "🚀 Roadmap de Implementación"])
+    
+    with tabs[0]:
+        st.markdown("## 🎯 Conclusiones del Análisis de Tipología")
+        
+        # Hallazgo 1
+        with st.expander("🔍 Hallazgo 1: Identificación de Tres Perfiles Diferenciados", expanded=True):
+            col1, col2 = st.columns([2, 1])
+            with col1:
+                st.info("""
+                **La aplicación del algoritmo K-Means validó la existencia de tres clústeres con perfiles de comportamiento claramente diferenciados:**
+                
+                ✅ **Validación estadística robusta** con coeficiente de silueta de 0.40
+                ✅ **Segmentos bien definidos** con características únicas
+                ✅ **Patrones de comportamiento consistentes** a lo largo del tiempo
+                """)
+            with col2:
+                # Gráfico de distribución
+                fig_dist = go.Figure(data=[go.Pie(
+                    labels=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+                    values=[9, 90, 1.2],
+                    hole=.3,
+                    marker_colors=['#4CAF50', '#FF6B6B', '#2196F3']
+                )])
+                fig_dist.update_layout(
+                    title="Distribución de Perfiles",
+                    height=250,
+                    showlegend=False
+                )
+                st.plotly_chart(fig_dist, use_container_width=True)
+        
+        # Hallazgo 2
+        with st.expander("⚠️ Hallazgo 2: El Agujero Negro del Riesgo Financiero"):
+            st.error("""
+            **El Clúster de Riesgo Financiero presenta características alarmantes:**
+            
+            🚨 **90% de la cartera** está en este segmento
+            🚨 **97% de retención** - prácticamente imposible salir
+            🚨 **18 días de mora promedio** vs 1.5 días en Tradicionales
+            🚨 **Saldos mínimos** de apenas $316 en promedio
+            """)
+            
+            # Visualización de la matriz de transición
+            fig_transition = go.Figure(data=go.Heatmap(
+                z=[[0.77, 0.22, 0.01],
+                   [0.03, 0.97, 0.01],
+                   [0.07, 0.48, 0.45]],
+                x=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+                y=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+                text=[[f'{v:.0%}' for v in row] for row in [[0.77, 0.22, 0.01], [0.03, 0.97, 0.01], [0.07, 0.48, 0.45]]],
+                texttemplate='%{text}',
+                colorscale='RdYlBu_r',
+                showscale=True
+            ))
+            fig_transition.update_layout(
+                title="Matriz de Transición Anual - El Agujero Negro",
+                xaxis_title="Destino",
+                yaxis_title="Origen",
+                height=350
+            )
+            st.plotly_chart(fig_transition, use_container_width=True)
+        
+        # Hallazgo 3
+        with st.expander("🚀 Hallazgo 3: El Perfil Tecnológico como Indicador de Riesgo"):
+            col1, col2 = st.columns(2)
+            with col1:
+                st.warning("""
+                **El segmento más rentable es también el más inestable:**
+                
+                ⚡ **Mayor capital prestado**: $27,802
+                ⚡ **Uso intensivo de servicios**: Recargas, pagos, transferencias
+                ⚡ **PERO**: 48% migra a Riesgo Financiero al año siguiente
+                ⚡ Actúa como "trampolín" hacia el riesgo
+                """)
+            with col2:
+                # Gráfico de flujo de migración
+                fig_flow = go.Figure(go.Sankey(
+                    node=dict(
+                        pad=15,
+                        thickness=20,
+                        line=dict(color="black", width=0.5),
+                        label=["Tecnológico T0", "Riesgo Financiero T1", "Tecnológico T1", "Tradicionales T1"],
+                        color=["#2196F3", "#FF6B6B", "#2196F3", "#4CAF50"]
+                    ),
+                    link=dict(
+                        source=[0, 0, 0],
+                        target=[1, 2, 3],
+                        value=[48, 45, 7],
+                        color=["rgba(255,107,107,0.4)", "rgba(33,150,243,0.4)", "rgba(76,175,80,0.4)"]
+                    )
+                ))
+                fig_flow.update_layout(
+                    title="Flujo de Migración del Perfil Tecnológico",
+                    height=300
+                )
+                st.plotly_chart(fig_flow, use_container_width=True)
+    
+    with tabs[1]:
+        st.markdown("## 💡 Recomendaciones Estratégicas")
+        
+        # Recomendación 1: Calidad de Datos
+        st.markdown("### 📊 1. Mejora en la Gestión de Datos")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.info("""
+            **Acciones Inmediatas:**
+            
+            🔹 **Estandarización de bases de datos**
+            - Proceso riguroso de limpieza y normalización
+            - Eliminación de duplicados y consolidación
+            
+            🔹 **Enriquecimiento de variables**
+            - Mejorar categorización de Actividad Económica
+            - Incorporar sector económico específico de EE.UU.
+            
+            🔹 **Actualización periódica**
+            - Establecer política de actualización trimestral
+            - El contexto migrante es altamente dinámico
+            """)
+        with col2:
+            # Indicadores de calidad de datos
+            quality_metrics = pd.DataFrame({
+                'Métrica': ['Completitud', 'Consistencia', 'Actualidad', 'Precisión'],
+                'Estado Actual': [65, 70, 55, 75],
+                'Meta': [95, 95, 90, 95]
+            })
+            
+            fig_quality = go.Figure()
+            fig_quality.add_trace(go.Bar(
+                name='Estado Actual',
+                x=quality_metrics['Métrica'],
+                y=quality_metrics['Estado Actual'],
+                marker_color='#FF6B6B'
+            ))
+            fig_quality.add_trace(go.Bar(
+                name='Meta',
+                x=quality_metrics['Métrica'],
+                y=quality_metrics['Meta'],
+                marker_color='#4CAF50'
+            ))
+            fig_quality.update_layout(
+                title="Calidad de Datos: Actual vs Meta (%)",
+                height=300,
+                barmode='group'
+            )
+            st.plotly_chart(fig_quality, use_container_width=True)
+        
+        # Recomendación 2: Análisis Financiero
+        st.markdown("### 💰 2. Análisis de Rentabilidad por Clúster")
+        
+        with st.container():
+            st.error("""
+            **⚠️ CRÍTICO: Comprender el costo real de cada segmento**
+            
+            En un entorno competitivo, no conocer la rentabilidad real por socio puede dejar a la institución en desventaja 
+            frente a competidores más ágiles que aprovechan la analítica avanzada.
+            """)
+            
+            # Simulación de análisis de rentabilidad
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("ROI Tradicionales", "3.2x", "Alto valor en DPF", delta_color="normal")
+            with col2:
+                st.metric("ROI Riesgo Financiero", "-0.8x", "Pérdida operativa", delta_color="inverse")
+            with col3:
+                st.metric("ROI Tecnológico", "2.1x", "Alto potencial", delta_color="normal")
+        
+        # Recomendación 3: Estrategias Diferenciadas
+        st.markdown("### 🎯 3. Implementación de Estrategias por Perfil")
+        
+        strategy_tabs = st.tabs(["Tradicionales", "Riesgo Financiero", "Tecnológico"])
+        
+        with strategy_tabs[0]:
+            st.success("""
+            **📈 Estrategias para Socios Tradicionales (9%)**
+            
+            **1. Programa de Incentivos Digitales**
+            - 🎁 Sorteos mensuales para usuarios de app
+            - 💰 Bonificaciones por uso múltiple de servicios
+            - 📱 Onboarding digital asistido
+            
+            **2. Venta Cruzada Premium**
+            - 🏆 Productos exclusivos para socios leales
+            - 📊 Dashboards personalizados de inversión
+            - 🔄 Migración gradual a servicios digitales
+            """)
+            
+        with strategy_tabs[1]:
+            st.error("""
+            **🚨 Estrategias para Riesgo Financiero (90%)**
+            
+            **1. Programa Intensivo de Prevención de Mora**
+            - 📞 Llamadas preventivas 72-48h antes del vencimiento
+            - 💬 Sistema automatizado de mensajes (SMS/WhatsApp)
+            - 🎯 Sistema Poka-Yoke de alertas automáticas
+            
+            **2. Educación Financiera Obligatoria**
+            - 📚 Módulos online de gestión financiera
+            - 🏆 Incentivos por completar cursos
+            - 💳 Productos de transición con límites controlados
+            """)
+            
+        with strategy_tabs[2]:
+            st.info("""
+            **🚀 Estrategias para Tecnológico Multiservicios (1.2%)**
+            
+            **1. Programa VIP de Membresías Exclusivas**
+            - 👑 Tres niveles: Básico, Premium, Elite
+            - 💎 Beneficios escalables según comportamiento
+            - 🔒 Monitoreo proactivo para prevenir migración
+            
+            **2. Acompañamiento Personalizado**
+            - 👤 Gestor personal asignado
+            - 📊 Reportes mensuales de salud financiera
+            - 🎯 Alertas tempranas de riesgo
+            """)
+    
+    with tabs[2]:
+        st.markdown("## 📊 Resumen de Hallazgos por Perfil")
+        
+        # Crear visualización comparativa interactiva
+        profiles_comparison = pd.DataFrame({
+            'Característica': ['Edad Promedio', 'Ingresos Mensuales', 'Saldo DPF', 'Capital Prestado', 'Días de Mora', 'Uso Digital'],
+            'Tradicionales': [45.1, 3558.96, 27597.17, 21576.06, 1.5, 20],
+            'Riesgo Financiero': [38.4, 3759.42, 315.78, 21282.22, 18.0, 10],
+            'Tecnológico': [39.6, 3962.25, 7656.16, 27802.60, 10.2, 100]
+        })
+        
+        # Normalizar valores para mejor visualización
+        for col in ['Tradicionales', 'Riesgo Financiero', 'Tecnológico']:
+            max_vals = profiles_comparison[[col]].max()
+            profiles_comparison[f'{col}_norm'] = profiles_comparison[col] / profiles_comparison[col].max() * 100
+        
+        # Crear gráfico de radar mejorado
+        fig_radar = go.Figure()
+        
+        fig_radar.add_trace(go.Scatterpolar(
+            r=[45.1/45.1*100, 3558.96/3962.25*100, 27597.17/27597.17*100, 21576.06/27802.60*100, (20-1.5)/18*100, 20],
+            theta=profiles_comparison['Característica'],
+            fill='toself',
+            name='Tradicionales',
+            line_color='#4CAF50',
+            fillcolor='rgba(76,175,80,0.2)'
+        ))
+        
+        fig_radar.add_trace(go.Scatterpolar(
+            r=[38.4/45.1*100, 3759.42/3962.25*100, 315.78/27597.17*100, 21282.22/27802.60*100, (20-18)/18*100, 10],
+            theta=profiles_comparison['Característica'],
+            fill='toself',
+            name='Riesgo Financiero',
+            line_color='#FF6B6B',
+            fillcolor='rgba(255,107,107,0.2)'
+        ))
+        
+        fig_radar.add_trace(go.Scatterpolar(
+            r=[39.6/45.1*100, 3962.25/3962.25*100, 7656.16/27597.17*100, 27802.60/27802.60*100, (20-10.2)/18*100, 100],
+            theta=profiles_comparison['Característica'],
+            fill='toself',
+            name='Tecnológico',
+            line_color='#2196F3',
+            fillcolor='rgba(33,150,243,0.2)'
+        ))
+        
+        fig_radar.update_layout(
+            polar=dict(
+                radialaxis=dict(
+                    visible=True,
+                    range=[0, 100]
+                )),
+            showlegend=True,
+            title="Comparación Multidimensional de Perfiles",
+            height=500
+        )
+        
+        st.plotly_chart(fig_radar, use_container_width=True)
+        
+        # Tabla comparativa detallada
+        st.markdown("### 📋 Métricas Detalladas por Perfil")
+        
+        detailed_metrics = pd.DataFrame({
+            'Métrica': ['Tamaño del Segmento', 'Edad Promedio', 'Ingresos Mensuales', 'Saldo DPF', 
+                       'Capital Prestado', 'Días de Mora', 'Calificación', 'Riesgo de Migración'],
+            'Socios Tradicionales': ['9% (2,161)', '45.1 años', '$3,558.96', '$27,597.17', 
+                                   '$21,576.06', '1.5 días', 'A-2', '22% → Riesgo'],
+            'Riesgo Financiero': ['90% (21,613)', '38.4 años', '$3,759.42', '$315.78', 
+                                '$21,282.22', '18.0 días', 'A-3', '97% permanencia'],
+            'Tecnológico Multiservicios': ['1.2% (288)', '39.6 años', '$3,962.25', '$7,656.16', 
+                                         '$27,802.60', '10.2 días', 'A-2', '48% → Riesgo']
+        })
+        
+        st.dataframe(
+            detailed_metrics.style.apply(lambda x: ['background-color: #e8f5e9' if 'Tradicionales' in x.name 
+                                                   else 'background-color: #ffebee' if 'Riesgo' in x.name 
+                                                   else 'background-color: #e3f2fd' for i in x], axis=1),
+            use_container_width=True
+        )
+    
+    with tabs[3]:
+        st.markdown("## 🚀 Roadmap de Implementación")
+        
+        # Timeline interactivo
+        timeline_data = pd.DataFrame({
+            'Fase': ['Fase 1: Quick Wins', 'Fase 2: Gestión de Riesgo', 'Fase 3: Transformación Digital', 'Fase 4: Optimización'],
+            'Inicio': ['2025-Q1', '2025-Q2', '2025-Q3', '2026-Q1'],
+            'Duración': [3, 6, 9, 12],
+            'Prioridad': ['Alta', 'Crítica', 'Alta', 'Media']
+        })
+        
+        st.markdown("### 📅 Cronograma de Implementación")
+        
+        # Gantt Chart simulado
+        fig_gantt = go.Figure()
+        
+        colors = {'Alta': '#FFA726', 'Crítica': '#EF5350', 'Media': '#66BB6A'}
+        
+        for idx, row in timeline_data.iterrows():
+            fig_gantt.add_trace(go.Bar(
+                name=row['Fase'],
+                x=[row['Duración']],
+                y=[row['Fase']],
+                orientation='h',
+                marker=dict(color=colors[row['Prioridad']]),
+                showlegend=False,
+                hovertemplate='<b>%{y}</b><br>Duración: %{x} meses<br>Inicio: ' + row['Inicio'] + '<extra></extra>'
+            ))
+        
+        fig_gantt.update_layout(
+            title="Roadmap de Implementación Estratégica",
+            xaxis_title="Meses",
+            barmode='overlay',
+            height=400,
+            xaxis=dict(range=[0, 12])
+        )
+        
+        st.plotly_chart(fig_gantt, use_container_width=True)
+        
+        # Detalle de fases
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("### 🎯 Fase 1: Quick Wins (Q1 2025)")
+            st.info("""
+            **Objetivos inmediatos de alto impacto:**
+            
+            ✅ Implementar sistema de alertas preventivas
+            ✅ Lanzar programa piloto de incentivos digitales
+            ✅ Establecer métricas de seguimiento por clúster
+            ✅ Capacitar personal en atención diferenciada
+            
+            **KPIs Target:**
+            - Reducir mora en 10%
+            - Aumentar uso digital en 15%
+            - Mejorar NPS en 20 puntos
+            """)
+            
+        with col2:
+            st.markdown("### 🚨 Fase 2: Gestión de Riesgo (Q2-Q3 2025)")
+            st.error("""
+            **Intervención crítica en el segmento de riesgo:**
+            
+            🔴 Programa intensivo de recuperación de mora
+            🔴 Sistema automatizado de cobranza preventiva
+            🔴 Reestructuración de créditos problemáticos
+            🔴 Educación financiera obligatoria
+            
+            **KPIs Target:**
+            - Reducir mora promedio a <10 días
+            - Recuperar 30% de cartera vencida
+            - Prevenir 50% de nuevos casos
+            """)
+        
+        # Métricas de éxito proyectadas
+        st.markdown("### 📈 Proyección de Impacto")
+        
+        impact_metrics = pd.DataFrame({
+            'Métrica': ['Reducción de Mora', 'Adopción Digital', 'Retención de Socios', 'ROI del Programa'],
+            'Q1 2025': [10, 15, 85, 1.2],
+            'Q2 2025': [20, 25, 88, 1.8],
+            'Q3 2025': [30, 40, 90, 2.5],
+            'Q4 2025': [40, 55, 92, 3.2]
+        })
+        
+        fig_impact = go.Figure()
+        
+        for col in impact_metrics.columns[1:]:
+            fig_impact.add_trace(go.Scatter(
+                x=impact_metrics['Métrica'],
+                y=impact_metrics[col],
+                mode='lines+markers',
+                name=col,
+                line=dict(width=3)
+            ))
+        
+        fig_impact.update_layout(
+            title="Proyección de Mejora en KPIs Clave (%)",
+            xaxis_title="Indicador",
+            yaxis_title="Mejora Proyectada (%)",
+            height=400,
+            hovermode='x unified'
+        )
+        
+        st.plotly_chart(fig_impact, use_container_width=True)
+        
+        # Call to Action
+        st.markdown("---")
+        st.markdown("### 🎯 Próximos Pasos Inmediatos")
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.success("""
+            **Semana 1-2:**
+            - Validar hallazgos con gerencia
+            - Formar comité de implementación
+            - Definir presupuesto inicial
+            """)
+        with col2:
+            st.info("""
+            **Semana 3-4:**
+            - Seleccionar pilotos por clúster
+            - Diseñar protocolos de atención
+            - Capacitar personal clave
+            """)
+        with col3:
+            st.warning("""
+            **Mes 2:**
+            - Lanzar piloto con 100 socios
+            - Monitorear KPIs diariamente
+            - Ajustar estrategias según resultados
+            """)
+        
+        # Mensaje final
+        st.markdown("---")
+        st.markdown("""
+        <div style='background-color: #e3f2fd; padding: 20px; border-radius: 10px; text-align: center;'>
+            <h3 style='color: #1976d2;'>💡 Mensaje Clave</h3>
+            <p style='font-size: 18px; color: #424242;'>
+                <strong>La implementación de estas recomendaciones permitirá a la cooperativa no solo 
+                entender mejor a sus socios migrantes, sino construir un ecosistema de datos que 
+                potencie la toma de decisiones estratégicas y fortalezca su posición competitiva 
+                en el mercado.</strong>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
