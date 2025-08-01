@@ -227,7 +227,7 @@ if "🚀 Hook y Oportunidad" in selected:
             <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$5.491M</h2>
             <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Remesas 2024</p>
             <small style="color: #ffe0e0; font-size: 0.9rem;">
-                <strong>19x más</strong> que la Inversión<br>Extranjera Directa
+                <strong>Más</strong> que la Inversión<br>Extranjera Directa
             </small>
             <div style="margin-top: 0.5rem;">
                 <small style="color: #ffc4c4; font-size: 0.7rem;">Fuente: BCE</small>
@@ -394,7 +394,7 @@ if "🚀 Hook y Oportunidad" in selected:
     ''', unsafe_allow_html=True)
 
     # Próximo paso
-    st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.8B proyectados para 2025.")
+    st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.800M proyectados para 2025.")
 
     # Métricas adicionales en sidebar o expandible
     with st.expander("📊 Datos Adicionales de Soporte"):
