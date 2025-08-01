@@ -772,8 +772,8 @@ elif "🎯 Segmentos y KPIs" in selected:
             
             # Mostrar tabla estilizada
             st.dataframe(
-                df_profiles.style.highlight_max(subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)'], axis=1),
-                use_container_width=True
+            df_profiles.style.highlight_max(subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)'], axis=1, color='lightgreen'),
+            use_container_width=True
             )
             
             # Gráfico de radar comparativo
