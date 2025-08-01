@@ -236,6 +236,9 @@ if "🚀 Hook y Oportunidad" in selected:
             <small style="color: #ffe0e0; font-size: 0.9rem;">
                 <strong>19x más</strong> que la Inversión<br>Extranjera Directa
             </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #ffc4c4; font-size: 0.7rem;">Fuente: BCE</small>
+            </div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -247,6 +250,9 @@ if "🚀 Hook y Oportunidad" in selected:
             <small style="color: #e0f7f5; font-size: 0.9rem;">
                 <strong>US$1.3B</strong> en Q1 2025<br>principal fuente
             </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #b8f2ed; font-size: 0.7rem;">Fuente: BCE</small>
+            </div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -258,6 +264,9 @@ if "🚀 Hook y Oportunidad" in selected:
             <small style="color: #f0e5ff; font-size: 0.9rem;">
                 En <strong>3 meses</strong> – epicentro migrante
             </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #e4d1ff; font-size: 0.7rem;">Fuente: BCE Q1 2025</small>
+            </div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -269,6 +278,9 @@ if "🚀 Hook y Oportunidad" in selected:
             <small style="color: #fff3e0; font-size: 0.9rem;">
                 <strong>1 de cada 5</strong> familias invierte en vivienda
             </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #ffe0b3; font-size: 0.7rem;">Fuente: Estudio Microeconómico</small>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -386,6 +398,9 @@ if "🚀 Hook y Oportunidad" in selected:
                 Los socios migrantes de RAÍCES (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
                 superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
             </p>
+            <div style="text-align: right; margin-top: 0.5rem;">
+                <small style="color: #c8d0ff; font-size: 0.7rem;">Fuente: Pew Research Center</small>
+            </div>
         </div>
         ''', unsafe_allow_html=True)
     
@@ -394,9 +409,12 @@ if "🚀 Hook y Oportunidad" in selected:
         <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 1.5rem; border-radius: 15px; height: 200px;">
             <h4 style="color: #2c3e50; margin-bottom: 1rem;">🎯 VENTAJA GEOGRÁFICA</h4>
             <p style="color: #2c3e50; font-size: 1rem; line-height: 1.6;">
-                El 59% de ecuatorianos en EE.UU. vive en NY y NJ. RAÍCES puede crear <strong>alianzas estratégicas</strong> 
+                El 59% de ecuatorianos en EE.UU. vive en NY y NJ (~550,000 personas). RAÍCES puede crear <strong>alianzas estratégicas</strong> 
                 en estas zonas para capturar remesas directamente desde el origen, reduciendo costos de intermediación.
             </p>
+            <div style="text-align: right; margin-top: 0.5rem;">
+                <small style="color: #999; font-size: 0.7rem;">Fuente: Migration Policy Institute</small>
+            </div>
         </div>
         ''', unsafe_allow_html=True)
 
@@ -432,7 +450,7 @@ if "🚀 Hook y Oportunidad" in selected:
             st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
         with col3:
             st.metric("Destino Vivienda", "21%", "$1.154B anuales")
-            st.metric("Préstamos Formales", "25%", "75% mercado potencial")
+            st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
 
 elif "🏦 Quiénes Somos" in selected:
     st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
