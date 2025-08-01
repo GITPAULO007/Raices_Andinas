@@ -772,7 +772,7 @@ elif "🎯 Segmentos y KPIs" in selected:
             
             # Mostrar tabla estilizada
             st.dataframe(
-            df_profiles.style.highlight_max(subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)'], axis=1, color='lightgreen'),
+            df_profiles.style.highlight_max(subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)']),
             use_container_width=True
             )
             
