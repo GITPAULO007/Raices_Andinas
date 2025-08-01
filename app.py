@@ -92,12 +92,60 @@ st.markdown("""
 
 # ---------- SIDEBAR MEJORADO ----------
 with st.sidebar:
-    # Logo principal con mejor presentación
+    # Logo principal
     try:
         logo = Image.open("logo_raices.jpg")
         st.image(logo, use_container_width=True)
     except:
         st.markdown("### 🏦 COAC Raíces Andinas")
+    
+    # Menú principal
+    selected = option_menu(
+        menu_title="📊 Panel de Control",
+        options=[
+            "🚀 Hook y Oportunidad",
+            "🏦 Quiénes Somos",
+            "🔬 Metodología",
+            "🎯 Segmentos y KPIs",
+            "🧪 Simulador Estratégico",
+            "🏁 Plan de Acción"
+        ],
+        icons=[
+            "rocket-takeoff", "bank2", "gear", "bullseye", "calculator", "flag-fill"
+        ],
+        menu_icon="grid-3x3-gap-fill",
+        default_index=0,
+        styles={
+            "container": {"padding": "5!important", "background-color": "#fafafa"},
+            "icon": {"color": "#4ECDC4", "font-size": "18px"}, 
+            "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px"},
+            "nav-link-selected": {"background-color": "#667eea"},
+        }
+    )
+    
+    st.markdown("---")
+    
+    # Métricas en tiempo real en sidebar
+    st.markdown("### 📈 Socios y Remesas")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Socios activos", "24,014", "Filtrado muestra 2020-2025")
+    with col2:
+        st.metric("Remesas 2024", "$5.49B", "Fuente: BCE")
+    
+    st.markdown("---")
+    
+    # Logos institucionales y aliados
+    try:
+        alprode_logo = Image.open("alprode.jpeg")
+        st.image(alprode_logo, width=250, caption="Alprode")
+        cofin_logo = Image.open("cofin_logo.png")
+        st.image(cofin_logo, width=250, caption="Erasmus+")
+        ucuenca_logo = Image.open("logo_ucuenca.png")
+        st.image(ucuenca_logo, width=250, caption="Universidad de Cuenca")
+    except:
+        st.markdown("**Aliados Estratégicos:**\n- Alprode\n- Universidad de Cuenca")
+
     
     # Menú principal mejorado
     selected = option_menu(
