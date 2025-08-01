@@ -485,7 +485,7 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
                 en el mercado.</strong>
             </p>
         </div>
-        """, unsafe_allow_html=True)
+        """)
         
         # Recomendaciones finales detalladas
         st.markdown("---")
@@ -569,7 +569,7 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
                 en el mercado.</strong>
             </p>
         </div>
-        """, unsafe_allow_html=True)
+        """(
 
 # Debug: Mostrar qué opción está seleccionada (solo para desarrollo)
 # st.sidebar.write(f"**Selección actual:** {selected}")
