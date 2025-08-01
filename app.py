@@ -469,7 +469,7 @@ elif "🏦 Quiénes Somos" in selected:
         <div style='background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
             <h4>💪 FORTALEZAS</h4>
             <ul>
-                <li>Capital sólido ($85M patrimonio)</li>
+                <li>Capital sólido ($225M patrimonio)</li>
                 <li>Base migratoria fiel (15,000+ socios)</li>
                 <li>Tecnología en expansión digital</li>
                 <li>Presencia territorial consolidada</li>
