@@ -510,27 +510,7 @@ elif "🏦 Quiénes Somos" in selected:
         </div>
         """, unsafe_allow_html=True)
 
-    # Timeline de crecimiento
-    st.markdown("### 📅 Nuestra Evolución")
-    timeline_data = [
-        {"año": "1996", "hito": "Fundación en Cuenca", "impacto": "500 socios fundadores"},
-        {"año": "2005", "hito": "Expansión nacional", "impacto": "7 provincias, 5,000 socios"},
-        {"año": "2015", "hito": "Era digital", "impacto": "Banca online, 25,000 socios"},
-        {"año": "2020", "hito": "Pandemia resiliente", "impacto": "Crecimiento del 15%"},
-        {"año": "2024", "hito": "Presente", "impacto": "48,127 socios, $85M patrimonio"},
-        {"año": "2025", "hito": "Futuro: Segmentación IA", "impacto": "Meta: 60,000 socios"}
-    ]
-    
-    for item in timeline_data:
-        color = "#4ECDC4" if item["año"] != "2025" else "#FF6B6B"
-        st.markdown(f"""
-        <div class="timeline-item" style="border-left-color: {color}">
-            <strong>{item['año']}</strong>: {item['hito']}<br>
-            <small>{item['impacto']}</small>
-        </div>
-        """, unsafe_allow_html=True)
-
-elif "🔬 Metodología" in selected:
+ elif "🔬 Metodología" in selected:
     st.markdown('<h1 class="main-header">🔬 Metodología de Investigación</h1>', unsafe_allow_html=True)
     
     # Explicación del enfoque metodológico
