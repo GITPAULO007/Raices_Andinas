@@ -1097,9 +1097,7 @@ elif "🎯 Perfilamientos" in selected:
                 st.metric("Adopción Digital", "+40%", "tradicionales")
             with impact_col3:
                 st.metric("Retención VIP", "85%", "tecnológicos")
-            with impact_col4:
-                st.metric("ROI Esperado", "3.2x", "en 12 meses")
-    
+                
     # Footer con recomendaciones
     st.markdown("---")
     st.markdown("### 🎯 Recomendaciones Clave")
@@ -1302,16 +1300,7 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
             En un entorno competitivo, no conocer la rentabilidad real por socio puede dejar a la institución en desventaja 
             frente a competidores más ágiles que aprovechan la analítica avanzada.
             """)
-            
-            # Simulación de análisis de rentabilidad
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric("ROI Tradicionales", "3.2x", "Alto valor en DPF", delta_color="normal")
-            with col2:
-                st.metric("ROI Riesgo Financiero", "-0.8x", "Pérdida operativa", delta_color="inverse")
-            with col3:
-                st.metric("ROI Tecnológico", "2.1x", "Alto potencial", delta_color="normal")
-        
+                   
         # Recomendación 3: Estrategias Diferenciadas
         st.markdown("### 🎯 3. Implementación de Estrategias por Perfil")
         
@@ -1510,38 +1499,6 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
             - Recuperar 30% de cartera vencida
             - Prevenir 50% de nuevos casos
             """)
-        
-        # Métricas de éxito proyectadas
-        st.markdown("### 📈 Proyección de Impacto")
-        
-        impact_metrics = pd.DataFrame({
-            'Métrica': ['Reducción de Mora', 'Adopción Digital', 'Retención de Socios', 'ROI del Programa'],
-            'Q1 2025': [10, 15, 85, 1.2],
-            'Q2 2025': [20, 25, 88, 1.8],
-            'Q3 2025': [30, 40, 90, 2.5],
-            'Q4 2025': [40, 55, 92, 3.2]
-        })
-        
-        fig_impact = go.Figure()
-        
-        for col in impact_metrics.columns[1:]:
-            fig_impact.add_trace(go.Scatter(
-                x=impact_metrics['Métrica'],
-                y=impact_metrics[col],
-                mode='lines+markers',
-                name=col,
-                line=dict(width=3)
-            ))
-        
-        fig_impact.update_layout(
-            title="Proyección de Mejora en KPIs Clave (%)",
-            xaxis_title="Indicador",
-            yaxis_title="Mejora Proyectada (%)",
-            height=400,
-            hovermode='x unified'
-        )
-        
-        st.plotly_chart(fig_impact, use_container_width=True)
         
         # Call to Action
         st.markdown("---")
