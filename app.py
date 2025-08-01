@@ -412,6 +412,17 @@ if "🚀 Hook y Oportunidad" in selected:
 elif "🏦 Quiénes Somos" in selected:
     st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
     st.markdown("### *29 años construyendo sueños, conectando corazones*")
+
+    # Video institucional
+    st.markdown("### 🎬 Video Institucional")
+    try:
+        video_file = open('video_intro_raices.mp4', 'rb')
+        video_bytes = video_file.read()
+        st.video(video_bytes)
+    except:
+        st.info("📹 Video institucional: video_intro_raices.mp4 (cargar archivo en el repositorio)")
+    
+    st.markdown("---")
     
     # Datos clave en columnas
     col1, col2, col3 = st.columns(3)
