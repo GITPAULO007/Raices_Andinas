@@ -533,125 +533,181 @@ elif "🏦 Quiénes Somos" in selected:
         """, unsafe_allow_html=True)
 
 elif "🔬 Metodología" in selected:
-    st.markdown('<h1 class="main-header">🔬 Ciencia de Datos para Decisiones Inteligentes</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">🔬 Metodología de Investigación</h1>', unsafe_allow_html=True)
     
-    # Explicación visual del proceso
-    st.markdown("### 🧩 El Desafío: De 48,127 socios a 3 segmentos estratégicos")
+    # Explicación del enfoque metodológico
+    st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos")
     
-    metodologia_tabs = st.tabs(["🎯 Problema", "🔧 Solución", "⚙️ Algoritmo", "📊 Validación"])
+    metodologia_tabs = st.tabs(["🎯 Enfoque", "📋 Datos", "⚙️ Procesamiento", "🔍 Modelo", "📊 Validación"])
     
     with metodologia_tabs[0]:
         st.markdown("""
-        #### 🎯 El Problema Real
+        #### 🎯 Enfoque Metodológico
         
-        **Antes:** 
-        - Un solo producto para todos los socios
-        - Campañas masivas sin personalización  
-        - 23% de tasa de respuesta promedio
-        - Pérdida de socios jóvenes (-5% anual)
+        **Enfoque Cuantitativo Multidimensional:**
         
-        **El dilema:** ¿Cómo identificar quién necesita qué, cuándo y cómo?
+        🔍 **Exploratorio:** Análisis de clústeres para identificar grupos homogéneos no definidos previamente
+        
+        📈 **Descriptivo:** Caracterización del comportamiento financiero de cada perfil identificado
+        
+        🎯 **Aplicado:** Generación de recomendaciones estratégicas basadas en hallazgos analíticos
         """)
         
-        # Simulación visual del problema
-        problema_data = pd.DataFrame({
-            'Segmento': ['Todos los socios'] * 5,
-            'Métrica': ['Tasa Respuesta', 'Satisfacción', 'Retención', 'Cross-selling', 'NPS'],
-            'Valor_Actual': [23, 6.2, 78, 15, 45],
-            'Potencial': [45, 8.5, 90, 35, 70]
-        })
-        
-        fig_problema = px.bar(problema_data, x='Métrica', y=['Valor_Actual', 'Potencial'], 
-                             title="Brecha de Oportunidad: Actual vs Potencial",
-                             barmode='group')
-        st.plotly_chart(fig_problema, use_container_width=True)
+        # Visualización del proceso metodológico
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("""
+            **📊 Análisis Exploratorio**
+            - Identificación de patrones
+            - Segmentación no supervisada
+            - Descubrimiento de insights
+            """)
+        with col2:
+            st.markdown("""
+            **🔬 Análisis Descriptivo**  
+            - Caracterización de perfiles
+            - Análisis de variables clave
+            - Comportamiento financiero
+            """)
+        with col3:
+            st.markdown("""
+            **🎯 Análisis Aplicado**
+            - Estrategias diferenciadas
+            - Recomendaciones prácticas
+            - Optimización de servicios
+            """)
     
     with metodologia_tabs[1]:
         st.markdown("""
-        #### 🔧 La Solución: Segmentación Inteligente
+        #### 📋 Fuentes de Información y Datos
         
-        **Analogía futbolística:** 
-        - Imagina armar 3 equipos de fútbol perfectos
-        - Cada jugador va al equipo donde mejor encaja
-        - Los equipos comparten estrategias y tácticas similares
-        - Cada equipo necesita un entrenamiento específico
+        **Base de Datos Consolidada:**
+        - 📞 **Datos de Llamadas:** Interacciones y comunicaciones
+        - 💳 **Transacciones:** Historial de operaciones financieras  
+        - 💰 **Créditos:** Información crediticia y riesgo
+        - 🏦 **Captaciones:** Productos de ahorro y depósitos
+        
+        **Período de Análisis:** Enero 2020 - Marzo 2025
+        
+        **Población Objetivo:** Socios migrantes residentes en Estados Unidos
         """)
         
+        # Métricas de la base de datos
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.markdown("""
-            **⚽ Equipo Tradicional**
-            - Experiencia y estabilidad
-            - Juego conservador
-            - Alta fidelidad
-            """)
+            st.metric("Población Total", "29,091", "socios migrantes")
         with col2:
-            st.markdown("""
-            **⚽ Equipo Riesgo**  
-            - Necesita más apoyo
-            - Potencial de mejora
-            - Requiere coaching
-            """)
+            st.metric("Muestra Final", "24,014", "socios activos")
         with col3:
-            st.markdown("""
-            **⚽ Equipo Tech**
-            - Innovación y velocidad
-            - Adopción rápida
-            - Multicanal
-            """)
+            st.metric("Variables Analizadas", "41", "indicadores clave")
+        
+        st.info("✅ **Criterios de Selección:** Socios activos con actividad en últimos 180 días y saldo superior al 25% del SBU")
     
     with metodologia_tabs[2]:
         st.markdown("""
-        #### ⚙️ K-Means: El Algoritmo que Revoluciona Nuestra Estrategia
+        #### ⚙️ Procesamiento y Preparación de Datos
         
-        **¿Cómo funciona K-Means?**
-        1. **Paso 1:** Definimos 3 "capitanes" de equipo al azar
-        2. **Paso 2:** Cada socio se une al capitán más parecido a él
-        3. **Paso 3:** Los capitanes se mueven al centro de su equipo
-        4. **Paso 4:** Repetimos hasta que los equipos sean estables
+        **Proceso de Limpieza y Consolidación:**
+        
+        1. **🧹 Depuración:** Eliminación de duplicados y normalización de formatos
+        2. **🔗 Integración:** Consolidación de 4 bases independientes en una única base
+        3. **📊 Agregación:** Panel de datos no balanceado con métodos específicos por tipo de variable
         """)
         
-        # Visualización interactiva del algoritmo
-        st.markdown("##### 🎮 Simulador K-Means")
-        if st.button("🎲 Ver Algoritmo en Acción"):
-            placeholder = st.empty()
-            
-            # Simulación de iteraciones
-            for i in range(4):
-                fig_sim = px.scatter(df_socios.sample(50), x='edad', y='ingresos', 
-                                   color='cluster', size='saldo_dpf',
-                                   title=f"Iteración {i+1}: Formando Equipos",
-                                   color_discrete_map={0: '#8dd3c7', 1: '#ffffb3', 2: '#bebada'})
-                placeholder.plotly_chart(fig_sim, use_container_width=True)
-                time.sleep(1)
+        # Métodos de agregación
+        st.markdown("##### 📈 Métodos de Agregación por Tipo de Variable")
         
-        # Variables utilizadas
-        st.markdown("""
-        **Variables Clave del Modelo:**
-        - 👤 **Edad:** Generación y comportamiento
-        - 💰 **Ingresos:** Capacidad financiera  
-        - 🏦 **Saldo DPF:** Perfil ahorrador
-        - 💳 **Capital prestado:** Propensión al crédito
-        - ⏰ **Días de mora:** Nivel de riesgo
-        - 📱 **Uso digital:** Adopción tecnológica
-        """)
+        agregacion_data = pd.DataFrame({
+            'Tipo de Variable': ['Continuas', 'Contadores', 'Categóricas', 'Métricas Especiales'],
+            'Método': ['Suma/Media', 'Suma/Máximo', 'Moda', 'Valor de Cierre'],
+            'Propósito': ['Volumen total o nivel medio', 'Acumulado o pico de actividad', 'Categoría más frecuente', 'Estado final del período'],
+            'Ejemplos': ['Ingresos, Saldos', 'Número de créditos', 'Estado civil, Género', 'Calificación de riesgo']
+        })
+        
+        st.dataframe(agregacion_data, use_container_width=True)
     
     with metodologia_tabs[3]:
         st.markdown("""
-        #### 📊 Validación del Modelo
+        #### 🔍 Modelo de Segmentación: Metodología Dual
         
-        **Métricas de Calidad:**
+        **Proceso de Dos Etapas:**
         """)
         
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            **🎯 Etapa 1: Análisis de Componentes Principales (PCA)**
+            - Reducción de dimensionalidad
+            - Eliminación de multicolinealidad  
+            - Preparación para clustering
+            - Identificación de patrones latentes
+            """)
+        with col2:
+            st.markdown("""
+            **⚙️ Etapa 2: Algoritmo K-Means**
+            - Segmentación no supervisada
+            - Identificación de grupos homogéneos
+            - Optimización de centroides
+            - Asignación de perfiles
+            """)
+        
+        st.markdown("""
+        ##### 🧮 Variables Clave del Modelo
+        
+        **Dimensiones Analizadas:**
+        - 👤 **Demográficas:** Edad, género, estado civil, cargas familiares
+        - 💰 **Económicas:** Ingresos estimados, capital prestado, saldos
+        - 🏦 **Financieras:** Productos contratados, tasas de interés, morosidad
+        - 📱 **Comportamentales:** Uso de servicios digitales, frecuencia transaccional
+        - ⚖️ **Riesgo:** Días de mora, calificación crediticia, historial de pagos
+        """)
+    
+    with metodologia_tabs[4]:
+        st.markdown("""
+        #### 📊 Determinación del Número Óptimo de Clústeres
+        
+        **Criterios de Validación Aplicados:**
+        """)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            **📈 Método del Codo**
+            - Análisis de inercia (SSE)
+            - Identificación del punto de inflexión
+            - Equilibrio complejidad-interpretabilidad
+            """)
+        with col2:
+            st.markdown("""
+            **🎯 Coeficiente de Silueta**
+            - Evaluación de cohesión interna
+            - Medición de separación entre grupos
+            - Validación de calidad del clustering
+            """)
+        
+        # Simulación de métricas de validación
+        st.markdown("##### 🏆 Resultados de Validación")
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric("Silhouette Score", "0.73", "Excelente separación")
+            st.metric("K Óptimo", "3", "clústeres seleccionados")
         with col2:
-            st.metric("Inercia Within-Cluster", "1,245", "Grupos compactos")
+            st.metric("Coeficiente Silueta", "0.40", "separación aceptable")
         with col3:
-            st.metric("Varianza Explicada", "87%", "Modelo robusto")
+            st.metric("Reducción Inercia", "65%", "hasta K=3")
         
-        st.success("✅ **Validación exitosa:** El modelo identifica 3 segmentos claros y diferenciados con alta confianza estadística.")
+        st.success("✅ **Decisión Final:** Se seleccionó K=3 como equilibrio entre robustez estadística y utilidad práctica para el análisis de perfiles.")
+        
+        st.markdown("""
+        ##### 🛠️ Herramientas Tecnológicas Utilizadas
+        
+        **Stack Tecnológico:**
+        - **🐍 Python:** Procesamiento y análisis de datos
+        - **📊 Pandas/NumPy:** Manipulación de grandes volúmenes de datos  
+        - **🔬 Scikit-Learn:** Implementación de PCA y K-Means
+        - **⚡ Dask:** Manejo eficiente de big data
+        - **📈 Power BI:** Visualización exploratoria inicial
+        - **📓 Jupyter Notebook:** Entorno de desarrollo analítico
+        """)
 
 elif "🎯 Segmentos y KPIs" in selected:
     st.markdown('<h1 class="main-header">🎯 Los 3 Equipos Ganadores</h1>', unsafe_allow_html=True)
