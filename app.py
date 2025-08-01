@@ -403,7 +403,7 @@ if "🚀 Hook y Oportunidad" in selected:
         <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
             <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.3rem;">🎯 VENTAJA GEOGRÁFICA</h4>
             <p style="color: #2c3e50; font-size: 1.1rem; line-height: 1.7;">
-                El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas lidere alianzas financieras y capture remesas directamente desde el origen.
+                El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas fomente alianzas financieras y capture remesas directamente desde el origen.
             </p>
             <div style="text-align: right; margin-top: 1rem;">
                 <small style="color: #999; font-size: 0.8rem;">Fuente: Migration Policy Institute</small>
