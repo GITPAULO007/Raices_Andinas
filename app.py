@@ -224,7 +224,7 @@ if "🚀 Hook y Oportunidad" in selected:
     with col1:
         st.markdown("""
         <div style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(255,107,107,0.3); transition: transform 0.3s;">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$5.491B</h2>
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$5.491M</h2>
             <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Remesas 2024</p>
             <small style="color: #ffe0e0; font-size: 0.9rem;">
                 <strong>19x más</strong> que la Inversión<br>Extranjera Directa
@@ -287,17 +287,17 @@ if "🚀 Hook y Oportunidad" in selected:
         </h3>
         <div style="display: flex; justify-content: space-around; text-align: center;">
             <div>
-                <h4 style="color: #4CAF50; font-size: 1.5rem; margin: 0;">$5.491B</h4>
+                <h4 style="color: #4CAF50; font-size: 1.5rem; margin: 0;">$5.491M</h4>
                 <p style="color: white; margin: 0;">💸 REMESAS</p>
             </div>
             <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
             <div>
-                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.191B</h4>
+                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.191M</h4>
                 <p style="color: white; margin: 0;">🦐 Camarón</p>
             </div>
             <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
             <div>
-                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.600B</h4>
+                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.600M</h4>
                 <p style="color: white; margin: 0;">🍌 Banano</p>
             </div>
         </div>
