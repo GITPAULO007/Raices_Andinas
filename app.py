@@ -1039,7 +1039,7 @@ elif "🎯 Segmentos y KPIs" in selected:
             col1, col2 = st.columns(2)
             with col1:
                 st.info("""
-                **📈 Estrategia 1: Programa de Incentivos**
+                **📈 Estrategia 1: Programa de Incentivos a través de promociones en Ventas**
                 
                 **Objetivo:** Migración progresiva a servicios digitales
                 
