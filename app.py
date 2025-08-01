@@ -557,8 +557,7 @@ elif "🔬 Metodología" in selected:
             st.markdown("""
             **📊 Análisis Exploratorio**
             - Identificación de patrones
-            - Segmentación no supervisada
-            - Descubrimiento de insights
+            - Segmentación no supervisada           
             """)
         with col2:
             st.markdown("""
