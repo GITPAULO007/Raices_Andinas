@@ -106,7 +106,7 @@ with st.sidebar:
             "🚀 Hook y Oportunidad",
             "🏦 Quiénes Somos",
             "🔬 Metodología",
-            "🎯 Segmentos y KPIs",
+            "🎯 Perfilamientos",
             "🧪 Simulador Estratégico",
             "🏁 Plan de Acción"
         ],
@@ -667,7 +667,7 @@ elif "🔬 Metodología" in selected:
         - **📓 Jupyter Notebook:** Entorno de desarrollo analítico
         """)
 
-elif "🎯 Segmentos y KPIs" in selected:
+elif "🎯 Perfilamientos" in selected:
     st.markdown('<h1 class="main-header">🎯 Segmentación de Socios Migrantes</h1>', unsafe_allow_html=True)
     
     # Introducción con métricas clave
