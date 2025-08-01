@@ -191,7 +191,7 @@ if "🚀 Hook y Oportunidad" in selected:
     st.markdown('''
     <div style="text-align: center; padding: 2rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin-bottom: 2rem;">
         <h1 style="color: white; font-size: 3.5rem; font-weight: 900; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-            🚀 EL BOOM FINANCIERO QUE ECUADOR ESTÁ IGNORANDO
+            🌳 EL COOPERATIVISMO TIENE UN NUEVO RETO Y UN VIEJO ALIADO: SUS SOCIOS MIGRANTES.
         </h1>
         <p style="color: #f0f0f0; font-size: 1.4rem; margin-top: 1rem; font-weight: 300;">
             Mientras otros sectores luchan, los migrantes mueven <strong>$5.8 MIL MILLONES</strong> anuales
