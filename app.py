@@ -201,7 +201,7 @@ if "🚀 Hook y Oportunidad" in selected:
             🚀 EL BOOM FINANCIERO QUE ECUADOR ESTÁ IGNORANDO
         </h1>
         <p style="color: #f0f0f0; font-size: 1.4rem; margin-top: 1rem; font-weight: 300;">
-            Mientras otros sectores luchan, los migrantes mueven <strong>$5.8 BILLONES</strong> anuales
+            Mientras otros sectores luchan, los migrantes mueven <strong>$5.8 MIL MILLONES</strong> anuales
         </p>
     </div>
     ''', unsafe_allow_html=True)
@@ -213,9 +213,12 @@ if "🚀 Hook y Oportunidad" in selected:
             💰 LA REALIDAD QUE CAMBIA TODO
         </h2>
         <div style="font-size: 1.3rem; color: #2c3e50; line-height: 1.8; text-align: center;">
-            <strong>Cada 24 horas, los ecuatorianos en EE.UU. envían $15.1 millones a casa.</strong><br>
-            <span style="font-size: 1.1rem; color: #e74c3c;">Eso es más que el PIB diario de 3 provincias juntas.</span><br><br>
-            <em style="font-size: 1.2rem; color: #8e44ad;">"No son solo números... son 2.3 millones de ecuatorianos construyendo el futuro desde la distancia"</em>
+            <strong>Cada 24 horas, los ecuatorianos en EE.UU. envían más de <span style="color:#e74c3c;">US$18 millones</span> a casa.</strong><br>
+            <span style="font-size: 1.1rem; color: #e74c3c;">Eso es más que el PIB diario de varias provincias ecuatorianas.</span><br><br>
+            <em style="font-size: 1.2rem; color: #8e44ad;">"No son solo números... son cientos de miles de ecuatorianos construyendo el futuro desde la distancia"</em>
+        </div>
+        <div style="text-align: right; margin-top: 0.8rem;">
+            <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador (Q1 2025)</small>
         </div>
     </div>
     ''', unsafe_allow_html=True)
@@ -239,10 +242,10 @@ if "🚀 Hook y Oportunidad" in selected:
     with col2:
         st.markdown("""
         <div style="background: linear-gradient(45deg, #4ECDC4, #44A08D); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(78,205,196,0.3);">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">68%</h2>
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">75.6%</h2>
             <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Desde EE.UU.</p>
             <small style="color: #e0f7f5; font-size: 0.9rem;">
-                <strong>$942M</strong> trimestrales<br>desde Nueva York y NJ
+                <strong>US$1.3B</strong> en Q1 2025<br>principal fuente
             </small>
         </div>
         """, unsafe_allow_html=True)
@@ -253,7 +256,7 @@ if "🚀 Hook y Oportunidad" in selected:
             <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$208M</h2>
             <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Solo a Azuay</p>
             <small style="color: #f0e5ff; font-size: 0.9rem;">
-                En <strong>solo 3 meses</strong><br>Cuenca es epicentro
+                En <strong>3 meses</strong> – epicentro migrante
             </small>
         </div>
         """, unsafe_allow_html=True)
@@ -264,7 +267,7 @@ if "🚀 Hook y Oportunidad" in selected:
             <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">21%</h2>
             <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Inversión Inmobiliaria</p>
             <small style="color: #fff3e0; font-size: 0.9rem;">
-                <strong>1 de cada 5</strong> familias<br>construye patrimonio
+                <strong>1 de cada 5</strong> familias invierte en vivienda
             </small>
         </div>
         """, unsafe_allow_html=True)
@@ -297,7 +300,8 @@ if "🚀 Hook y Oportunidad" in selected:
             Los migrantes son el motor económico #1 del país
         </p>
         <div style="text-align: right; margin-top: 0.3rem;">
-        <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador</small>
+            <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador</small>
+        </div>
     </div>
     ''', unsafe_allow_html=True)
 
@@ -379,8 +383,8 @@ if "🚀 Hook y Oportunidad" in selected:
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 15px; height: 200px;">
             <h4 style="color: white; margin-bottom: 1rem;">💡 INSIGHT DEMOGRÁFICO</h4>
             <p style="color: #e8eaf6; font-size: 1rem; line-height: 1.6;">
-                Los socios migrantes de RAÍCES (39 años promedio) están en su <strong>pico de productividad financiera</strong>, 
-                6 años mayores que el migrante promedio (32.9 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
+                Los socios migrantes de RAÍCES (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
+                superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
             </p>
         </div>
         ''', unsafe_allow_html=True)
@@ -390,7 +394,7 @@ if "🚀 Hook y Oportunidad" in selected:
         <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 1.5rem; border-radius: 15px; height: 200px;">
             <h4 style="color: #2c3e50; margin-bottom: 1rem;">🎯 VENTAJA GEOGRÁFICA</h4>
             <p style="color: #2c3e50; font-size: 1rem; line-height: 1.6;">
-                El 59% de ecuatorianos en EE.UU. viven en NY y NJ. RAÍCES puede crear <strong>alianzas estratégicas</strong> 
+                El 59% de ecuatorianos en EE.UU. vive en NY y NJ. RAÍCES puede crear <strong>alianzas estratégicas</strong> 
                 en estas zonas para capturar remesas directamente desde el origen, reduciendo costos de intermediación.
             </p>
         </div>
@@ -424,7 +428,7 @@ if "🚀 Hook y Oportunidad" in selected:
             st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
             st.metric("Pagos Digitales", "51%", "49% usa efectivo")
         with col2:
-            st.metric("Concentración NY + NJ", "59%", "1.35M ecuatorianos")
+            st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
             st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
         with col3:
             st.metric("Destino Vivienda", "21%", "$1.154B anuales")
