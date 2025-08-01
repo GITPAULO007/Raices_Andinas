@@ -131,7 +131,7 @@ with st.sidebar:
     with col1:
         st.metric("Socios activos migrantes", "24,014", "Fuente: Informe 2025")
     with col2:
-        st.metric("Remesas 2024", "$5.49B", "Fuente: BCE")
+        st.metric("Socios Totales", "816mil", "Fuente: Raíces Andinas")
     st.markdown("---")
     
         # Logos institucionales mejorados
