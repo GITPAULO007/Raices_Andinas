@@ -1,4 +1,1059 @@
-Estrategia 2: Venta Cruzada Digital**
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+from streamlit_option_menu import option_menu
+from PIL import Image
+import plotly.graph_objects as go
+import numpy as np
+from datetime import datetime
+import time
+
+# Configuración de página con favicon y layout optimizado
+st.set_page_config(
+    page_title="Pitch Empresarial - Raíces Andinas", 
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# CSS personalizado para mejorar el diseño
+st.markdown("""
+<style>
+    .main-header {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 2rem;
+    }
+    
+    .metric-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        margin: 10px;
+    }
+
+    .opportunity-card {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        padding: 20px;
+        border-radius: 15px;
+        color: white;
+        margin: 10px 0;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    
+    .segment-card {
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        margin: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    .segment-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .timeline-item {
+        background: #f8f9fa;
+        border-left: 4px solid #4ECDC4;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+    
+    .cta-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin: 20px 0;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .stats-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px 0;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# ---------- SIDEBAR MEJORADO ----------
+with st.sidebar:
+    # Logo principal con mejor presentación
+    try:
+        logo = Image.open("logo_raices.jpg")
+        st.image(logo, use_container_width=True)
+    except:
+        st.markdown("### 🏦 COAC Raíces Andinas")
+    
+    # Menú principal mejorado
+    selected = option_menu(
+        menu_title="📊 Panel de Control",
+        options=[
+            "🚀 Hook y Oportunidad",
+            "🏦 Quiénes Somos",
+            "🔬 Metodología",
+            "🎯 Segmentos y KPIs",
+            "🧪 Simulador Estratégico",
+            "🏁 Plan de Acción"
+        ],
+        icons=[
+            "rocket-takeoff", "bank2", "gear", "bullseye", "calculator", "flag-fill"
+        ],
+        menu_icon="grid-3x3-gap-fill",
+        default_index=0,
+        styles={
+            "container": {"padding": "5!important", "background-color": "#fafafa"},
+            "icon": {"color": "#4ECDC4", "font-size": "18px"}, 
+            "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px"},
+            "nav-link-selected": {"background-color": "#667eea"},
+        }
+    )
+
+    st.markdown("---")
+    
+    # Métricas en tiempo real en sidebar
+    st.markdown("### 📈 Dashboard en Vivo")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Socios activos migrantes", "24,014", "Fuente: Informe 2025")
+    with col2:
+        st.metric("Socios Totales", "819mil", "Fuente: Raíces Andinas")
+    st.markdown("---")
+    
+        # Logos institucionales mejorados
+    try:
+        alprode_logo = Image.open("alprode.jpeg")
+        st.image(alprode_logo, width=250, caption="Alprode")
+        cofin_logo = Image.open("cofin_logo.png")
+        st.image(cofin_logo, width=250, caption="Erasmus+")
+        ucuenca_logo = Image.open("logo_ucuenca.png")
+        st.image(ucuenca_logo, width=250, caption="Universidad de Cuenca")
+    except:
+        st.markdown("**Aliados Estratégicos:**\n- Alprode\n- Universidad de Cuenca")
+
+
+
+
+# ---------- DATOS MEJORADOS PARA VISUALIZACIÓN ----------
+# Datos más realistas y completos
+np.random.seed(42)
+df_socios = pd.DataFrame({
+    "cluster": np.repeat([0, 1, 2], 100),
+    "edad": np.concatenate([
+        np.random.normal(45, 8, 100),
+        np.random.normal(38, 12, 100),
+        np.random.normal(40, 6, 100)
+    ]),
+    "ingresos": np.concatenate([
+        np.random.normal(3559, 800, 100),
+        np.random.normal(3759, 1200, 100),
+        np.random.normal(3962, 600, 100)
+    ]),
+    "saldo_dpf": np.concatenate([
+        np.random.normal(27597, 5000, 100),
+        np.random.normal(316, 200, 100),
+        np.random.normal(7656, 2000, 100)
+    ]),
+    "mora_dias": np.concatenate([
+        np.random.exponential(1.5, 100),
+        np.random.exponential(18, 100),
+        np.random.exponential(10.2, 100)
+    ])
+})
+
+# KPIs mejorados para radar chart
+categorias = ["Edad Promedio", "Ingresos ($)", "Saldo DPF ($)", "Capital Prestado ($)", "Días Mora"]
+cluster_tradicional = [45.1, 3558.96, 27597.17, 21576.06, 1.5]
+cluster_riesgo = [38.4, 3759.42, 315.78, 21282.22, 18]
+cluster_tech = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
+
+# Datos de proyección de remesas
+años_proyeccion = list(range(2020, 2030))
+remesas_historicas = [3500, 4200, 4800, 5100, 5491, 5821, 6200, 6600, 7100, 7650]
+
+# ---------- SECCIONES DEL PITCH MEJORADAS ----------
+
+if "🚀 Hook y Oportunidad" in selected:
+    # Título principal con impacto
+    st.markdown('''
+    <div style="text-align: center; padding: 2rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin-bottom: 2rem;">
+        <h1 style="color: white; font-size: 3.5rem; font-weight: 900; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+            🚀 EL BOOM FINANCIERO QUE ECUADOR ESTÁ IGNORANDO
+        </h1>
+        <p style="color: #f0f0f0; font-size: 1.4rem; margin-top: 1rem; font-weight: 300;">
+            Mientras otros sectores luchan, los migrantes mueven <strong>$5.8 MIL MILLONES</strong> anuales
+        </p>
+    </div>
+    ''', unsafe_allow_html=True)
+
+    # Hook emocional y datos impactantes
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; border-left: 6px solid #ff6b6b;">
+        <h2 style="color: #2c3e50; font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">
+            💰 LA REALIDAD QUE CAMBIA TODO
+        </h2>
+        <div style="font-size: 1.3rem; color: #2c3e50; line-height: 1.8; text-align: center;">
+            <strong>Cada 24 horas, los ecuatorianos en EE.UU. envían más de <span style="color:#e74c3c;">US$18 millones</span> a casa.</strong><br>
+            <span style="font-size: 1.1rem; color: #e74c3c;">Eso es más que el PIB diario de varias provincias ecuatorianas.</span><br><br>
+            <em style="font-size: 1.2rem; color: #8e44ad;">"No son solo números... son cientos de miles de ecuatorianos construyendo el futuro desde la distancia"</em>
+        </div>
+        <div style="text-align: right; margin-top: 0.8rem;">
+            <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador (Q1 2025)</small>
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
+
+    # Métricas impactantes con animación visual
+    st.markdown("### 🔥 LOS NÚMEROS QUE ROMPEN ESQUEMAS")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown("""
+        <div style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(255,107,107,0.3); transition: transform 0.3s;">
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$5.491B</h2>
+            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Remesas 2024</p>
+            <small style="color: #ffe0e0; font-size: 0.9rem;">
+                <strong>19x más</strong> que la Inversión<br>Extranjera Directa
+            </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #ffc4c4; font-size: 0.7rem;">Fuente: BCE</small>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div style="background: linear-gradient(45deg, #4ECDC4, #44A08D); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(78,205,196,0.3);">
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">75.6%</h2>
+            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Desde EE.UU.</p>
+            <small style="color: #e0f7f5; font-size: 0.9rem;">
+                <strong>US$1.3B</strong> en Q1 2025<br>principal fuente
+            </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #b8f2ed; font-size: 0.7rem;">Fuente: BCE</small>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div style="background: linear-gradient(45deg, #A770EF, #CF57A3); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(167,112,239,0.3);">
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$208M</h2>
+            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Solo a Azuay</p>
+            <small style="color: #f0e5ff; font-size: 0.9rem;">
+                En <strong>3 meses</strong> – epicentro migrante
+            </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #e4d1ff; font-size: 0.7rem;">Fuente: BCE Q1 2025</small>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <div style="background: linear-gradient(45deg, #FFA726, #FB8C00); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(255,167,38,0.3);">
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">21%</h2>
+            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Inversión Inmobiliaria</p>
+            <small style="color: #fff3e0; font-size: 0.9rem;">
+                <strong>1 de cada 5</strong> familias invierte en vivienda
+            </small>
+            <div style="margin-top: 0.5rem;">
+                <small style="color: #ffe0b3; font-size: 0.7rem;">Fuente: Estudio Microeconómico</small>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Comparativa impactante
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+        <h3 style="color: white; text-align: center; font-size: 1.8rem; margin-bottom: 1.5rem;">
+            🥊 REMESAS vs. EXPORTACIONES TRADICIONALES
+        </h3>
+        <div style="display: flex; justify-content: space-around; text-align: center;">
+            <div>
+                <h4 style="color: #4CAF50; font-size: 1.5rem; margin: 0;">$5.491B</h4>
+                <p style="color: white; margin: 0;">💸 REMESAS</p>
+            </div>
+            <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
+            <div>
+                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.191B</h4>
+                <p style="color: white; margin: 0;">🦐 Camarón</p>
+            </div>
+            <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
+            <div>
+                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.600B</h4>
+                <p style="color: white; margin: 0;">🍌 Banano</p>
+            </div>
+        </div>
+        <p style="color: #e8eaf6; text-align: center; margin-top: 1rem; font-style: italic;">
+            Los migrantes son el motor económico #1 del país
+        </p>
+        <div style="text-align: right; margin-top: 0.3rem;">
+            <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador</small>
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
+
+    # Proyección con gráfico mejorado
+    st.markdown("### 📈 LA TRAYECTORIA IMPARABLE")
+    
+    # Datos para el gráfico
+    años = [2020, 2021, 2022, 2023, 2024, 2025]
+    remesas_data = [3165, 4816, 5268, 5421, 5491, 5821]
+    
+    fig = px.area(
+        x=años, 
+        y=remesas_data,
+        title="Crecimiento Explosivo de Remesas Ecuador (Millones USD)",
+        labels={'x': 'Año', 'y': 'Remesas (Millones USD)'}
+    )
+    fig.update_traces(
+        fill='tonexty',
+        fillcolor='rgba(255, 107, 107, 0.3)',
+        line=dict(color='#FF6B6B', width=4)
+    )
+    fig.update_layout(
+        height=400,
+        title_font_size=16,
+        title_x=0.5,
+        showlegend=False,
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)'
+    )
+    fig.add_vline(
+        x=2024, 
+        line_dash="dash", 
+        line_color="#e74c3c", 
+        line_width=3,
+        annotation_text="📍 Estamos aquí",
+        annotation_position="top"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    # La oportunidad dorada específica
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); padding: 2.5rem; border-radius: 20px; margin: 2rem 0; text-align: center; border: 3px solid #FF8C00; box-shadow: 0 12px 24px rgba(255,165,0,0.4);">
+        <h2 style="color: #8B4513; font-size: 2.8rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+            🎯 OPORTUNIDAD RAÍCES ANDINAS
+        </h2>
+        <div style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 15px; margin: 1rem 0;">
+            <p style="color: #2c3e50; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600;">
+                Si RAÍCES ANDINAS captura solo el <strong style="color: #e74c3c;">3%</strong> de las remesas de Azuay:
+            </p>
+            <h1 style="color: #27ae60; font-size: 3.5rem; margin: 1rem 0; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+                +$6.24M
+            </h1>
+            <p style="color: #8B4513; font-size: 1.2rem; font-weight: 600;">
+                trimestrales en nuevos depósitos
+            </p>
+        </div>
+        <div style="display: flex; justify-content: space-around; margin-top: 2rem;">
+            <div>
+                <h3 style="color: #2c3e50; font-size: 1.5rem; margin: 0;">630</h3>
+                <p style="color: #8B4513; margin: 0;">Nuevos Socios</p>
+            </div>
+            <div>
+                <h3 style="color: #2c3e50; font-size: 1.5rem; margin: 0;">$24.96M</h3>
+                <p style="color: #8B4513; margin: 0;">Potencial Anual</p>
+            </div>
+            <div>
+                <h3 style="color: #2c3e50; font-size: 1.5rem; margin: 0;">40%</h3>
+                <p style="color: #8B4513; margin: 0;">Crecimiento Cartera</p>
+            </div>
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
+
+    # Insights estratégicos
+    col_insight1, col_insight2 = st.columns(2)
+    
+    with col_insight1:
+        st.markdown('''
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+            <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">💡 INSIGHT DEMOGRÁFICO</h4>
+            <p style="color: #e8eaf6; font-size: 1.1rem; line-height: 1.7;">
+                Los socios migrantes de RAÍCES ANDINAS (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
+                superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
+            </p>
+            <div style="text-align: right; margin-top: 1rem;">
+                <small style="color: #c8d0ff; font-size: 0.8rem;">Fuente: Pew Research Center</small>
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+    
+    with col_insight2:
+        st.markdown('''
+        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+            <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.3rem;">🎯 VENTAJA GEOGRÁFICA</h4>
+            <p style="color: #2c3e50; font-size: 1.1rem; line-height: 1.7;">
+                El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas fomente alianzas financieras y capture remesas directamente desde el origen.
+            </p>
+            <div style="text-align: right; margin-top: 1rem;">
+                <small style="color: #999; font-size: 0.8rem;">Fuente: Migration Policy Institute</small>
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+
+    # Call to action final
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
+        <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">
+            🚀 EL MOMENTO ES AHORA
+        </h3>
+        <p style="color: #bdc3c7; font-size: 1.2rem; margin-bottom: 1.5rem;">
+            RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
+        </p>
+        <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
+            <p style="color: #ecf0f1; font-size: 1.1rem; margin: 0; font-style: italic;">
+                "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
+            </p>
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
+
+    # Próximo paso
+    st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.8B proyectados para 2025.")
+
+    # Métricas adicionales en sidebar o expandible
+    with st.expander("📊 Datos Adicionales de Soporte"):
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
+            st.metric("Pagos Digitales", "51%", "49% usa efectivo")
+        with col2:
+            st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
+            st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
+        with col3:
+            st.metric("Destino Vivienda", "21%", "$1.154B anuales")
+            st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
+
+elif "🏦 Quiénes Somos" in selected:
+    st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
+    st.markdown("### *29 años construyendo sueños, conectando corazones*")
+    
+    # Datos clave en columnas
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Años de Historia", "29", "Desde 1996")
+        st.metric("Provincias", "8", "Cobertura nacional")
+    with col2:
+        st.metric("Socios Activos Migrantes", "24,014", "+2.3% anual")
+        st.metric("Patrimonio", "$225M", "Sólido respaldo")
+    with col3:
+        st.metric("Oficinas", "70", "Cerca de ti")
+        st.metric("Activos", "1,958M", "Solvencia")
+       
+    # Análisis FODA visual mejorado
+    st.markdown("### 🔍 Análisis Estratégico FODA")
+    foda_col1, foda_col2 = st.columns(2)
+    
+    with foda_col1:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
+            <h4>💪 FORTALEZAS</h4>
+            <ul>
+                <li>Capital sólido ($225M patrimonio)</li>
+                <li>Base migratoria fiel (15,000+ socios)</li>
+                <li>Tecnología en expansión digital</li>
+                <li>Presencia territorial consolidada</li>
+            </ul>
+        </div>
+        
+        <div style='background: linear-gradient(135deg, #cce5ff 0%, #b3d9ff 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
+            <h4>🌟 OPORTUNIDADES</h4>
+            <ul>
+                <li>Remesas crecientes (+8.1% anual)</li>
+                <li>Alianzas con fintech globales</li>
+                <li>Mercado digital subutilizado</li>
+                <li>Nuevos productos migratorios</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with foda_col2:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
+            <h4>⚠️ DEBILIDADES</h4>
+            <ul>
+                <li>Adopción digital lenta (45% vs 70% mercado)</li>
+                <li>Canales móviles subutilizados</li>
+                <li>Segmentación básica de clientes</li>
+                <li>Productos poco personalizados</li>
+            </ul>
+        </div>
+        
+        <div style='background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
+            <h4>🚨 AMENAZAS</h4>
+            <ul>
+                <li>Fintech agresivas (Nequi, Kushki)</li>
+                <li>Bancos con mejor UX digital</li>
+                <li>Migración de clientes jóvenes</li>
+                <li>Regulación cambiante</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # Timeline de crecimiento
+    st.markdown("### 📅 Nuestra Evolución")
+    timeline_data = [
+        {"año": "1996", "hito": "Fundación en Cuenca", "impacto": "500 socios fundadores"},
+        {"año": "2005", "hito": "Expansión nacional", "impacto": "7 provincias, 5,000 socios"},
+        {"año": "2015", "hito": "Era digital", "impacto": "Banca online, 25,000 socios"},
+        {"año": "2020", "hito": "Pandemia resiliente", "impacto": "Crecimiento del 15%"},
+        {"año": "2024", "hito": "Presente", "impacto": "48,127 socios, $85M patrimonio"},
+        {"año": "2025", "hito": "Futuro: Segmentación IA", "impacto": "Meta: 60,000 socios"}
+    ]
+    
+    for item in timeline_data:
+        color = "#4ECDC4" if item["año"] != "2025" else "#FF6B6B"
+        st.markdown(f"""
+        <div class="timeline-item" style="border-left-color: {color}">
+            <strong>{item['año']}</strong>: {item['hito']}<br>
+            <small>{item['impacto']}</small>
+        </div>
+        """, unsafe_allow_html=True)
+
+elif "🔬 Metodología" in selected:
+    st.markdown('<h1 class="main-header">🔬 Metodología de Investigación</h1>', unsafe_allow_html=True)
+    
+    # Explicación del enfoque metodológico
+    st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos")
+    
+    metodologia_tabs = st.tabs(["🎯 Enfoque", "📋 Datos", "⚙️ Procesamiento", "🔍 Modelo", "📊 Validación"])
+    
+    with metodologia_tabs[0]:
+        st.markdown("""
+        #### 🎯 Enfoque Metodológico
+        
+        **Enfoque Cuantitativo Multidimensional:**
+        
+        🔍 **Exploratorio:** Análisis de clústeres para identificar grupos homogéneos no definidos previamente
+        
+        📈 **Descriptivo:** Caracterización del comportamiento financiero de cada perfil identificado
+        
+        🎯 **Aplicado:** Generación de recomendaciones estratégicas basadas en hallazgos analíticos
+        """)
+        
+        # Visualización del proceso metodológico
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("""
+            **📊 Análisis Exploratorio**
+            - Identificación de patrones
+            - Segmentación no supervisada           
+            """)
+        with col2:
+            st.markdown("""
+            **🔬 Análisis Descriptivo**  
+            - Caracterización de perfiles
+            - Análisis de variables clave
+            - Comportamiento financiero
+            """)
+        with col3:
+            st.markdown("""
+            **🎯 Análisis Aplicado**
+            - Estrategias diferenciadas
+            - Recomendaciones prácticas
+            - Optimización de servicios
+            """)
+    
+    with metodologia_tabs[1]:
+        st.markdown("""
+        #### 📋 Fuentes de Información y Datos
+        
+        **Base de Datos Consolidada:**
+        - 📞 **Datos de Llamadas:** Interacciones y comunicaciones
+        - 💳 **Transacciones:** Historial de operaciones financieras  
+        - 💰 **Créditos:** Información crediticia y riesgo
+        - 🏦 **Captaciones:** Productos de ahorro y depósitos
+        
+        **Período de Análisis:** Enero 2020 - Marzo 2025
+        
+        **Población Objetivo:** Socios migrantes residentes en Estados Unidos
+        """)
+        
+        # Métricas de la base de datos
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Población Total", "29,091", "socios migrantes")
+        with col2:
+            st.metric("Muestra Final", "24,014", "socios activos")
+        with col3:
+            st.metric("Variables Analizadas", "41", "indicadores clave")
+        
+        st.info("✅ **Criterios de Selección:** Socios activos con actividad en últimos 180 días y saldo superior al 25% del SBU")
+    
+    with metodologia_tabs[2]:
+        st.markdown("""
+        #### ⚙️ Procesamiento y Preparación de Datos
+        
+        **Proceso de Limpieza y Consolidación:**
+        
+        1. **🧹 Depuración:** Eliminación de duplicados y normalización de formatos
+        2. **🔗 Integración:** Consolidación de 4 bases independientes en una única base
+        3. **📊 Agregación:** Panel de datos no balanceado con métodos específicos por tipo de variable
+        """)
+        
+        # Métodos de agregación
+        st.markdown("##### 📈 Métodos de Agregación por Tipo de Variable")
+        
+        agregacion_data = pd.DataFrame({
+            'Tipo de Variable': ['Continuas', 'Contadores', 'Categóricas', 'Métricas Especiales'],
+            'Método': ['Suma/Media', 'Suma/Máximo', 'Moda', 'Valor de Cierre'],
+            'Propósito': ['Volumen total o nivel medio', 'Acumulado o pico de actividad', 'Categoría más frecuente', 'Estado final del período'],
+            'Ejemplos': ['Ingresos, Saldos', 'Número de créditos', 'Estado civil, Género', 'Calificación de riesgo']
+        })
+        
+        st.dataframe(agregacion_data, use_container_width=True)
+    
+    with metodologia_tabs[3]:
+        st.markdown("""
+        #### 🔍 Modelo de Segmentación: Metodología Dual
+        
+        **Proceso de Dos Etapas:**
+        """)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            **🎯 Etapa 1: Análisis de Componentes Principales (PCA)**
+            - Reducción de dimensionalidad
+            - Eliminación de multicolinealidad  
+            - Preparación para clustering
+            - Identificación de patrones latentes
+            """)
+        with col2:
+            st.markdown("""
+            **⚙️ Etapa 2: Algoritmo K-Means**
+            - Segmentación no supervisada
+            - Identificación de grupos homogéneos
+            - Optimización de centroides
+            - Asignación de perfiles
+            """)
+        
+        st.markdown("""
+        ##### 🧮 Variables Clave del Modelo
+        
+        **Dimensiones Analizadas:**
+        - 👤 **Demográficas:** Edad, género, estado civil, cargas familiares
+        - 💰 **Económicas:** Ingresos estimados, capital prestado, saldos
+        - 🏦 **Financieras:** Productos contratados, tasas de interés, morosidad
+        - 📱 **Comportamentales:** Uso de servicios digitales, frecuencia transaccional
+        - ⚖️ **Riesgo:** Días de mora, calificación crediticia, historial de pagos
+        """)
+    
+    with metodologia_tabs[4]:
+        st.markdown("""
+        #### 📊 Determinación del Número Óptimo de Clústeres
+        
+        **Criterios de Validación Aplicados:**
+        """)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            **📈 Método del Codo**
+            - Análisis de inercia (SSE)
+            - Identificación del punto de inflexión
+            - Equilibrio complejidad-interpretabilidad
+            """)
+        with col2:
+            st.markdown("""
+            **🎯 Coeficiente de Silueta**
+            - Evaluación de cohesión interna
+            - Medición de separación entre grupos
+            - Validación de calidad del clustering
+            """)
+        
+        # Simulación de métricas de validación
+        st.markdown("##### 🏆 Resultados de Validación")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("K Óptimo", "3", "clústeres seleccionados")
+        with col2:
+            st.metric("Coeficiente Silueta", "0.40", "separación aceptable")
+        with col3:
+            st.metric("Reducción Inercia", "65%", "hasta K=3")
+        
+        st.success("✅ **Decisión Final:** Se seleccionó K=3 como equilibrio entre robustez estadística y utilidad práctica para el análisis de perfiles.")
+        
+        st.markdown("""
+        ##### 🛠️ Herramientas Tecnológicas Utilizadas
+        
+        **Stack Tecnológico:**
+        - **🐍 Python:** Procesamiento y análisis de datos
+        - **📊 Pandas/NumPy:** Manipulación de grandes volúmenes de datos  
+        - **🔬 Scikit-Learn:** Implementación de PCA y K-Means
+        - **⚡ Dask:** Manejo eficiente de big data
+        - **📈 Power BI:** Visualización exploratoria inicial
+        - **📓 Jupyter Notebook:** Entorno de desarrollo analítico
+        """)
+
+elif "🎯 Segmentos y KPIs" in selected:
+    st.markdown('<h1 class="main-header">🎯 Segmentación de Socios Migrantes</h1>', unsafe_allow_html=True)
+    
+    # Introducción con métricas clave
+    st.markdown("### 📊 Análisis de Tipología de Socios Migrantes en Estados Unidos")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("Población Total", "29,091", "socios migrantes")
+    with col2:
+        st.metric("Muestra Analizada", "24,014", "socios activos")
+    with col3:
+        st.metric("Variables Analizadas", "41", "indicadores clave")
+    with col4:
+        st.metric("Período", "2020-2025", "5 años de datos")
+    
+    st.markdown("---")
+    
+    # Tabs principales
+    main_tabs = st.tabs(["🔍 Metodología", "👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
+    
+    with main_tabs[0]:
+        st.markdown("### 🔬 Metodología de Segmentación")
+        
+        method_col1, method_col2 = st.columns(2)
+        
+        with method_col1:
+            st.info("""
+            **📊 Proceso de Análisis en 2 Etapas:**
+            
+            1. **PCA (Análisis de Componentes Principales)**
+               - Reducción de dimensionalidad
+               - Eliminación de multicolinealidad
+               - Identificación de patrones latentes
+            
+            2. **K-Means Clustering**
+               - Segmentación no supervisada
+               - Identificación de grupos homogéneos
+               - K=3 clústeres óptimos
+            """)
+            
+        with method_col2:
+            # Visualización del proceso
+            st.markdown("**🎯 Determinación del Número Óptimo de Clústeres**")
+            
+            # Simulación del método del codo
+            k_values = list(range(2, 11))
+            sse_values = [3.0, 2.8, 2.4, 2.35, 2.3, 2.25, 2.2, 2.15, 2.1]
+            
+            fig_elbow = go.Figure()
+            fig_elbow.add_trace(go.Scatter(
+                x=k_values, y=sse_values,
+                mode='lines+markers',
+                name='SSE',
+                line=dict(color='#2196F3', width=3),
+                marker=dict(size=10)
+            ))
+            
+            # Marcar el punto óptimo
+            fig_elbow.add_trace(go.Scatter(
+                x=[3], y=[2.4],
+                mode='markers',
+                name='K Óptimo',
+                marker=dict(size=15, color='#FF4444', symbol='star')
+            ))
+            
+            fig_elbow.update_layout(
+                title="Método del Codo",
+                xaxis_title="Número de Clústeres (K)",
+                yaxis_title="SSE (Inercia)",
+                height=300,
+                showlegend=True
+            )
+            
+            st.plotly_chart(fig_elbow, use_container_width=True)
+            
+            # Métricas de validación
+            val_col1, val_col2 = st.columns(2)
+            with val_col1:
+                st.metric("Coeficiente Silueta", "0.40", "Separación aceptable")
+            with val_col2:
+                st.metric("Reducción Inercia", "65%", "hasta K=3")
+    
+    with main_tabs[1]:
+        st.markdown("### 👥 Tres Perfiles de Socios Identificados")
+        
+        # Selector de perfil
+        selected_profile = st.selectbox(
+            "Selecciona un perfil para ver detalles:",
+            ["Vista General", "Clúster 0: Socios Tradicionales", "Clúster 1: Riesgo Financiero", "Clúster 2: Tecnológico Multiservicios"]
+        )
+        
+        if selected_profile == "Vista General":
+            # Comparación de perfiles
+            profiles_data = {
+                'Características': ['Edad Promedio', 'Ingresos Mensuales', 'Saldo DPF', 'Capital Prestado', 'Días de Mora', 'Calificación'],
+                'Tradicionales (9%)': ['45.1 años', '$3,558.96', '$27,597.17', '$21,576.06', '1.5 días', 'A-2'],
+                'Riesgo Financiero (90%)': ['38.4 años', '$3,759.42', '$315.78', '$21,282.22', '18.0 días', 'A-3'],
+                'Tecnológico Multiservicios (1.2%)': ['39.6 años', '$3,962.25', '$7,656.16', '$27,802.60', '10.2 días', 'A-2']
+            }
+            
+            df_profiles = pd.DataFrame(profiles_data)
+            
+            # Mostrar tabla estilizada
+            st.dataframe(
+                df_profiles.style.highlight_max(subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)'], axis=1),
+                use_container_width=True
+            )
+            
+            # Gráfico de radar comparativo
+            categories = ['Edad', 'Ingresos', 'Ahorro DPF', 'Capital', 'Riesgo (inverso)', 'Uso Digital']
+            
+            fig_radar = go.Figure()
+            
+            # Datos normalizados para el radar
+            tradicionales = [0.9, 0.6, 1.0, 0.7, 0.95, 0.2]
+            riesgo = [0.5, 0.65, 0.1, 0.65, 0.2, 0.1]
+            tecnologico = [0.6, 0.8, 0.4, 1.0, 0.5, 1.0]
+            
+            fig_radar.add_trace(go.Scatterpolar(
+                r=tradicionales,
+                theta=categories,
+                fill='toself',
+                name='Tradicionales',
+                line_color='#4CAF50'
+            ))
+            
+            fig_radar.add_trace(go.Scatterpolar(
+                r=riesgo,
+                theta=categories,
+                fill='toself',
+                name='Riesgo Financiero',
+                line_color='#FF6B6B'
+            ))
+            
+            fig_radar.add_trace(go.Scatterpolar(
+                r=tecnologico,
+                theta=categories,
+                fill='toself',
+                name='Tecnológico Multiservicios',
+                line_color='#2196F3'
+            ))
+            
+            fig_radar.update_layout(
+                polar=dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, 1]
+                    )),
+                showlegend=True,
+                title="Perfil Comparativo de Clústeres"
+            )
+            
+            st.plotly_chart(fig_radar, use_container_width=True)
+            
+        else:
+            # Detalles específicos del perfil seleccionado
+            if "Tradicionales" in selected_profile:
+                st.success("**📊 Perfil: El Ancla Financiera**")
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                    st.markdown("""
+                    **Características principales:**
+                    - 🎯 Mayor edad promedio (45.1 años)
+                    - 💰 Mayores saldos en DPF ($27,597)
+                    - ⚡ Menor riesgo (1.5 días de mora)
+                    - 📱 Bajo uso de servicios digitales
+                    - 🏦 Prefieren productos tradicionales
+                    
+                    **Comportamiento:**
+                    - Conservadores y adversos al riesgo
+                    - Valoran la seguridad sobre la transaccionalidad
+                    - Alta fidelidad a la cooperativa
+                    """)
+                with col2:
+                    st.metric("Tamaño del Segmento", "9%", "~2,161 socios")
+                    st.metric("Valor Promedio", "$27,597", "en DPF")
+                    st.metric("Riesgo", "Muy Bajo", "1.5 días mora")
+                    
+            elif "Riesgo Financiero" in selected_profile:
+                st.error("**⚠️ Perfil: El Desafío Principal**")
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                    st.markdown("""
+                    **Características principales:**
+                    - 📉 Mayor tasa de morosidad (18 días)
+                    - 💸 Saldos de ahorro muy bajos ($316)
+                    - 🚫 Uso muy limitado de servicios
+                    - ⚡ Alta fragilidad financiera
+                    - 🔄 97% de retención en el clúster
+                    
+                    **Comportamiento:**
+                    - Baja vinculación con la cooperativa
+                    - Dificultades para cumplir obligaciones
+                    - Requieren intervención urgente
+                    """)
+                with col2:
+                    st.metric("Tamaño del Segmento", "90%", "~21,613 socios")
+                    st.metric("Saldo Promedio", "$316", "muy bajo")
+                    st.metric("Riesgo", "Alto", "18 días mora")
+                    
+            elif "Tecnológico" in selected_profile:
+                st.info("**🚀 Perfil: El Más Rentable**")
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                    st.markdown("""
+                    **Características principales:**
+                    - 💳 Mayor capital prestado ($27,802)
+                    - 📱 Uso intensivo de servicios digitales
+                    - 🔄 Alta transaccionalidad
+                    - 💡 Adoptan múltiples productos
+                    - ⚠️ 48% migra a riesgo financiero
+                    
+                    **Comportamiento:**
+                    - Altamente activos y comprometidos
+                    - Aprovechan toda la gama de servicios
+                    - Perfil inestable que requiere monitoreo
+                    """)
+                with col2:
+                    st.metric("Tamaño del Segmento", "1.2%", "~288 socios")
+                    st.metric("Capital Promedio", "$27,802", "el más alto")
+                    st.metric("Riesgo", "Moderado", "10.2 días mora")
+    
+    with main_tabs[2]:
+        st.markdown("### 📈 Análisis de Transición Temporal")
+        
+        # Matriz de transición
+        st.markdown("#### 🔄 Matriz de Transición Anual entre Clústeres")
+        
+        transition_matrix = pd.DataFrame({
+            'Desde/Hacia': ['Tradicionales', 'Riesgo Financiero', 'Tecnológico Multiservicios'],
+            'Tradicionales': ['77%', '3%', '7%'],
+            'Riesgo Financiero': ['22%', '97%', '48%'],
+            'Tecnológico Multiservicios': ['1%', '1%', '45%']
+        })
+        
+        # Crear heatmap interactivo
+        matrix_values = [[0.77, 0.22, 0.01],
+                        [0.03, 0.97, 0.01],
+                        [0.07, 0.48, 0.45]]
+        
+        fig_heatmap = go.Figure(data=go.Heatmap(
+            z=matrix_values,
+            x=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+            y=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+            text=[[f'{v:.0%}' for v in row] for row in matrix_values],
+            texttemplate='%{text}',
+            colorscale='RdYlBu_r',
+            showscale=True
+        ))
+        
+        fig_heatmap.update_layout(
+            title="Probabilidad de Transición entre Clústeres",
+            xaxis_title="Clúster Destino (t+1)",
+            yaxis_title="Clúster Origen (t)",
+            height=400
+        )
+        
+        st.plotly_chart(fig_heatmap, use_container_width=True)
+        
+        # Insights clave
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.warning("""
+            **🔍 Hallazgo Clave 1:**
+            El clúster de Riesgo Financiero actúa como un "agujero negro" con 97% de retención
+            """)
+        with col2:
+            st.error("""
+            **⚠️ Hallazgo Clave 2:**
+            48% de los socios Tecnológicos migran a Riesgo Financiero al año siguiente
+            """)
+        with col3:
+            st.success("""
+            **✅ Hallazgo Clave 3:**
+            Los Tradicionales son los más estables con 77% de permanencia
+            """)
+        
+        # Evolución temporal
+        st.markdown("#### 📊 Evolución de la Distribución de Clústeres")
+        
+        years = [2020, 2021, 2022, 2023, 2024, 2025]
+        tradicionales_pct = [4.67, 4.67, 6.33, 7.76, 8.52, 6.40]
+        riesgo_pct = [95.33, 94.15, 92.08, 90.37, 88.99, 93.31]
+        tecnologico_pct = [0.00, 1.17, 1.59, 1.87, 2.49, 0.29]
+        
+        fig_evolution = go.Figure()
+        
+        fig_evolution.add_trace(go.Scatter(
+            x=years, y=tradicionales_pct,
+            mode='lines+markers',
+            name='Tradicionales',
+            line=dict(color='#4CAF50', width=3),
+            stackgroup='one'
+        ))
+        
+        fig_evolution.add_trace(go.Scatter(
+            x=years, y=riesgo_pct,
+            mode='lines+markers',
+            name='Riesgo Financiero',
+            line=dict(color='#FF6B6B', width=3),
+            stackgroup='one'
+        ))
+        
+        fig_evolution.add_trace(go.Scatter(
+            x=years, y=tecnologico_pct,
+            mode='lines+markers',
+            name='Tecnológico Multiservicios',
+            line=dict(color='#2196F3', width=3),
+            stackgroup='one'
+        ))
+        
+        fig_evolution.update_layout(
+            title="Distribución Porcentual de Clústeres por Año",
+            xaxis_title="Año",
+            yaxis_title="Porcentaje de Socios (%)",
+            hovermode='x unified',
+            height=400
+        )
+        
+        st.plotly_chart(fig_evolution, use_container_width=True)
+    
+    with main_tabs[3]:
+        st.markdown("### 💡 Estrategias Recomendadas por Perfil")
+        
+        strategy_tabs = st.tabs(["Tradicionales", "Riesgo Financiero", "Tecnológico Multiservicios"])
+        
+        with strategy_tabs[0]:
+            st.markdown("#### 🎯 Estrategias para Socios Tradicionales")
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                st.info("""
+                **📈 Estrategia 1: Programa de Incentivos a través de promociones en Ventas**
+                
+                **Objetivo:** Migración progresiva a servicios digitales
+                
+                **Herramientas:**
+                - 🎁 Sorteos mensuales
+                - 💰 Descuentos temporales
+                - 🏆 Bonificaciones por uso múltiple
+                
+                **Duración:** Ciclos de 1 mes rotativos
+                """)
+                
+            with col2:
+                st.success("""
+                **🔄 Estrategia 2: Venta Cruzada Digital**
                 
                 **Objetivo:** Aumentar adopción de canales digitales
                 
@@ -511,6 +1566,11 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
             'Tecnológico': [39.6, 3962.25, 7656.16, 27802.60, 10.2, 100]
         })
         
+        # Normalizar valores para mejor visualización
+        for col in ['Tradicionales', 'Riesgo Financiero', 'Tecnológico']:
+            max_vals = profiles_comparison[[col]].max()
+            profiles_comparison[f'{col}_norm'] = profiles_comparison[col] / profiles_comparison[col].max() * 100
+        
         # Crear gráfico de radar mejorado
         fig_radar = go.Figure()
         
@@ -565,1153 +1625,154 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
             'Riesgo Financiero': ['90% (21,613)', '38.4 años', '$3,759.42', '$315.78', 
                                 '$21,282.22', '18.0 días', 'A-3', '97% permanencia'],
             'Tecnológico Multiservicios': ['1.2% (288)', '39.6 años', '$3,962.25', '$7,656.16', 
-                                         '$27,802.60', '10            <ul>
-                <li>Competencia agresiva de fintechs</li>
-                <li>Regulaciones cambiantes del sector financiero</li>
-                <li>Volatilidad económica global</li>
-                <li>Cambios en patrones migratorios</li>
-                <li>Riesgos cibernéticos y seguridad digital</li>
-                <li>Concentración de riesgo en el mercado estadounidense</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
-
-elif "🔬 Metodología" in selected:
-    st.markdown('<h1 class="main-header">🔬 Metodología de Investigación</h1>', unsafe_allow_html=True)
-    
-    # Explicación del enfoque metodológico
-    st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos")
-    
-    metodologia_tabs = st.tabs(["🎯 Enfoque", "📋 Datos", "⚙️ Procesamiento", "🔍 Modelo", "📊 Validación", "🧒 ¿Qué es un Clúster?"])
-    
-    with metodologia_tabs[0]:
-        st.markdown("""
-        #### 🎯 Enfoque Metodológico
-        
-        **Enfoque Cuantitativo Multidimensional:**
-        
-        🔍 **Exploratorio:** Análisis de clústeres para identificar grupos homogéneos no definidos previamente
-        
-        📈 **Descriptivo:** Caracterización del comportamiento financiero de cada perfil identificado
-        
-        🎯 **Aplicado:** Generación de recomendaciones estratégicas basadas en hallazgos analíticos
-        """)
-        
-        # Visualización del proceso metodológico
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.markdown("""
-            **📊 Análisis Exploratorio**
-            - Identificación de patrones
-            - Segmentación no supervisada
-            - Descubrimiento de insights
-            """)
-        with col2:
-            st.markdown("""
-            **🔬 Análisis Descriptivo**  
-            - Caracterización de perfiles
-            - Análisis de variables clave
-            - Comportamiento financiero
-            """)
-        with col3:
-            st.markdown("""
-            **🎯 Análisis Aplicado**
-            - Estrategias diferenciadas
-            - Recomendaciones prácticas
-            - Optimización de servicios
-            """)
-    
-    with metodologia_tabs[1]:
-        st.markdown("""
-        #### 📋 Fuentes de Información y Datos
-        
-        **Base de Datos Consolidada:**
-        - 📞 **Datos de Llamadas:** Interacciones y comunicaciones
-        - 💳 **Transacciones:** Historial de operaciones financieras  
-        - 💰 **Créditos:** Información crediticia y riesgo
-        - 🏦 **Captaciones:** Productos de ahorro y depósitos
-        
-        **Período de Análisis:** Enero 2020 - Marzo 2025
-        
-        **Población Objetivo:** Socios migrantes residentes en Estados Unidos
-        """)
-        
-        # Métricas de la base de datos
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("Población Total", "29,091", "socios migrantes")
-        with col2:
-            st.metric("Muestra Final", "24,014", "socios activos")
-        with col3:
-            st.metric("Variables Analizadas", "41", "indicadores clave")
-        
-        st.info("✅ **Criterios de Selección:** Socios activos con actividad en últimos 180 días y saldo superior al 25% del SBU")
-    
-    with metodologia_tabs[2]:
-        st.markdown("""
-        #### ⚙️ Procesamiento y Preparación de Datos
-        
-        **Proceso de Limpieza y Consolidación:**
-        
-        1. **🧹 Depuración:** Eliminación de duplicados y normalización de formatos
-        2. **🔗 Integración:** Consolidación de 4 bases independientes en una única base
-        3. **📊 Agregación:** Panel de datos no balanceado con métodos específicos por tipo de variable
-        """)
-        
-        # Métodos de agregación
-        st.markdown("##### 📈 Métodos de Agregación por Tipo de Variable")
-        
-        agregacion_data = pd.DataFrame({
-            'Tipo de Variable': ['Continuas', 'Contadores', 'Categóricas', 'Métricas Especiales'],
-            'Método': ['Suma/Media', 'Suma/Máximo', 'Moda', 'Valor de Cierre'],
-            'Propósito': ['Volumen total o nivel medio', 'Acumulado o pico de actividad', 'Categoría más frecuente', 'Estado final del período'],
-            'Ejemplos': ['Ingresos, Saldos', 'Número de créditos', 'Estado civil, Género', 'Calificación de riesgo']
+                                         '$27,802.60', '10.2 días', 'A-2', '48% → Riesgo']
         })
         
-        st.dataframe(agregacion_data, use_container_width=True)
+        st.dataframe(detailed_metrics, use_container_width=True)
     
-    with metodologia_tabs[3]:
-        st.markdown("""
-        #### 🔍 Modelo de Segmentación: Metodología Dual
+    with tabs[3]:
+        st.markdown("## 🚀 Roadmap de Implementación")
         
-        **Proceso de Dos Etapas:**
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("""
-            **🎯 Etapa 1: Análisis de Componentes Principales (PCA)**
-            - Reducción de dimensionalidad
-            - Eliminación de multicolinealidad  
-            - Preparación para clustering
-            - Identificación de patrones latentes
-            """)
-        with col2:
-            st.markdown("""
-            **⚙️ Etapa 2: Algoritmo K-Means**
-            - Segmentación no supervisada
-            - Identificación de grupos homogéneos
-            - Optimización de centroides
-            - Asignación de perfiles
-            """)
-        
-        st.markdown("""
-        ##### 🧮 Variables Clave del Modelo
-        
-        **Dimensiones Analizadas:**
-        - 👤 **Demográficas:** Edad, género, estado civil, cargas familiares
-        - 💰 **Económicas:** Ingresos estimados, capital prestado, saldos
-        - 🏦 **Financieras:** Productos contratados, tasas de interés, morosidad
-        - 📱 **Comportamentales:** Uso de servicios digitales, frecuencia transaccional
-        - ⚖️ **Riesgo:** Días de mora, calificación crediticia, historial de pagos
-        """)
-    
-    with metodologia_tabs[4]:
-        st.markdown("""
-        #### 📊 Determinación del Número Óptimo de Clústeres
-        
-        **Criterios de Validación Aplicados:**
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("""
-            **📈 Método del Codo**
-            - Análisis de inercia (SSE)
-            - Identificación del punto de inflexión
-            - Equilibrio complejidad-interpretabilidad
-            """)
-        with col2:
-            st.markdown("""
-            **🎯 Coeficiente de Silueta**
-            - Evaluación de cohesión interna
-            - Medición de separación entre grupos
-            - Validación de calidad del clustering
-            """)
-        
-        # Simulación de métricas de validación
-        st.markdown("##### 🏆 Resultados de Validación")
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("K Óptimo", "3", "clústeres seleccionados")
-        with col2:
-            st.metric("Coeficiente Silueta", "0.40", "separación aceptable")
-        with col3:
-            st.metric("Reducción Inercia", "65%", "hasta K=3")
-        
-        st.success("✅ **Decisión Final:** Se seleccionó K=3 como equilibrio entre robustez estadística y utilidad práctica para el análisis de perfiles.")
-        
-        st.markdown("""
-        ##### 🛠️ Herramientas Tecnológicas Utilizadas
-        
-        **Stack Tecnológico:**
-        - **🐍 Python:** Procesamiento y análisis de datos
-        - **📊 Pandas/NumPy:** Manipulación de grandes volúmenes de datos  
-        - **🔬 Scikit-Learn:** Implementación de PCA y K-Means
-        - **⚡ Dask:** Manejo eficiente de big data
-        - **📈 Power BI:** Visualización exploratoria inicial
-        - **📓 Jupyter Notebook:** Entorno de desarrollo analítico
-        """)
-    
-    with metodologia_tabs[5]:
-        st.markdown("#### 🧒 ¿Qué es un Clúster? - Explicación Didáctica")
-        
-        st.markdown("""
-        ### 🎈 Imaginemos que tenemos globos de diferentes colores y tamaños...
-        
-        **🎯 ¿Qué es un clúster?**
-        Un clúster es como un **grupo de amigos** que se parecen mucho entre sí. 
-        
-        Imagina que tienes muchos juguetes:
-        - 🚗 Carritos rojos, azules y verdes
-        - 🧸 Peluches grandes, medianos y pequeños
-        - 🎾 Pelotas blandas y duras
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.info("""
-            **🔍 ¿Cómo formamos grupos (clusters)?**
-            
-            1. **Miramos las características:**
-               - Color del juguete
-               - Tamaño del juguete
-               - Tipo de material
-            
-            2. **Agrupamos por parecidos:**
-               - Todos los carritos rojos juntos
-               - Todos los peluches grandes juntos
-               - Todas las pelotas blandas juntas
-            """)
-        
-        with col2:
-            st.success("""
-            **⚙️ ¿Cómo funciona K-Means?**
-            
-            Es como un juego de "encontrar tu grupo":
-            
-            1. **Elegimos 3 capitanes** (como en educación física)
-            2. **Cada juguete va con el capitán más parecido**
-            3. **Los capitanes se mueven** al centro de su grupo
-            4. **Repetimos hasta que todos están contentos**
-            """)
-        
-        st.markdown("""
-        ### 🏦 En nuestro caso con socios de la cooperativa:
-        
-        **En lugar de juguetes, tenemos socios con diferentes características:**
-        - 👤 **Edad:** jóvenes, adultos, mayores
-        - 💰 **Dinero ahorrado:** poco, medio, mucho
-        - 📱 **Uso de tecnología:** bajo, medio, alto
-        - ⏰ **Pagos a tiempo:** siempre, a veces, nunca
-        
-        **Y los agrupamos en 3 equipos:**
-        - 🛡️ **Equipo Tradicional:** Como los abuelos, ahorran mucho y pagan siempre
-        - ⚠️ **Equipo Riesgo:** Como los adolescentes, a veces se olvidan de pagar
-        - 🚀 **Equipo Tecnológico:** Como los jóvenes, usan mucho la app del celular
-        """)
-        
-        # Simulación visual simple
-        st.markdown("### 🎮 Simulación Visual")
-        
-        # Crear datos simples para mostrar clustering
-        simple_data = pd.DataFrame({
-            'Edad': [25, 28, 30, 45, 47, 50, 62, 65, 68],
-            'Ahorro': [1000, 1200, 1500, 15000, 18000, 20000, 25000, 28000, 30000],
-            'Grupo': ['Joven', 'Joven', 'Joven', 'Adulto', 'Adulto', 'Adulto', 'Mayor', 'Mayor', 'Mayor']
+        # Timeline interactivo
+        timeline_data = pd.DataFrame({
+            'Fase': ['Fase 1: Quick Wins', 'Fase 2: Gestión de Riesgo', 'Fase 3: Transformación Digital', 'Fase 4: Optimización'],
+            'Inicio': ['2025-Q1', '2025-Q2', '2025-Q3', '2026-Q1'],
+            'Duración': [3, 6, 9, 12],
+            'Prioridad': ['Alta', 'Crítica', 'Alta', 'Media']
         })
         
-        fig_simple = px.scatter(simple_data, x='Edad', y='Ahorro', color='Grupo',
-                               title="Ejemplo Simple: Agrupando Socios por Edad y Ahorro",
-                               labels={'Edad': 'Edad (años)', 'Ahorro': 'Dinero Ahorrado ($)'})
+        st.markdown("### 📅 Cronograma de Implementación")
         
-        st.plotly_chart(fig_simple, use_container_width=True)
+        # Gantt Chart simulado
+        fig_gantt = go.Figure()
         
-        st.info("""
-        **🎯 ¿Por qué es útil esto?**
+        colors = {'Alta': '#FFA726', 'Crítica': '#EF5350', 'Media': '#66BB6A'}
         
-        Cuando sabemos qué tipo de socio es cada persona, podemos:
-        - 🎁 **Ofrecerles productos que realmente necesitan**
-        - 📞 **Hablarles de la manera que prefieren**
-        - 💡 **Ayudarles mejor con sus problemas**
-        
-        ¡Es como ser un buen amigo que sabe qué le gusta a cada persona!
-        """)
-
-elif "🎯 Perfiles" in selected:
-    st.markdown('<h1 class="main-header">🎯 Segmentación de Socios Migrantes</h1>', unsafe_allow_html=True)
-    
-    # Introducción con métricas clave
-    st.markdown("### 📊 Análisis de Tipología de Socios Migrantes en Estados Unidos")
-    
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Población Total", "29,091", "socios migrantes")
-    with col2:
-        st.metric("Muestra Analizada", "24,014", "socios activos")
-    with col3:
-        st.metric("Variables Analizadas", "41", "indicadores clave")
-    with col4:
-        st.metric("Período", "2020-2025", "5 años de datos")
-    
-    st.markdown("---")
-    
-    # Tabs principales
-    main_tabs = st.tabs(["🔍 Metodología", "👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
-    
-    with main_tabs[0]:
-        st.markdown("### 🔬 Metodología de Segmentación")
-        
-        method_col1, method_col2 = st.columns(2)
-        
-        with method_col1:
-            st.info("""
-            **📊 Proceso de Análisis en 2 Etapas:**
-            
-            1. **PCA (Análisis de Componentes Principales)**
-               - Reducción de dimensionalidad
-               - Eliminación de multicolinealidad
-               - Identificación de patrones latentes
-            
-            2. **K-Means Clustering**
-               - Segmentación no supervisada
-               - Identificación de grupos homogéneos
-               - K=3 clústeres óptimos
-            """)
-            
-        with method_col2:
-            # Visualización del proceso
-            st.markdown("**🎯 Determinación del Número Óptimo de Clústeres**")
-            
-            # Simulación del método del codo
-            k_values = list(range(2, 11))
-            sse_values = [3.0, 2.8, 2.4, 2.35, 2.3, 2.25, 2.2, 2.15, 2.1]
-            
-            fig_elbow = go.Figure()
-            fig_elbow.add_trace(go.Scatter(
-                x=k_values, y=sse_values,
-                mode='lines+markers',
-                name='SSE',
-                line=dict(color='#2196F3', width=3),
-                marker=dict(size=10)
+        for idx, row in timeline_data.iterrows():
+            fig_gantt.add_trace(go.Bar(
+                name=row['Fase'],
+                x=[row['Duración']],
+                y=[row['Fase']],
+                orientation='h',
+                marker=dict(color=colors[row['Prioridad']]),
+                showlegend=False,
+                hovertemplate='<b>%{y}</b><br>Duración: %{x} meses<br>Inicio: ' + row['Inicio'] + '<extra></extra>'
             ))
-            
-            # Marcar el punto óptimo
-            fig_elbow.add_trace(go.Scatter(
-                x=[3], y=[2.4],
-                mode='markers',
-                name='K Óptimo',
-                marker=dict(size=15, color='#FF4444', symbol='star')
-            ))
-            
-            fig_elbow.update_layout(
-                title="Método del Codo",
-                xaxis_title="Número de Clústeres (K)",
-                yaxis_title="SSE (Inercia)",
-                height=300,
-                showlegend=True
-            )
-            
-            st.plotly_chart(fig_elbow, use_container_width=True)
-            
-            # Métricas de validación
-            val_col1, val_col2 = st.columns(2)
-            with val_col1:
-                st.metric("Coeficiente Silueta", "0.40", "Separación aceptable")
-            with val_col2:
-                st.metric("Reducción Inercia", "65%", "hasta K=3")
-    
-    with main_tabs[1]:
-        st.markdown("### 👥 Tres Perfiles de Socios Identificados")
         
-        # Selector de perfil
-        selected_profile = st.selectbox(
-            "Selecciona un perfil para ver detalles:",
-            ["Vista General", "Clúster 0: Socios Tradicionales", "Clúster 1: Riesgo Financiero", "Clúster 2: Tecnológico Multiservicios"]
+        fig_gantt.update_layout(
+            title="Roadmap de Implementación Estratégica",
+            xaxis_title="Meses",
+            barmode='overlay',
+            height=400,
+            xaxis=dict(range=[0, 12])
         )
         
-        if selected_profile == "Vista General":
-            # Comparación de perfiles
-            profiles_data = {
-                'Características': ['Edad Promedio', 'Ingresos Mensuales', 'Saldo DPF', 'Capital Prestado', 'Días de Mora', 'Calificación'],
-                'Tradicionales (9%)': ['45.1 años', '$3,558.96', '$27,597.17', '$21,576.06', '1.5 días', 'A-2'],
-                'Riesgo Financiero (90%)': ['38.4 años', '$3,759.42', '$315.78', '$21,282.22', '18.0 días', 'A-3'],
-                'Tecnológico Multiservicios (1.2%)': ['39.6 años', '$3,962.25', '$7,656.16', '$27,802.60', '10.2 días', 'A-2']
-            }
-            
-            df_profiles = pd.DataFrame(profiles_data)
-            
-            # Mostrar tabla con resaltado de valores máximos
-            def highlight_max(s):
-                is_max = s == s.max()
-                return ['background-color: #ffeb3b; font-weight: bold' if v else '' for v in is_max]
-            
-            # Aplicar el resaltado solo a las columnas de datos numéricos
-            df_profiles_styled = df_profiles.style.apply(highlight_max, subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)'])
-            
-            st.dataframe(df_profiles_styled, use_container_width=True)
-            
-            # Gráfico de radar comparativo
-            categories = ['Edad', 'Ingresos', 'Ahorro DPF', 'Capital', 'Riesgo (inverso)', 'Uso Digital']
-            
-            fig_radar = go.Figure()
-            
-            # Datos normalizados para el radar
-            tradicionales = [0.9, 0.6, 1.0, 0.7, 0.95, 0.2]
-            riesgo = [0.5, 0.65, 0.1, 0.65, 0.2, 0.1]
-            tecnologico = [0.6, 0.8, 0.4, 1.0, 0.5, 1.0]
-            
-            fig_radar.add_trace(go.Scatterpolar(
-                r=tradicionales,
-                theta=categories,
-                fill='toself',
-                name='Tradicionales',
-                line_color='#4CAF50'
-            ))
-            
-            fig_radar.add_trace(go.Scatterpolar(
-                r=riesgo,
-                theta=categories,
-                fill='toself',
-                name='Riesgo Financiero',
-                line_color='#FF6B6B'
-            ))
-            
-            fig_radar.add_trace(go.Scatterpolar(
-                r=tecnologico,
-                theta=categories,
-                fill='toself',
-                name='Tecnológico Multiservicios',
-                line_color='#2196F3'
-            ))
-            
-            fig_radar.update_layout(
-                polar=dict(
-                    radialaxis=dict(
-                        visible=True,
-                        range=[0, 1]
-                    )),
-                showlegend=True,
-                title="Perfil Comparativo de Clústeres"
-            )
-            
-            st.plotly_chart(fig_radar, use_container_width=True)
-            
-        else:
-            # Detalles específicos del perfil seleccionado
-            if "Tradicionales" in selected_profile:
-                st.success("**📊 Perfil: El Ancla Financiera**")
-                col1, col2 = st.columns([2, 1])
-                with col1:
-                    st.markdown("""
-                    **Características principales:**
-                    - 🎯 Mayor edad promedio (45.1 años)
-                    - 💰 Mayores saldos en DPF ($27,597)
-                    - ⚡ Menor riesgo (1.5 días de mora)
-                    - 📱 Bajo uso de servicios digitales
-                    - 🏦 Prefieren productos tradicionales
-                    
-                    **Comportamiento:**
-                    - Conservadores y adversos al riesgo
-                    - Valoran la seguridad sobre la transaccionalidad
-                    - Alta fidelidad a la cooperativa
-                    """)
-                with col2:
-                    st.metric("Tamaño del Segmento", "9%", "~2,161 socios")
-                    st.metric("Valor Promedio", "$27,597", "en DPF")
-                    st.metric("Riesgo", "Muy Bajo", "1.5 días mora")
-                    
-            elif "Riesgo Financiero" in selected_profile:
-                st.error("**⚠️ Perfil: El Desafío Principal**")
-                col1, col2 = st.columns([2, 1])
-                with col1:
-                    st.markdown("""
-                    **Características principales:**
-                    - 📉 Mayor tasa de morosidad (18 días)
-                    - 💸 Saldos de ahorro muy bajos ($316)
-                    - 🚫 Uso muy limitado de servicios
-                    - ⚡ Alta fragilidad financiera
-                    - 🔄 97% de retención en el clúster
-                    
-                    **Comportamiento:**
-                    - Baja vinculación con la cooperativa
-                    - Dificultades para cumplir obligaciones
-                    - Requieren intervención urgente
-                    """)
-                with col2:
-                    st.metric("Tamaño del Segmento", "90%", "~21,613 socios")
-                    st.metric("Saldo Promedio", "$316", "muy bajo")
-                    st.metric("Riesgo", "Alto", "18 días mora")
-                    
-            elif "Tecnológico" in selected_profile:
-                st.info("**🚀 Perfil: El Más Rentable**")
-                col1, col2 = st.columns([2, 1])
-                with col1:
-                    st.markdown("""
-                    **Características principales:**
-                    - 💳 Mayor capital prestado ($27,802)
-                    - 📱 Uso intensivo de servicios digitales
-                    - 🔄 Alta transaccionalidad
-                    - 💡 Adoptan múltiples productos
-                    - ⚠️ 48% migra a riesgo financiero
-                    
-                    **Comportamiento:**
-                    - Altamente activos y comprometidos
-                    - Aprovechan toda la gama de servicios
-                    - Perfil inestable que requiere monitoreo
-                    """)
-                with col2:
-                    st.metric("Tamaño del Segmento", "1.2%", "~288 socios")
-                    st.metric("Capital Promedio", "$27,802", "el más alto")
-                    st.metric("Riesgo", "Moderado", "10.2 días mora")
-    
-    with main_tabs[2]:
-        st.markdown("### 📈 Análisis de Transición Temporal")
+        st.plotly_chart(fig_gantt, use_container_width=True)
         
-        # Matriz de transición
-        st.markdown("#### 🔄 Matriz de Transición Anual entre Clústeres")
+        # Detalle de fases
+        col1, col2 = st.columns(2)
         
-        transition_matrix = pd.DataFrame({
-            'Desde/Hacia': ['Tradicionales', 'Riesgo Financiero', 'Tecnológico Multiservicios'],
-            'Tradicionales': ['77%', '3%', '7%'],
-            'Riesgo Financiero': ['22%', '97%', '48%'],
-            'Tecnológico Multiservicios': ['1%', '1%', '45%']
-        })
-        
-        # Crear heatmap interactivo
-        matrix_values = [[0.77, 0.22, 0.01],
-                        [0.03, 0.97, 0.01],
-                        [0.07, 0.48, 0.45]]
-        
-        fig_heatmap = go.Figure(data=go.Heatmap(
-            z=matrix_values,
-            x=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
-            y=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
-            text=[[f'{v:.0%}' for v in row] for row in matrix_values],
-            texttemplate='%{text}',
-            colorscale='RdYlBu_r',
-            showscale=True
-        ))
-        
-        fig_heatmap.update_layout(
-            title="Probabilidad de Transición entre Clústeres",
-            xaxis_title="Clúster Destino (t+1)",
-            yaxis_title="Clúster Origen (t)",
-            height=400
-        )
-        
-        st.plotly_chart(fig_heatmap, use_container_width=True)
-        
-        # Insights clave
-        col1, col2, col3 = st.columns(3)
         with col1:
-            st.warning("""
-            **🔍 Hallazgo Clave 1:**
-            El clúster de Riesgo Financiero actúa como un "agujero negro" con 97% de retención
+            st.markdown("### 🎯 Fase 1: Quick Wins (Q1 2025)")
+            st.info("""
+            **Objetivos inmediatos de alto impacto:**
+            
+            ✅ Implementar sistema de alertas preventivas
+            ✅ Lanzar programa piloto de incentivos digitales
+            ✅ Establecer métricas de seguimiento por clúster
+            ✅ Capacitar personal en atención diferenciada
+            
+            **KPIs Target:**
+            - Reducir mora en 10%
+            - Aumentar uso digital en 15%
+            - Mejorar NPS en 20 puntos
             """)
+            
         with col2:
+            st.markdown("### 🚨 Fase 2: Gestión de Riesgo (Q2-Q3 2025)")
             st.error("""
-            **⚠️ Hallazgo Clave 2:**
-            48% de los socios Tecnológicos migran a Riesgo Financiero al año siguiente
+            **Intervención crítica en el segmento de riesgo:**
+            
+            🔴 Programa intensivo de recuperación de mora
+            🔴 Sistema automatizado de cobranza preventiva
+            🔴 Reestructuración de créditos problemáticos
+            🔴 Educación financiera obligatoria
+            
+            **KPIs Target:**
+            - Reducir mora promedio a <10 días
+            - Recuperar 30% de cartera vencida
+            - Prevenir 50% de nuevos casos
             """)
-        with col3:
-            st.success("""
-            **✅ Hallazgo Clave 3:**
-            Los Tradicionales son los más estables con 77% de permanencia
-            """)
         
-        # Evolución temporal
-        st.markdown("#### 📊 Evolución de la Distribución de Clústeres")
+        # Métricas de éxito proyectadas
+        st.markdown("### 📈 Proyección de Impacto")
         
-        years = [2020, 2021, 2022, 2023, 2024, 2025]
-        tradicionales_pct = [4.67, 4.67, 6.33, 7.76, 8.52, 6.40]
-        riesgo_pct = [95.33, 94.15, 92.08, 90.37, 88.99, 93.31]
-        tecnologico_pct = [0.00, 1.17, 1.59, 1.87, 2.49, 0.29]
+        impact_metrics = pd.DataFrame({
+            'Métrica': ['Reducción de Mora', 'Adopción Digital', 'Retención de Socios', 'ROI del Programa'],
+            'Q1 2025': [10, 15, 85, 1.2],
+            'Q2 2025': [20, 25, 88, 1.8],
+            'Q3 2025': [30, 40, 90, 2.5],
+            'Q4 2025': [40, 55, 92, 3.2]
+        })
         
-        fig_evolution = go.Figure()
+        fig_impact = go.Figure()
         
-        fig_evolution.add_trace(go.Scatter(
-            x=years, y=tradicionales_pct,
-            mode='lines+markers',
-            name='Tradicionales',
-            line=dict(color='#4CAF50', width=3),
-            stackgroup='one'
-        ))
+        for col in impact_metrics.columns[1:]:
+            fig_impact.add_trace(go.Scatter(
+                x=impact_metrics['Métrica'],
+                y=impact_metrics[col],
+                mode='lines+markers',
+                name=col,
+                line=dict(width=3)
+            ))
         
-        fig_evolution.add_trace(go.Scatter(
-            x=years, y=riesgo_pct,
-            mode='lines+markers',
-            name='Riesgo Financiero',
-            line=dict(color='#FF6B6B', width=3),
-            stackgroup='one'
-        ))
-        
-        fig_evolution.add_trace(go.Scatter(
-            x=years, y=tecnologico_pct,
-            mode='lines+markers',
-            name='Tecnológico Multiservicios',
-            line=dict(color='#2196F3', width=3),
-            stackgroup='one'
-        ))
-        
-        fig_evolution.update_layout(
-            title="Distribución Porcentual de Clústeres por Año",
-            xaxis_title="Año",
-            yaxis_title="Porcentaje de Socios (%)",
-            hovermode='x unified',
-            height=400
+        fig_impact.update_layout(
+            title="Proyección de Mejora en KPIs Clave (%)",
+            xaxis_title="Indicador",
+            yaxis_title="Mejora Proyectada (%)",
+            height=400,
+            hovermode='x unified'
         )
         
-        st.plotly_chart(fig_evolution, use_container_width=True)
-    
-    with main_tabs[3]:
-        st.markdown("### 💡 Estrategias Recomendadas por Perfil")
+        st.plotly_chart(fig_impact, use_container_width=True)
         
-        strategy_tabs = st.tabs(["Tradicionales", "Riesgo Financiero", "Tecnológico Multiservicios"])
+        # Call to Action
+        st.markdown("---")
+        st.markdown("### 🎯 Próximos Pasos Inmediatos")
         
-        with strategy_tabs[0]:
-            st.markdown("#### 🎯 Estrategias para Socios Tradicionales")
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                st.info("""
-                **📈 Estrategia 1: Programa de Incentivos a través de promociones en Ventas**
-                
-                **Objetivo:** Migración progresiva a servicios digitales
-                
-                **Herramientas:**
-                - 🎁 Sorteos mensuales
-                - 💰 Descuentos temporales
-                - 🏆 Bonificaciones por uso múltiple
-                
-                **Duración:** Ciclos de 1 mes rotativos
-                """)
-                
-            with col2:
-                st.success("""
-                **🔄 import streamlit as st
-import pandas as pd
-import plotly.express as px
-from streamlit_option_menu import option_menu
-from PIL import Image
-import plotly.graph_objects as go
-import numpy as np
-from datetime import datetime
-import time
-
-# Configuración de página con favicon y layout optimizado
-st.set_page_config(
-    page_title="Pitch Empresarial - Raíces Andinas", 
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-# CSS personalizado para mejorar el diseño
-st.markdown("""
-<style>
-    .main-header {
-        font-size: 3rem;
-        font-weight: bold;
-        text-align: center;
-        background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 2rem;
-    }
-    
-    .metric-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 20px;
-        border-radius: 15px;
-        color: white;
-        text-align: center;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        margin: 10px;
-    }
-
-    .opportunity-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        padding: 20px;
-        border-radius: 15px;
-        color: white;
-        margin: 10px 0;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    }
-    
-    .segment-card {
-        border-radius: 15px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        margin: 10px;
-        transition: transform 0.3s ease;
-    }
-    
-    .segment-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .timeline-item {
-        background: #f8f9fa;
-        border-left: 4px solid #4ECDC4;
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 8px;
-    }
-    
-    .cta-button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 15px 30px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: bold;
-        display: inline-block;
-        margin: 20px 0;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-    
-    .stats-container {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin: 20px 0;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# ---------- SIDEBAR MEJORADO ----------
-with st.sidebar:
-    # Logo principal con mejor presentación
-    try:
-        logo = Image.open("logo_raices.jpg")
-        st.image(logo, use_container_width=True)
-    except:
-        st.markdown("### 🏦 COAC Raíces Andinas")
-    
-    # Menú principal mejorado
-    selected = option_menu(
-        menu_title="📊 Panel de Control",
-        options=[
-            "🚀 Hook y Oportunidad",
-            "🏦 Quiénes Somos",
-            "🔬 Metodología",
-            "🎯 Perfiles",
-            "🧪 Simulador Estratégico",
-            "🏁 Plan de Acción"
-        ],
-        icons=[
-            "rocket-takeoff", "bank2", "gear", "bullseye", "calculator", "flag-fill"
-        ],
-        menu_icon="grid-3x3-gap-fill",
-        default_index=0,
-        styles={
-            "container": {"padding": "5!important", "background-color": "#fafafa"},
-            "icon": {"color": "#4ECDC4", "font-size": "18px"}, 
-            "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px"},
-            "nav-link-selected": {"background-color": "#667eea"},
-        }
-    )
-
-    st.markdown("---")
-    
-    # Métricas en tiempo real en sidebar
-    st.markdown("### 📈 Dashboard en Vivo")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.metric("Socios activos migrantes", "24,014", "Fuente: Informe 2025")
-    with col2:
-        st.metric("Socios Totales", "819mil", "Fuente: Raíces Andinas")
-    st.markdown("---")
-    
-    # Logos institucionales mejorados
-    try:
-        alprode_logo = Image.open("alprode.jpeg")
-        st.image(alprode_logo, width=250, caption="Alprode")
-        cofin_logo = Image.open("cofin_logo.png")
-        st.image(cofin_logo, width=250, caption="Erasmus+")
-        ucuenca_logo = Image.open("logo_ucuenca.png")
-        st.image(ucuenca_logo, width=250, caption="Universidad de Cuenca")
-    except:
-        st.markdown("**Aliados Estratégicos:**\n- Alprode\n- Universidad de Cuenca")
-
-# ---------- DATOS MEJORADOS PARA VISUALIZACIÓN ----------
-# Datos más realistas y completos
-np.random.seed(42)
-df_socios = pd.DataFrame({
-    "cluster": np.repeat([0, 1, 2], 100),
-    "edad": np.concatenate([
-        np.random.normal(45, 8, 100),
-        np.random.normal(38, 12, 100),
-        np.random.normal(40, 6, 100)
-    ]),
-    "ingresos": np.concatenate([
-        np.random.normal(3559, 800, 100),
-        np.random.normal(3759, 1200, 100),
-        np.random.normal(3962, 600, 100)
-    ]),
-    "saldo_dpf": np.concatenate([
-        np.random.normal(27597, 5000, 100),
-        np.random.normal(316, 200, 100),
-        np.random.normal(7656, 2000, 100)
-    ]),
-    "mora_dias": np.concatenate([
-        np.random.exponential(1.5, 100),
-        np.random.exponential(18, 100),
-        np.random.exponential(10.2, 100)
-    ])
-})
-
-# KPIs mejorados para radar chart
-categorias = ["Edad Promedio", "Ingresos ($)", "Saldo DPF ($)", "Capital Prestado ($)", "Días Mora"]
-cluster_tradicional = [45.1, 3558.96, 27597.17, 21576.06, 1.5]
-cluster_riesgo = [38.4, 3759.42, 315.78, 21282.22, 18]
-cluster_tech = [39.6, 3962.25, 7656.16, 27802.60, 10.2]
-
-# Datos de proyección de remesas
-años_proyeccion = list(range(2020, 2030))
-remesas_historicas = [3500, 4200, 4800, 5100, 5491, 5821, 6200, 6600, 7100, 7650]
-
-# ---------- SECCIONES DEL PITCH MEJORADAS ----------
-
-if "🚀 Hook y Oportunidad" in selected:
-    # Título principal con impacto
-    st.markdown('''
-    <div style="text-align: center; padding: 2rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin-bottom: 2rem;">
-        <h1 style="color: white; font-size: 3.5rem; font-weight: 900; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-            🚀 EL BOOM FINANCIERO QUE ECUADOR ESTÁ IGNORANDO
-        </h1>
-        <p style="color: #f0f0f0; font-size: 1.4rem; margin-top: 1rem; font-weight: 300;">
-            Mientras otros sectores luchan, los migrantes mueven <strong>$5.8 MIL MILLONES</strong> anuales
-        </p>
-    </div>
-    ''', unsafe_allow_html=True)
-
-    # Hook emocional y datos impactantes
-    st.markdown('''
-    <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; border-left: 6px solid #ff6b6b;">
-        <h2 style="color: #2c3e50; font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">
-            💰 LA REALIDAD QUE CAMBIA TODO
-        </h2>
-        <div style="font-size: 1.3rem; color: #2c3e50; line-height: 1.8; text-align: center;">
-            <strong>Cada 24 horas, los ecuatorianos en EE.UU. envían más de <span style="color:#e74c3c;">US$18 millones</span> a casa.</strong><br>
-            <span style="font-size: 1.1rem; color: #e74c3c;">Eso es más que el PIB diario de varias provincias ecuatorianas.</span><br><br>
-            <em style="font-size: 1.2rem; color: #8e44ad;">"No son solo números... son cientos de miles de ecuatorianos construyendo el futuro desde la distancia"</em>
-        </div>
-        <div style="text-align: right; margin-top: 0.8rem;">
-            <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador (Q1 2025)</small>
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
-
-    # Métricas impactantes con animación visual
-    st.markdown("### 🔥 LOS NÚMEROS QUE ROMPEN ESQUEMAS")
-    
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.markdown("""
-        <div style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(255,107,107,0.3); transition: transform 0.3s;">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$5.491B</h2>
-            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Remesas 2024</p>
-            <small style="color: #ffe0e0; font-size: 0.9rem;">
-                <strong>19x más</strong> que la Inversión<br>Extranjera Directa
-            </small>
-            <div style="margin-top: 0.5rem;">
-                <small style="color: #ffc4c4; font-size: 0.7rem;">Fuente: BCE</small>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div style="background: linear-gradient(45deg, #4ECDC4, #44A08D); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(78,205,196,0.3);">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">75.6%</h2>
-            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Desde EE.UU.</p>
-            <small style="color: #e0f7f5; font-size: 0.9rem;">
-                <strong>US$1.3B</strong> en Q1 2025<br>principal fuente
-            </small>
-            <div style="margin-top: 0.5rem;">
-                <small style="color: #b8f2ed; font-size: 0.7rem;">Fuente: BCE</small>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("""
-        <div style="background: linear-gradient(45deg, #A770EF, #CF57A3); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(167,112,239,0.3);">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$208M</h2>
-            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Solo a Azuay</p>
-            <small style="color: #f0e5ff; font-size: 0.9rem;">
-                En <strong>3 meses</strong> – epicentro migrante
-            </small>
-            <div style="margin-top: 0.5rem;">
-                <small style="color: #e4d1ff; font-size: 0.7rem;">Fuente: BCE Q1 2025</small>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col4:
-        st.markdown("""
-        <div style="background: linear-gradient(45deg, #FFA726, #FB8C00); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(255,167,38,0.3);">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">21%</h2>
-            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Inversión Inmobiliaria</p>
-            <small style="color: #fff3e0; font-size: 0.9rem;">
-                <strong>1 de cada 5</strong> familias invierte en vivienda
-            </small>
-            <div style="margin-top: 0.5rem;">
-                <small style="color: #ffe0b3; font-size: 0.7rem;">Fuente: Estudio Microeconómico</small>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # Comparativa impactante
-    st.markdown('''
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-        <h3 style="color: white; text-align: center; font-size: 1.8rem; margin-bottom: 1.5rem;">
-            🥊 REMESAS vs. EXPORTACIONES TRADICIONALES
-        </h3>
-        <div style="display: flex; justify-content: space-around; text-align: center;">
-            <div>
-                <h4 style="color: #4CAF50; font-size: 1.5rem; margin: 0;">$5.491B</h4>
-                <p style="color: white; margin: 0;">💸 REMESAS</p>
-            </div>
-            <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
-            <div>
-                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.191B</h4>
-                <p style="color: white; margin: 0;">🦐 Camarón</p>
-            </div>
-            <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
-            <div>
-                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.600B</h4>
-                <p style="color: white; margin: 0;">🍌 Banano</p>
-            </div>
-        </div>
-        <p style="color: #e8eaf6; text-align: center; margin-top: 1rem; font-style: italic;">
-            Los migrantes son el motor económico #1 del país
-        </p>
-        <div style="text-align: right; margin-top: 0.3rem;">
-            <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador</small>
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
-
-    # Proyección con gráfico mejorado
-    st.markdown("### 📈 LA TRAYECTORIA IMPARABLE")
-    
-    # Datos para el gráfico
-    años = [2020, 2021, 2022, 2023, 2024, 2025]
-    remesas_data = [3165, 4816, 5268, 5421, 5491, 5821]
-    
-    fig = px.area(
-        x=años, 
-        y=remesas_data,
-        title="Crecimiento Explosivo de Remesas Ecuador (Millones USD)",
-        labels={'x': 'Año', 'y': 'Remesas (Millones USD)'}
-    )
-    fig.update_traces(
-        fill='tonexty',
-        fillcolor='rgba(255, 107, 107, 0.3)',
-        line=dict(color='#FF6B6B', width=4)
-    )
-    fig.update_layout(
-        height=400,
-        title_font_size=16,
-        title_x=0.5,
-        showlegend=False,
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)'
-    )
-    fig.add_vline(
-        x=2024, 
-        line_dash="dash", 
-        line_color="#e74c3c", 
-        line_width=3,
-        annotation_text="📍 Estamos aquí",
-        annotation_position="top"
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-    # Insights estratégicos
-    col_insight1, col_insight2 = st.columns(2)
-    
-    with col_insight1:
-        st.markdown('''
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
-            <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">💡 INSIGHT DEMOGRÁFICO</h4>
-            <p style="color: #e8eaf6; font-size: 1.1rem; line-height: 1.7;">
-                Los socios migrantes de RAÍCES ANDINAS (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
-                superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
-            </p>
-            <div style="text-align: right; margin-top: 1rem;">
-                <small style="color: #c8d0ff; font-size: 0.8rem;">Fuente: Pew Research Center</small>
-            </div>
-        </div>
-        ''', unsafe_allow_html=True)
-    
-    with col_insight2:
-        st.markdown('''
-        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
-            <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.3rem;">🎯 VENTAJA GEOGRÁFICA</h4>
-            <p style="color: #2c3e50; font-size: 1.1rem; line-height: 1.7;">
-                El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas fomente alianzas financieras y capture remesas directamente desde el origen.
-            </p>
-            <div style="text-align: right; margin-top: 1rem;">
-                <small style="color: #999; font-size: 0.8rem;">Fuente: Migration Policy Institute</small>
-            </div>
-        </div>
-        ''', unsafe_allow_html=True)
-
-    # Call to action final
-    st.markdown('''
-    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
-        <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">
-            🚀 EL MOMENTO ES AHORA
-        </h3>
-        <p style="color: #bdc3c7; font-size: 1.2rem; margin-bottom: 1.5rem;">
-            RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
-        </p>
-        <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
-            <p style="color: #ecf0f1; font-size: 1.1rem; margin: 0; font-style: italic;">
-                "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
-            </p>
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
-
-    # Próximo paso
-    st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.8B proyectados para 2025.")
-
-    # Métricas adicionales en sidebar o expandible
-    with st.expander("📊 Datos Adicionales de Soporte"):
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
-            st.metric("Pagos Digitales", "51%", "49% usa efectivo")
+            st.success("""
+            **Semana 1-2:**
+            - Validar hallazgos con gerencia
+            - Formar comité de implementación
+            - Definir presupuesto inicial
+            """)
         with col2:
-            st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
-            st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
+            st.info("""
+            **Semana 3-4:**
+            - Seleccionar pilotos por clúster
+            - Diseñar protocolos de atención
+            - Capacitar personal clave
+            """)
         with col3:
-            st.metric("Destino Vivienda", "21%", "$1.154B anuales")
-            st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
-
-elif "🏦 Quiénes Somos" in selected:
-    st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
-    st.markdown("### *29 años construyendo sueños, conectando corazones*")
-    
-    # Objetivos del estudio
-    st.markdown("### 🎯 Objetivos del Estudio")
-    
-    obj_tabs = st.tabs(["🎯 Objetivo General", "📋 Objetivos Específicos"])
-    
-    with obj_tabs[0]:
-        st.info("""
-        **🎯 Objetivo General**
+            st.warning("""
+            **Mes 2:**
+            - Lanzar piloto con 100 socios
+            - Monitorear KPIs diariamente
+            - Ajustar estrategias según resultados
+            """)
         
-        Determinar la tipología de socios migrantes de la Cooperativa de Ahorro y Crédito Raíces Andinas 
-        mediante el análisis de datos históricos de enero 2020 a marzo 2025 ubicados en Estados Unidos.
-        """)
-    
-    with obj_tabs[1]:
+        # Mensaje final
+        st.markdown("---")
         st.markdown("""
-        **📋 Objetivos Específicos**
-        
-        1. **📊 Establecer un perfil de socios** basado en información secundaria
-        
-        2. **🔍 Analizar los datos recopilados** para extraer conclusiones clave
-        
-        3. **💡 Proponer estrategias de mejora** basadas en los hallazgos
-        """)
-    
-    st.markdown("---")
-    
-    # Video institucional
-    st.markdown("### 🎬 Video Institucional")
-    try:
-        video_file = open('video_intro_raices.mp4', 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes)
-    except:
-        st.info("📹 Video institucional: video_intro_raices.mp4 (cargar archivo en el repositorio)")
-    
-    st.markdown("---")
-    
-    # Datos clave en columnas
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Años de Historia", "29", "Desde 1996")
-        st.metric("Provincias", "8", "Cobertura nacional")
-    with col2:
-        st.metric("Socios Activos Migrantes", "24,014", "+2.3% anual")
-        st.metric("Patrimonio", "$225M", "Sólido respaldo")
-    with col3:
-        st.metric("Oficinas", "70", "Cerca de ti")
-        st.metric("Activos", "1,958M", "Solvencia")
-    
-    st.markdown("---")
-    
-    # Indicadores Financieros (basado en Jardín Azuayo Tipología)
-    st.markdown("### 📊 Indicadores Financieros Clave")
-    
-    ind_col1, ind_col2, ind_col3, ind_col4 = st.columns(4)
-    with ind_col1:
-        st.metric("Morosidad", "6.17%", "Indicador de cartera")
-    with ind_col2:
-        st.metric("Cobertura Cartera en Riesgo", "200.04%", "Provisiones")
-    with ind_col3:
-        st.metric("Solvencia", "22.54%", "Solidez patrimonial")
-    with ind_col4:
-        st.metric("Calificación de Riesgo", "AA+", "Máxima calidad")
-    
-    st.markdown("---")
-       
-    # Análisis FODA actualizado basado en el documento
-    st.markdown("### 🔍 Análisis Estratégico FODA")
-    foda_col1, foda_col2 = st.columns(2)
-    
-    with foda_col1:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4>💪 FORTALEZAS</h4>
-            <ul>
-                <li>Solidez financiera con calificación AA+</li>
-                <li>Amplia experiencia en el sector cooperativo (29 años)</li>
-                <li>Base sólida de socios migrantes leales</li>
-                <li>Cobertura nacional consolidada</li>
-                <li>Productos financieros diversificados</li>
-                <li>Alto nivel de solvencia (22.54%)</li>
-            </ul>
-        </div>
-        
-        <div style='background: linear-gradient(135deg, #cce5ff 0%, #b3d9ff 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4>🌟 OPORTUNIDADES</h4>
-            <ul>
-                <li>Crecimiento sostenido del flujo de remesas</li>
-                <li>Desarrollo de productos especializados para migrantes</li>
-                <li>Fortalecimiento de canales digitales</li>
-                <li>Alianzas estratégicas internacionales</li>
-                <li>Expansión de servicios financieros no tradicionales</li>
-                <li>Captación de nuevos segmentos de mercado</li>
-            </ul>
+        <div style='background-color: #e3f2fd; padding: 20px; border-radius: 10px; text-align: center;'>
+            <h3 style='color: #1976d2;'>💡 Mensaje Clave</h3>
+            <p style='font-size: 18px; color: #424242;'>
+                <strong>La implementación de estas recomendaciones permitirá a la cooperativa no solo 
+                entender mejor a sus socios migrantes, sino construir un ecosistema de datos que 
+                potencie la toma de decisiones estratégicas y fortalezca su posición competitiva 
+                en el mercado.</strong>
+            </p>
         </div>
         """, unsafe_allow_html=True)
-    
-    with foda_col2:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4>⚠️ DEBILIDADES</h4>
-            <ul>
-                <li>Nivel de morosidad del 6.17% requiere atención</li>
-                <li>Limitada penetración en mercados digitales</li>
-                <li>Dependencia de métodos tradicionales de atención</li>
-                <li>Segmentación básica de clientes</li>
-                <li>Procesos internos que requieren modernización</li>
-                <li>Capacitación continua del personal en nuevas tecnologías</li>
-            </ul>
-        </div>
-        
-        <div style='background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4>🚨 AMENAZAS</h4>
