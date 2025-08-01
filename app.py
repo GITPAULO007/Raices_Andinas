@@ -452,12 +452,13 @@ elif "🏦 Quiénes Somos" in selected:
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("Años de Historia", "29", "Desde 1996")
-        st.metric("Provincias", "7", "Cobertura nacional")
+        st.metric("Provincias", "8", "Cobertura nacional")
     with col2:
         st.metric("Socios Activos Migrantes", "24,014", "+2.3% anual")
         st.metric("Patrimonio", "$225M", "Sólido respaldo")
     with col3:
         st.metric("Oficinas", "70", "Cerca de ti")
+        st.metric("Activos", "1,958M", "Solvencia")
        
     # Análisis FODA visual mejorado
     st.markdown("### 🔍 Análisis Estratégico FODA")
