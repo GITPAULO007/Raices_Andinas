@@ -129,7 +129,7 @@ with st.sidebar:
     st.markdown("### 📈 Dashboard en Vivo")
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Socios activos", "24,014", "Fuente: Informe 2025")
+        st.metric("Socios activos migrantes", "24,014", "Fuente: Informe 2025")
     with col2:
         st.metric("Remesas 2024", "$5.49B", "Fuente: BCE")
     st.markdown("---")
@@ -446,12 +446,12 @@ if "🚀 Hook y Oportunidad" in selected:
 
 elif "🏦 Quiénes Somos" in selected:
     st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
-    st.markdown("### *28 años construyendo sueños, conectando corazones*")
+    st.markdown("### *29 años construyendo sueños, conectando corazones*")
     
     # Datos clave en columnas
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric("Años de Historia", "28", "Desde 1996")
+        st.metric("Años de Historia", "29", "Desde 1996")
         st.metric("Provincias", "7", "Cobertura nacional")
     with col2:
         st.metric("Socios Activos", "24,014", "+2.3% anual")
