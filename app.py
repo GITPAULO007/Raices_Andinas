@@ -134,14 +134,7 @@ with st.sidebar:
         st.metric("Remesas 2024", "$5.49B", "Fuente: BCE")
     st.markdown("---")
     
-    # Progreso del pitch
-    progress = (list(selected.split(" ", 1)).index(selected.split(" ", 1)[1]) if " " in selected else 0) / 5
-    st.progress(progress)
-    st.caption(f"Progreso del pitch: {int(progress*100)}%")
-
-    st.markdown("---")
-    
-    # Logos institucionales mejorados
+        # Logos institucionales mejorados
     try:
         alprode_logo = Image.open("alprode.jpeg")
         st.image(alprode_logo, width=250, caption="Alprode")
