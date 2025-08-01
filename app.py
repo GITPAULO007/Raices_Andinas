@@ -225,13 +225,13 @@ if "🚀 Hook y Oportunidad" in selected:
     with col1:
         st.markdown("""
         <div style="background: linear-gradient(45deg, #FF6B6B, #FF8E53); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 8px 16px rgba(255,107,107,0.3); transition: transform 0.3s;">
-            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">819mil</h2>
-            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Socios Totales</p>
+            <h2 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 900;">$5.491B</h2>
+            <p style="color: white; font-size: 1.1rem; margin: 0.5rem 0; font-weight: 600;">Remesas 2024</p>
             <small style="color: #ffe0e0; font-size: 0.9rem;">
                 <strong>19x más</strong> que la Inversión<br>Extranjera Directa
             </small>
             <div style="margin-top: 0.5rem;">
-                <small style="color: #ffc4c4; font-size: 0.7rem;">Fuente: Raíces Andinas</small>
+                <small style="color: #ffc4c4; font-size: 0.7rem;">Fuente: BCE</small>
             </div>
         </div>
         """, unsafe_allow_html=True)
