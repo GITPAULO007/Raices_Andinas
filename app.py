@@ -418,8 +418,7 @@ if "🚀 Hook y Oportunidad" in selected:
             🚀 EL MOMENTO ES AHORA
         </h3>
         <p style="color: #bdc3c7; font-size: 1.2rem; margin-bottom: 1.5rem;">
-            Mientras las instituciones tradicionales ignoran este mercado, RAÍCES ANDINAS puede posicionarse como 
-            <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
+            RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
         </p>
         <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
             <p style="color: #ecf0f1; font-size: 1.1rem; margin: 0; font-style: italic;">
