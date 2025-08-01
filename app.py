@@ -1320,7 +1320,7 @@ elif "🧪 Simulador Estratégico" in selected:
         else:
             st.warning(f"⚠️ ROI del {roi_total:.1f}% requiere optimización de estrategias")
 
-elif "📋 Plan de Acción" in selected:
+elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
     st.markdown('<h1 class="main-header">📋 Conclusiones y Recomendaciones Estratégicas</h1>', unsafe_allow_html=True)
     
     # Métricas clave del estudio
