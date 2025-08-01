@@ -129,9 +129,10 @@ with st.sidebar:
     st.markdown("### 📈 Dashboard en Vivo")
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Socios", "48,127", "+2.3%")
+        st.metric("Socios activos", "24,014", "Fuente: Informe 2025")
     with col2:
-        st.metric("Remesas 2024", "$5.49B", "+8.1%")
+        st.metric("Remesas 2024", "$5.49B", "Fuente: BCE")
+    st.markdown("---")
     
     # Progreso del pitch
     progress = (list(selected.split(" ", 1)).index(selected.split(" ", 1)[1]) if " " in selected else 0) / 5
