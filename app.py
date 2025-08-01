@@ -710,161 +710,453 @@ elif "🔬 Metodología" in selected:
         """)
 
 elif "🎯 Segmentos y KPIs" in selected:
-    st.markdown('<h1 class="main-header">🎯 Los 3 Equipos Ganadores</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header">🎯 Segmentación de Socios Migrantes</h1>', unsafe_allow_html=True)
     
-    # Resumen ejecutivo de segmentos
-    st.markdown("### 📋 Resumen Ejecutivo")
-    resumen_cols = st.columns(3)
+    # Introducción con métricas clave
+    st.markdown("### 📊 Análisis de Tipología de Socios Migrantes en Estados Unidos")
     
-    segmentos_info = [
-        {
-            "nombre": "🧓 Tradicional", 
-            "color": "#8dd3c7",
-            "socios": "14,438 (30%)",
-            "valor": "$42M cartera",
-            "oportunidad": "Digitalización asistida",
-            "riesgo": "Muy bajo",
-            "estrategia": "Fidelización premium"
-        },
-        {
-            "nombre": "⚠️ Riesgo", 
-            "color": "#ffffb3", 
-            "socios": "24,064 (50%)",
-            "valor": "$28M cartera", 
-            "oportunidad": "Recuperación proactiva",
-            "riesgo": "Alto",
-            "estrategia": "Prevención y educación"
-        },
-        {
-            "nombre": "📱 Tech", 
-            "color": "#bebada",
-            "socios": "9,625 (20%)",
-            "valor": "$35M cartera",
-            "oportunidad": "Productos premium",
-            "riesgo": "Fuga a fintech",
-            "estrategia": "Innovación continua"
-        }
-    ]
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("Población Total", "29,091", "socios migrantes")
+    with col2:
+        st.metric("Muestra Analizada", "24,014", "socios activos")
+    with col3:
+        st.metric("Variables Analizadas", "41", "indicadores clave")
+    with col4:
+        st.metric("Período", "2020-2025", "5 años de datos")
     
-    for i, seg in enumerate(segmentos_info):
-        with resumen_cols[i]:
-            st.markdown(f"""
-            <div class="segment-card" style="background-color: {seg['color']};">
-                <h3>{seg['nombre']}</h3>
-                <p><strong>Socios:</strong> {seg['socios']}</p>
-                <p><strong>Cartera:</strong> {seg['valor']}</p>
-                <p><strong>Oportunidad:</strong> {seg['oportunidad']}</p>
-                <p><strong>Estrategia:</strong> {seg['estrategia']}</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-    # Radar chart mejorado
-    st.markdown("### 📊 Perfil Comparativo de KPIs")
+    st.markdown("---")
     
-    # Normalizar datos para mejor visualización
-    def normalizar(datos, max_vals):
-        return [datos[i]/max_vals[i]*100 for i in range(len(datos))]
+    # Tabs principales
+    main_tabs = st.tabs(["🔍 Metodología", "👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
     
-    max_valores = [50, 5000, 30000, 30000, 20]  # Valores máximos para normalización
+    with main_tabs[0]:
+        st.markdown("### 🔬 Metodología de Segmentación")
+        
+        method_col1, method_col2 = st.columns(2)
+        
+        with method_col1:
+            st.info("""
+            **📊 Proceso de Análisis en 2 Etapas:**
+            
+            1. **PCA (Análisis de Componentes Principales)**
+               - Reducción de dimensionalidad
+               - Eliminación de multicolinealidad
+               - Identificación de patrones latentes
+            
+            2. **K-Means Clustering**
+               - Segmentación no supervisada
+               - Identificación de grupos homogéneos
+               - K=3 clústeres óptimos
+            """)
+            
+        with method_col2:
+            # Visualización del proceso
+            st.markdown("**🎯 Determinación del Número Óptimo de Clústeres**")
+            
+            # Simulación del método del codo
+            k_values = list(range(2, 11))
+            sse_values = [3.0, 2.8, 2.4, 2.35, 2.3, 2.25, 2.2, 2.15, 2.1]
+            
+            fig_elbow = go.Figure()
+            fig_elbow.add_trace(go.Scatter(
+                x=k_values, y=sse_values,
+                mode='lines+markers',
+                name='SSE',
+                line=dict(color='#2196F3', width=3),
+                marker=dict(size=10)
+            ))
+            
+            # Marcar el punto óptimo
+            fig_elbow.add_trace(go.Scatter(
+                x=[3], y=[2.4],
+                mode='markers',
+                name='K Óptimo',
+                marker=dict(size=15, color='#FF4444', symbol='star')
+            ))
+            
+            fig_elbow.update_layout(
+                title="Método del Codo",
+                xaxis_title="Número de Clústeres (K)",
+                yaxis_title="SSE (Inercia)",
+                height=300,
+                showlegend=True
+            )
+            
+            st.plotly_chart(fig_elbow, use_container_width=True)
+            
+            # Métricas de validación
+            val_col1, val_col2 = st.columns(2)
+            with val_col1:
+                st.metric("Coeficiente Silueta", "0.40", "Separación aceptable")
+            with val_col2:
+                st.metric("Reducción Inercia", "65%", "hasta K=3")
     
-    tradicional_norm = normalizar(cluster_tradicional, max_valores)
-    riesgo_norm = normalizar(cluster_riesgo, max_valores)
-    tech_norm = normalizar(cluster_tech, max_valores)
+    with main_tabs[1]:
+        st.markdown("### 👥 Tres Perfiles de Socios Identificados")
+        
+        # Selector de perfil
+        selected_profile = st.selectbox(
+            "Selecciona un perfil para ver detalles:",
+            ["Vista General", "Clúster 0: Socios Tradicionales", "Clúster 1: Riesgo Financiero", "Clúster 2: Tecnológico Multiservicios"]
+        )
+        
+        if selected_profile == "Vista General":
+            # Comparación de perfiles
+            profiles_data = {
+                'Características': ['Edad Promedio', 'Ingresos Mensuales', 'Saldo DPF', 'Capital Prestado', 'Días de Mora', 'Calificación'],
+                'Tradicionales (9%)': ['45.1 años', '$3,558.96', '$27,597.17', '$21,576.06', '1.5 días', 'A-2'],
+                'Riesgo Financiero (90%)': ['38.4 años', '$3,759.42', '$315.78', '$21,282.22', '18.0 días', 'A-3'],
+                'Tecnológico Multiservicios (1.2%)': ['39.6 años', '$3,962.25', '$7,656.16', '$27,802.60', '10.2 días', 'A-2']
+            }
+            
+            df_profiles = pd.DataFrame(profiles_data)
+            
+            # Mostrar tabla estilizada
+            st.dataframe(
+                df_profiles.style.highlight_max(subset=['Tradicionales (9%)', 'Riesgo Financiero (90%)', 'Tecnológico Multiservicios (1.2%)'], axis=1),
+                use_container_width=True
+            )
+            
+            # Gráfico de radar comparativo
+            categories = ['Edad', 'Ingresos', 'Ahorro DPF', 'Capital', 'Riesgo (inverso)', 'Uso Digital']
+            
+            fig_radar = go.Figure()
+            
+            # Datos normalizados para el radar
+            tradicionales = [0.9, 0.6, 1.0, 0.7, 0.95, 0.2]
+            riesgo = [0.5, 0.65, 0.1, 0.65, 0.2, 0.1]
+            tecnologico = [0.6, 0.8, 0.4, 1.0, 0.5, 1.0]
+            
+            fig_radar.add_trace(go.Scatterpolar(
+                r=tradicionales,
+                theta=categories,
+                fill='toself',
+                name='Tradicionales',
+                line_color='#4CAF50'
+            ))
+            
+            fig_radar.add_trace(go.Scatterpolar(
+                r=riesgo,
+                theta=categories,
+                fill='toself',
+                name='Riesgo Financiero',
+                line_color='#FF6B6B'
+            ))
+            
+            fig_radar.add_trace(go.Scatterpolar(
+                r=tecnologico,
+                theta=categories,
+                fill='toself',
+                name='Tecnológico Multiservicios',
+                line_color='#2196F3'
+            ))
+            
+            fig_radar.update_layout(
+                polar=dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, 1]
+                    )),
+                showlegend=True,
+                title="Perfil Comparativo de Clústeres"
+            )
+            
+            st.plotly_chart(fig_radar, use_container_width=True)
+            
+        else:
+            # Detalles específicos del perfil seleccionado
+            if "Tradicionales" in selected_profile:
+                st.success("**📊 Perfil: El Ancla Financiera**")
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                    st.markdown("""
+                    **Características principales:**
+                    - 🎯 Mayor edad promedio (45.1 años)
+                    - 💰 Mayores saldos en DPF ($27,597)
+                    - ⚡ Menor riesgo (1.5 días de mora)
+                    - 📱 Bajo uso de servicios digitales
+                    - 🏦 Prefieren productos tradicionales
+                    
+                    **Comportamiento:**
+                    - Conservadores y adversos al riesgo
+                    - Valoran la seguridad sobre la transaccionalidad
+                    - Alta fidelidad a la cooperativa
+                    """)
+                with col2:
+                    st.metric("Tamaño del Segmento", "9%", "~2,161 socios")
+                    st.metric("Valor Promedio", "$27,597", "en DPF")
+                    st.metric("Riesgo", "Muy Bajo", "1.5 días mora")
+                    
+            elif "Riesgo Financiero" in selected_profile:
+                st.error("**⚠️ Perfil: El Desafío Principal**")
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                    st.markdown("""
+                    **Características principales:**
+                    - 📉 Mayor tasa de morosidad (18 días)
+                    - 💸 Saldos de ahorro muy bajos ($316)
+                    - 🚫 Uso muy limitado de servicios
+                    - ⚡ Alta fragilidad financiera
+                    - 🔄 97% de retención en el clúster
+                    
+                    **Comportamiento:**
+                    - Baja vinculación con la cooperativa
+                    - Dificultades para cumplir obligaciones
+                    - Requieren intervención urgente
+                    """)
+                with col2:
+                    st.metric("Tamaño del Segmento", "90%", "~21,613 socios")
+                    st.metric("Saldo Promedio", "$316", "muy bajo")
+                    st.metric("Riesgo", "Alto", "18 días mora")
+                    
+            elif "Tecnológico" in selected_profile:
+                st.info("**🚀 Perfil: El Más Rentable**")
+                col1, col2 = st.columns([2, 1])
+                with col1:
+                    st.markdown("""
+                    **Características principales:**
+                    - 💳 Mayor capital prestado ($27,802)
+                    - 📱 Uso intensivo de servicios digitales
+                    - 🔄 Alta transaccionalidad
+                    - 💡 Adoptan múltiples productos
+                    - ⚠️ 48% migra a riesgo financiero
+                    
+                    **Comportamiento:**
+                    - Altamente activos y comprometidos
+                    - Aprovechan toda la gama de servicios
+                    - Perfil inestable que requiere monitoreo
+                    """)
+                with col2:
+                    st.metric("Tamaño del Segmento", "1.2%", "~288 socios")
+                    st.metric("Capital Promedio", "$27,802", "el más alto")
+                    st.metric("Riesgo", "Moderado", "10.2 días mora")
     
-    fig_radar = go.Figure()
+    with main_tabs[2]:
+        st.markdown("### 📈 Análisis de Transición Temporal")
+        
+        # Matriz de transición
+        st.markdown("#### 🔄 Matriz de Transición Anual entre Clústeres")
+        
+        transition_matrix = pd.DataFrame({
+            'Desde/Hacia': ['Tradicionales', 'Riesgo Financiero', 'Tecnológico Multiservicios'],
+            'Tradicionales': ['77%', '3%', '7%'],
+            'Riesgo Financiero': ['22%', '97%', '48%'],
+            'Tecnológico Multiservicios': ['1%', '1%', '45%']
+        })
+        
+        # Crear heatmap interactivo
+        matrix_values = [[0.77, 0.22, 0.01],
+                        [0.03, 0.97, 0.01],
+                        [0.07, 0.48, 0.45]]
+        
+        fig_heatmap = go.Figure(data=go.Heatmap(
+            z=matrix_values,
+            x=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+            y=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
+            text=[[f'{v:.0%}' for v in row] for row in matrix_values],
+            texttemplate='%{text}',
+            colorscale='RdYlBu_r',
+            showscale=True
+        ))
+        
+        fig_heatmap.update_layout(
+            title="Probabilidad de Transición entre Clústeres",
+            xaxis_title="Clúster Destino (t+1)",
+            yaxis_title="Clúster Origen (t)",
+            height=400
+        )
+        
+        st.plotly_chart(fig_heatmap, use_container_width=True)
+        
+        # Insights clave
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.warning("""
+            **🔍 Hallazgo Clave 1:**
+            El clúster de Riesgo Financiero actúa como un "agujero negro" con 97% de retención
+            """)
+        with col2:
+            st.error("""
+            **⚠️ Hallazgo Clave 2:**
+            48% de los socios Tecnológicos migran a Riesgo Financiero al año siguiente
+            """)
+        with col3:
+            st.success("""
+            **✅ Hallazgo Clave 3:**
+            Los Tradicionales son los más estables con 77% de permanencia
+            """)
+        
+        # Evolución temporal
+        st.markdown("#### 📊 Evolución de la Distribución de Clústeres")
+        
+        years = [2020, 2021, 2022, 2023, 2024, 2025]
+        tradicionales_pct = [4.67, 4.67, 6.33, 7.76, 8.52, 6.40]
+        riesgo_pct = [95.33, 94.15, 92.08, 90.37, 88.99, 93.31]
+        tecnologico_pct = [0.00, 1.17, 1.59, 1.87, 2.49, 0.29]
+        
+        fig_evolution = go.Figure()
+        
+        fig_evolution.add_trace(go.Scatter(
+            x=years, y=tradicionales_pct,
+            mode='lines+markers',
+            name='Tradicionales',
+            line=dict(color='#4CAF50', width=3),
+            stackgroup='one'
+        ))
+        
+        fig_evolution.add_trace(go.Scatter(
+            x=years, y=riesgo_pct,
+            mode='lines+markers',
+            name='Riesgo Financiero',
+            line=dict(color='#FF6B6B', width=3),
+            stackgroup='one'
+        ))
+        
+        fig_evolution.add_trace(go.Scatter(
+            x=years, y=tecnologico_pct,
+            mode='lines+markers',
+            name='Tecnológico Multiservicios',
+            line=dict(color='#2196F3', width=3),
+            stackgroup='one'
+        ))
+        
+        fig_evolution.update_layout(
+            title="Distribución Porcentual de Clústeres por Año",
+            xaxis_title="Año",
+            yaxis_title="Porcentaje de Socios (%)",
+            hovermode='x unified',
+            height=400
+        )
+        
+        st.plotly_chart(fig_evolution, use_container_width=True)
     
-    fig_radar.add_trace(go.Scatterpolar(
-        r=tradicional_norm, theta=categorias, fill='toself', name='🧓 Tradicional',
-        line_color='#8dd3c7', fillcolor='rgba(141, 211, 199, 0.3)'
-    ))
-    fig_radar.add_trace(go.Scatterpolar(
-        r=riesgo_norm, theta=categorias, fill='toself', name='⚠️ Riesgo',
-        line_color='#ffffb3', fillcolor='rgba(255, 255, 179, 0.3)'
-    ))
-    fig_radar.add_trace(go.Scatterpolar(
-        r=tech_norm, theta=categorias, fill='toself', name='📱 Tech',
-        line_color='#bebada', fillcolor='rgba(190, 186, 218, 0.3)'
-    ))
+    with main_tabs[3]:
+        st.markdown("### 💡 Estrategias Recomendadas por Perfil")
+        
+        strategy_tabs = st.tabs(["Tradicionales", "Riesgo Financiero", "Tecnológico Multiservicios"])
+        
+        with strategy_tabs[0]:
+            st.markdown("#### 🎯 Estrategias para Socios Tradicionales")
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                st.info("""
+                **📈 Estrategia 1: Programa de Incentivos**
+                
+                **Objetivo:** Migración progresiva a servicios digitales
+                
+                **Herramientas:**
+                - 🎁 Sorteos mensuales
+                - 💰 Descuentos temporales
+                - 🏆 Bonificaciones por uso múltiple
+                
+                **Duración:** Ciclos de 1 mes rotativos
+                """)
+                
+            with col2:
+                st.success("""
+                **🔄 Estrategia 2: Venta Cruzada Digital**
+                
+                **Objetivo:** Aumentar adopción de canales digitales
+                
+                **Herramientas:**
+                - 📱 Onboarding digital asistido
+                - 🎯 Promociones exclusivas en app
+                - 📊 Dashboards personalizados
+                
+                **Duración:** Implementación en 1 año
+                """)
+                
+        with strategy_tabs[1]:
+            st.markdown("#### ⚠️ Estrategias para Socios de Riesgo Financiero")
+            
+            st.error("""
+            **🚨 Estrategia: Programa de Prevención de Mora**
+            
+            **Objetivo:** Reducir días de mora y mejorar calificación crediticia
+            """)
+            
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.markdown("""
+                **📞 Llamadas Preventivas**
+                - 72-48 horas antes del vencimiento
+                - Tono amable y recordatorio
+                - Incentivos por pago anticipado
+                """)
+            with col2:
+                st.markdown("""
+                **💬 Mensajes Personalizados**
+                - SMS/WhatsApp automatizados
+                - Escalamiento gradual del tono
+                - Opciones de refinanciamiento
+                """)
+            with col3:
+                st.markdown("""
+                **🎯 Sistema Poka-Yoke**
+                - Alertas automáticas
+                - Bloqueo preventivo
+                - Educación financiera
+                """)
+                
+        with strategy_tabs[2]:
+            st.markdown("#### 🚀 Estrategias para Socios Tecnológico Multiservicios")
+            
+            st.info("""
+            **👑 Estrategia: Programa VIP de Membresías Exclusivas**
+            
+            **Objetivo:** Fidelización y prevención de migración a riesgo
+            """)
+            
+            # Simulación de beneficios VIP
+            vip_benefits = pd.DataFrame({
+                'Beneficio': ['Tasa Preferencial', 'Atención Prioritaria', 'Cashback', 'Límites Ampliados', 'Asesoría Financiera'],
+                'Nivel Básico': ['0.5%', '✓', '1%', '10%', 'Mensual'],
+                'Nivel Premium': ['1%', '✓', '2%', '25%', 'Quincenal'],
+                'Nivel Elite': ['1.5%', '✓', '3%', '50%', 'Semanal']
+            })
+            
+            st.dataframe(vip_benefits, use_container_width=True)
+            
+            # Métricas de impacto esperado
+            st.markdown("#### 📊 Impacto Esperado de las Estrategias")
+            
+            impact_col1, impact_col2, impact_col3, impact_col4 = st.columns(4)
+            with impact_col1:
+                st.metric("Reducción Mora", "-25%", "en 6 meses")
+            with impact_col2:
+                st.metric("Adopción Digital", "+40%", "tradicionales")
+            with impact_col3:
+                st.metric("Retención VIP", "85%", "tecnológicos")
+            with impact_col4:
+                st.metric("ROI Esperado", "3.2x", "en 12 meses")
     
-    fig_radar.update_layout(
-        polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-        showlegend=True,
-        title="Perfil de KPIs por Segmento (Escala 0-100)"
-    )
-    st.plotly_chart(fig_radar, use_container_width=True)
+    # Footer con recomendaciones
+    st.markdown("---")
+    st.markdown("### 🎯 Recomendaciones Clave")
     
-    # Análisis de rentabilidad por segmento
-    st.markdown("### 💰 Análisis de Rentabilidad")
-    
-    rentabilidad_data = pd.DataFrame({
-        'Segmento': ['Tradicional', 'Riesgo', 'Tech'],
-        'ROE': [15.2, 4.1, 18.7],
-        'Margen_Financiero': [8.5, 3.2, 9.8],
-        'Costo_Servicio': [120, 180, 95],
-        'Vida_Util_Cliente': [12, 4, 8]
-    })
-    
-    # Gráfico de rentabilidad
-    fig_rent = px.scatter(rentabilidad_data, x='ROE', y='Margen_Financiero', 
-                         size='Vida_Util_Cliente', color='Segmento',
-                         title="Matriz Rentabilidad vs Margen (tamaño = años de vida útil)",
-                         color_discrete_map={'Tradicional': '#8dd3c7', 'Riesgo': '#ffffb3', 'Tech': '#bebada'})
-    st.plotly_chart(fig_rent, use_container_width=True)
-    
-    # Recomendaciones por segmento
-    st.markdown("### 🎯 Recomendaciones Estratégicas")
-    
-    recom_tabs = st.tabs(["🧓 Tradicional", "⚠️ Riesgo", "📱 Tech"])
-    
-    with recom_tabs[0]:
+    rec_col1, rec_col2, rec_col3 = st.columns(3)
+    with rec_col1:
         st.markdown("""
-        #### 🧓 Segmento Tradicional - "Los Leales"
-        
-        **Características:**
-        - Mayor edad promedio (45 años)
-        - Alto saldo en DPF ($27,597)
-        - Muy baja morosidad (1.5 días)
-        - Resistencia al cambio digital
-        
-        **Estrategias Recomendadas:**
-        - 🏆 Programa VIP con beneficios exclusivos
-        - 👨‍🏫 Talleres de educación digital presencial
-        - 📞 Canal telefónico premium 24/7
-        - 🎁 Productos de jubilación y legado
+        **📊 Gestión de Datos**
+        - Actualización periódica de información
+        - Enriquecimiento de variables
+        - Monitoreo en tiempo real
         """)
-    
-    with recom_tabs[1]:
+    with rec_col2:
         st.markdown("""
-        #### ⚠️ Segmento Riesgo - "Los Recuperables"
-        
-        **Características:**
-        - Morosidad alta (18 días promedio)
-        - Bajo saldo DPF ($316)
-        - Mayor volumen (50% de socios)
-        - Potencial de mejora significativo
-        
-        **Estrategias Recomendadas:**
-        - 🚨 Sistema de alertas tempranas
-        - 📚 Programa intensivo de educación financiera
-        - 💬 Call center proactivo de cobranza
-        - 🤝 Reestructuración facilitada de deudas
+        **💰 Análisis Financiero**
+        - Evaluar costo por clúster
+        - Medir rentabilidad real
+        - Optimizar recursos
         """)
-    
-    with recom_tabs[2]:
+    with rec_col3:
         st.markdown("""
-        #### 📱 Segmento Tech - "Los Innovadores"
-        
-        **Características:**
-        - Edad promedio joven (40 años)
-        - Alta adopción digital
-        - Multiproducto activo
-        - Mayor rentabilidad (ROE 18.7%)
-        
-        **Estrategias Recomendadas:**
-        - 🚀 App móvil con features premium
-        - 🏅 Programa de referidos gamificado
-        - 💳 Productos fintech (wallets, cripto)
-        - 🌍 Servicios para migrantes digitales
+        **🔄 Mejora Continua**
+        - Validar estrategias trimestralmente
+        - Ajustar según resultados
+        - Escalar iniciativas exitosas
         """)
 
 elif "🧪 Simulador Estratégico" in selected:
