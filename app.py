@@ -103,8 +103,8 @@ with st.sidebar:
     selected = option_menu(
         menu_title="📊 Panel de Control",
         options=[
-            "🚀 Hook y Oportunidad",
             "🏦 Quiénes Somos",
+            "🚀 Hook y Oportunidad",            
             "🔬 Metodología",
             "🎯 Perfilamientos",            
             "🏁 Plan de Acción"
