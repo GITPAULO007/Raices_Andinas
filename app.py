@@ -440,6 +440,10 @@ elif "🏦 Quiénes Somos" in selected:
         st.metric("Calificación de Riesgo", "AA+", "Perspectiva estable")
 
     st.markdown("<br>", unsafe_allow_html=True)
+
+    # Análisis FODA visual mejorado
+    st.markdown("### 🔍 Análisis Estratégico FODA")
+    foda_col1, foda_col2 = st.columns(2)
     
     with foda_col1:
         st.markdown("""
