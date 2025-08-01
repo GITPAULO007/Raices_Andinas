@@ -425,10 +425,21 @@ elif "🏦 Quiénes Somos" in selected:
     with col3:
         st.metric("Oficinas", "70", "Cerca de ti")
         st.metric("Activos", "1,958M", "Solvencia")
-       
-    # Análisis FODA visual mejorado
-    st.markdown("### 🔍 Análisis Estratégico FODA")
-    foda_col1, foda_col2 = st.columns(2)
+
+    # Añadir después de las métricas existentes y antes del análisis FODA
+    st.markdown("### 📊 Indicadores Financieros")
+    ind_col1, ind_col2, ind_col3, ind_col4 = st.columns(4)
+
+    with ind_col1:
+        st.metric("Índice de Morosidad", "6.17%", "Gestión eficiente")
+    with ind_col2:
+        st.metric("Cobertura Cartera Riesgo", "200.04%", "Sólida cobertura")  
+    with ind_col3:
+        st.metric("Solvencia", "22.54%", "Base patrimonial sólida")
+    with ind_col4:
+        st.metric("Calificación de Riesgo", "AA+", "Perspectiva estable")
+
+    st.markdown("<br>", unsafe_allow_html=True)
     
     with foda_col1:
         st.markdown("""
@@ -475,27 +486,7 @@ elif "🏦 Quiénes Somos" in selected:
             </ul>
         </div>
         """, unsafe_allow_html=True)
-
-    # Timeline de crecimiento
-    st.markdown("### 📅 Nuestra Evolución")
-    timeline_data = [
-        {"año": "1996", "hito": "Fundación en Cuenca", "impacto": "500 socios fundadores"},
-        {"año": "2005", "hito": "Expansión nacional", "impacto": "7 provincias, 5,000 socios"},
-        {"año": "2015", "hito": "Era digital", "impacto": "Banca online, 25,000 socios"},
-        {"año": "2020", "hito": "Pandemia resiliente", "impacto": "Crecimiento del 15%"},
-        {"año": "2024", "hito": "Presente", "impacto": "48,127 socios, $85M patrimonio"},
-        {"año": "2025", "hito": "Futuro: Segmentación IA", "impacto": "Meta: 60,000 socios"}
-    ]
     
-    for item in timeline_data:
-        color = "#4ECDC4" if item["año"] != "2025" else "#FF6B6B"
-        st.markdown(f"""
-        <div class="timeline-item" style="border-left-color: {color}">
-            <strong>{item['año']}</strong>: {item['hito']}<br>
-            <small>{item['impacto']}</small>
-        </div>
-        """, unsafe_allow_html=True)
-
 elif "🔬 Metodología" in selected:
     st.markdown('<h1 class="main-header">🔬 Metodología de Investigación</h1>', unsafe_allow_html=True)
     
