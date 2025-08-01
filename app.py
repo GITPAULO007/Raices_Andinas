@@ -347,40 +347,6 @@ if "🚀 Hook y Oportunidad" in selected:
     )
     st.plotly_chart(fig, use_container_width=True)
 
-    # La oportunidad dorada específica
-    st.markdown('''
-    <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); padding: 2.5rem; border-radius: 20px; margin: 2rem 0; text-align: center; border: 3px solid #FF8C00; box-shadow: 0 12px 24px rgba(255,165,0,0.4);">
-        <h2 style="color: #8B4513; font-size: 2.8rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
-            🎯 OPORTUNIDAD RAÍCES ANDINAS
-        </h2>
-        <div style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 15px; margin: 1rem 0;">
-            <p style="color: #2c3e50; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600;">
-                Si RAÍCES ANDINAS captura solo el <strong style="color: #e74c3c;">3%</strong> de las remesas de Azuay:
-            </p>
-            <h1 style="color: #27ae60; font-size: 3.5rem; margin: 1rem 0; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
-                +$6.24M
-            </h1>
-            <p style="color: #8B4513; font-size: 1.2rem; font-weight: 600;">
-                trimestrales en nuevos depósitos
-            </p>
-        </div>
-        <div style="display: flex; justify-content: space-around; margin-top: 2rem;">
-            <div>
-                <h3 style="color: #2c3e50; font-size: 1.5rem; margin: 0;">630</h3>
-                <p style="color: #8B4513; margin: 0;">Nuevos Socios</p>
-            </div>
-            <div>
-                <h3 style="color: #2c3e50; font-size: 1.5rem; margin: 0;">$24.96M</h3>
-                <p style="color: #8B4513; margin: 0;">Potencial Anual</p>
-            </div>
-            <div>
-                <h3 style="color: #2c3e50; font-size: 1.5rem; margin: 0;">40%</h3>
-                <p style="color: #8B4513; margin: 0;">Crecimiento Cartera</p>
-            </div>
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
-
     # Insights estratégicos
     col_insight1, col_insight2 = st.columns(2)
     
