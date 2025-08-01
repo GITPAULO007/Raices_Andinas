@@ -1628,12 +1628,7 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
                                          '$27,802.60', '10.2 días', 'A-2', '48% → Riesgo']
         })
         
-        st.dataframe(
-            detailed_metrics.style.apply(lambda x: ['background-color: #e8f5e9' if 'Tradicionales' in x.name 
-                                                   else 'background-color: #ffebee' if 'Riesgo' in x.name 
-                                                   else 'background-color: #e3f2fd' for i in x], axis=1),
-            use_container_width=True
-        )
+        st.dataframe(detailed_metrics, use_container_width=True)
     
     with tabs[3]:
         st.markdown("## 🚀 Roadmap de Implementación")
