@@ -392,28 +392,28 @@ if "🚀 Hook y Oportunidad" in selected:
     
     with col_insight1:
         st.markdown('''
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 15px; height: 200px;">
-            <h4 style="color: white; margin-bottom: 1rem;">💡 INSIGHT DEMOGRÁFICO</h4>
-            <p style="color: #e8eaf6; font-size: 1rem; line-height: 1.6;">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+            <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">💡 INSIGHT DEMOGRÁFICO</h4>
+            <p style="color: #e8eaf6; font-size: 1.1rem; line-height: 1.7;">
                 Los socios migrantes de RAÍCES (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
                 superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
             </p>
-            <div style="text-align: right; margin-top: 0.5rem;">
-                <small style="color: #c8d0ff; font-size: 0.7rem;">Fuente: Pew Research Center</small>
+            <div style="text-align: right; margin-top: 1rem;">
+                <small style="color: #c8d0ff; font-size: 0.8rem;">Fuente: Pew Research Center</small>
             </div>
         </div>
         ''', unsafe_allow_html=True)
     
     with col_insight2:
         st.markdown('''
-        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 1.5rem; border-radius: 15px; height: 200px;">
-            <h4 style="color: #2c3e50; margin-bottom: 1rem;">🎯 VENTAJA GEOGRÁFICA</h4>
-            <p style="color: #2c3e50; font-size: 1rem; line-height: 1.6;">
+        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+            <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.3rem;">🎯 VENTAJA GEOGRÁFICA</h4>
+            <p style="color: #2c3e50; font-size: 1.1rem; line-height: 1.7;">
                 El 59% de ecuatorianos en EE.UU. vive en NY y NJ (~550,000 personas). RAÍCES puede crear <strong>alianzas estratégicas</strong> 
                 en estas zonas para capturar remesas directamente desde el origen, reduciendo costos de intermediación.
             </p>
-            <div style="text-align: right; margin-top: 0.5rem;">
-                <small style="color: #999; font-size: 0.7rem;">Fuente: Migration Policy Institute</small>
+            <div style="text-align: right; margin-top: 1rem;">
+                <small style="color: #999; font-size: 0.8rem;">Fuente: Migration Policy Institute</small>
             </div>
         </div>
         ''', unsafe_allow_html=True)
