@@ -37,7 +37,7 @@ st.markdown("""
         box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         margin: 10px;
     }
-    
+
     .opportunity-card {
         background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         padding: 20px;
@@ -284,18 +284,20 @@ if "🚀 Hook y Oportunidad" in selected:
             </div>
             <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
             <div>
-                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.291B</h4>
+                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.191B</h4>
                 <p style="color: white; margin: 0;">🦐 Camarón</p>
             </div>
             <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
             <div>
-                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.853B</h4>
+                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.600B</h4>
                 <p style="color: white; margin: 0;">🍌 Banano</p>
             </div>
         </div>
         <p style="color: #e8eaf6; text-align: center; margin-top: 1rem; font-style: italic;">
             Los migrantes son el motor económico #1 del país
         </p>
+        <div style="text-align: right; margin-top: 0.3rem;">
+        <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador</small>
     </div>
     ''', unsafe_allow_html=True)
 
