@@ -460,20 +460,20 @@ elif "🏦 Quiénes Somos" in selected:
         <div style='background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
             <h4>💪 FORTALEZAS</h4>
             <ul>
-                <li>Capital sólido ($225M patrimonio)</li>
-                <li>Base migratoria fiel (15,000+ socios)</li>
-                <li>Tecnología en expansión digital</li>
-                <li>Presencia territorial consolidada</li>
+                <li>Foco territorial en zonas de migración.</li>
+                <li>Modelo cooperativo participativo.</li>
+                <li>Solidez financiera (buen rating, baja mora).</li>
+                <li>Infraestructura y tecnología en mejora.</li>
             </ul>
         </div>
         
         <div style='background: linear-gradient(135deg, #cce5ff 0%, #b3d9ff 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
             <h4>🌟 OPORTUNIDADES</h4>
             <ul>
-                <li>Remesas crecientes (+8.1% anual)</li>
-                <li>Alianzas con fintech globales</li>
-                <li>Mercado digital subutilizado</li>
-                <li>Nuevos productos migratorios</li>
+                <li>Alto volumen de remesas hacia Ecuador.</li>
+                <li>Interés de migrantes por invertir en el país.</li>
+                <li>Avance tecnológico para crear nuevos productos.</li>
+                <li>Demanda de educación financiera para migrantes.</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -483,20 +483,20 @@ elif "🏦 Quiénes Somos" in selected:
         <div style='background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
             <h4>⚠️ DEBILIDADES</h4>
             <ul>
-                <li>Adopción digital lenta (45% vs 70% mercado)</li>
-                <li>Canales móviles subutilizados</li>
-                <li>Segmentación básica de clientes</li>
-                <li>Productos poco personalizados</li>
+                <li>Segmentación y marketing deficientes.</li>
+                <li>Personal no capacitado para la atención a migrantes.</li>
+                <li>Sin presencia física en el extranjero.</li>
+                <li>Lenta adaptación tecnológica y bajo uso de datos.</li>
             </ul>
         </div>
         
         <div style='background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
             <h4>🚨 AMENAZAS</h4>
             <ul>
-                <li>Fintech agresivas (Nequi, Kushki)</li>
-                <li>Bancos con mejor UX digital</li>
-                <li>Migración de clientes jóvenes</li>
-                <li>Regulación cambiante</li>
+                <li>Políticas migratorias más restrictivas.</li>
+                <li>Cambios en la regulación financiera (SEPS).</li>
+                <li>Fuerte competencia de las Fintech.</li>
+                <li>Inestabilidad económica (inflación, tipo de cambio).</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
