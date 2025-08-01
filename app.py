@@ -88,7 +88,7 @@ st.markdown("""
         margin: 20px 0;
     }
 </style>
-""", unsafe_allow_html=True)
+""")
 
 # ---------- SIDEBAR MEJORADO ----------
 with st.sidebar:
