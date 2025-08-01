@@ -389,7 +389,7 @@ if "🚀 Hook y Oportunidad" in selected:
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
             <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">💡 INSIGHT DEMOGRÁFICO</h4>
             <p style="color: #e8eaf6; font-size: 1.1rem; line-height: 1.7;">
-                Los socios migrantes de RAÍCES (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
+                Los socios migrantes de RAÍCES ANDINAS (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
                 superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
             </p>
             <div style="text-align: right; margin-top: 1rem;">
