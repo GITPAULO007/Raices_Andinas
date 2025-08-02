@@ -378,22 +378,65 @@ if "🚀 Hook y Oportunidad" in selected:
 
     # ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
     st.markdown('''
-    <div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 2rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
-        <h3 style="color: #2c3e50; font-size: 2rem; margin-bottom: 1rem;">
-            📌 ¿POR QUÉ ESTE PROYECTO?
-        </h3>
-        <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
-            Miles de migrantes sostienen nuestras economías locales con sus remesas. Aunque tenemos millones de registros sobre ellos, aún no sabemos con certeza quiénes son, qué perfil tienen ni cómo evolucionan.
-        </p>
-        <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
-            Por eso, este proyecto busca segmentarlos para identificarlos, entenderlos y atenderlos mejor.
-        </p>
-        <div style="background: rgba(0, 128, 128, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #008080;">
-            <p style="color: #008080; font-size: 1.4rem; margin: 0; font-weight: bold;">
-                ¿Qué tipo de socios migrantes tenemos y cómo podemos atenderlos mejor?
-            </p>
-        </div>
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: 20px; text-align: center; margin: 3rem 0; box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;">
+       <!-- Elementos decorativos de fondo -->
+       <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%; opacity: 0.6;"></div>
+       <div style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%; opacity: 0.4;"></div>
+   
+       <div style="position: relative; z-index: 2;">
+           <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+               📌 ¿POR QUÉ ESTE PROYECTO?
+           </h2>
+       
+           <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 15px; margin: 2rem 0; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+               <p style="color: #f8f9ff; font-size: 1.4rem; margin-bottom: 1.5rem; line-height: 1.8; font-weight: 300;">
+                   Miles de migrantes desde <strong style="color: #FFD700;">EE.UU.</strong> sostienen nuestras economías locales con sus remesas. Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, <strong style="color: #FFD700;">es una oportunidad estratégica.</strong>
+               </p>
+               
+               <div style="display: flex; align-items: center; justify-content: center; margin: 2rem 0;">
+                   <div style="height: 2px; flex: 1; background: linear-gradient(90deg, transparent, #FFD700, transparent);"></div>
+                   <div style="margin: 0 1rem; color: #FFD700; font-size: 1.5rem;">✨</div>
+                   <div style="height: 2px; flex: 1; background: linear-gradient(90deg, transparent, #FFD700, transparent);"></div>
+               </div>
+           
+               <p style="color: #f8f9ff; font-size: 1.3rem; margin-bottom: 2rem; line-height: 1.7; font-weight: 400;">
+                   Este proyecto identifica <strong style="color: #FFD700;">tipologías claras</strong> de socios migrantes, reconociendo patrones clave en su comportamiento transaccional.
+               </p>
+           </div>
+       
+           <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA726 100%); padding: 1.5rem; border-radius: 15px; margin-top: 2rem; transform: perspective(1000px) rotateX(5deg); box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);">
+               <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+                   <span style="font-size: 1.5rem; margin-right: 0.5rem;">🔹</span>
+                   <strong style="color: #2c3e50; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">PREGUNTA CLAVE</strong>
+               </div>
+               <p style="color: #2c3e50; font-size: 1.4rem; margin: 0; font-weight: 700; line-height: 1.5;">
+                   ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
+               </p>
+           </div>
+           
+           <!-- Indicador de llamada a la acción -->
+           <div style="margin-top: 2rem; animation: bounce 2s infinite;">
+               <div style="color: rgba(255,255,255,0.8); font-size: 2rem;">⬇️</div>
+               <p style="color: rgba(255,255,255,0.9); font-size: 1rem; margin: 0.5rem 0; font-weight: 500;">
+                   Descubre los hallazgos a continuación
+               </p>
+           </div>
+       </div>
     </div>
+
+    <style>
+    @keyframes bounce {
+       0%, 20%, 50%, 80%, 100% {
+           transform: translateY(0);
+       }
+       40% {
+           transform: translateY(-10px);
+       }
+       60% {
+           transform: translateY(-5px);
+       }
+    }
+    </style>
     ''', unsafe_allow_html=True)
 
     # Call to action final
