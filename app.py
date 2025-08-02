@@ -87,6 +87,35 @@ st.markdown("""
         flex-wrap: wrap;
         margin: 20px 0;
     }
+
+    .stats-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px 0;
+    }
+    
+    /* Hacer las pestañas de metodología más grandes */
+    .stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+    }
+    
+    .stTabs [data-baseweb="tab-list"] button {
+        height: 65px !important;
+        padding: 15px 25px !important;
+        border-radius: 10px !important;
+    }
+    
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 12px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Hacer el texto del contenido más grande también */
+    .stTabs [data-baseweb="tab-panel"] {
+        font-size: 1.1rem !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
