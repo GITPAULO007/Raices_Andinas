@@ -376,6 +376,22 @@ if "🚀 Hook y Oportunidad" in selected:
         </div>
         ''', unsafe_allow_html=True)
 
+    # PORQUE ESTE PROYECTO
+
+    with col_insight3:
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+        <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.5rem;">📌 ¿POR QUÉ ESTE PROYECTO?</h4>
+        <p style="color: #2c3e50; font-size: 1.2rem; line-height: 1.7;">
+            Miles de migrantes sostienen nuestras economías locales con sus remesas. Aunque tenemos millones de registros sobre ellos, aún no sabemos con certeza quiénes son, qué perfil tienen ni cómo evolucionan.<br><br>
+            Por eso, este proyecto busca segmentarlos para identificarlos, entenderlos y atenderlos mejor.
+        </p>
+        <div style="margin-top: 1rem; text-align: center;">
+            <strong style="color: #008080; font-size: 1.3rem;">¿Qué tipo de socios migrantes tenemos y cómo podemos atenderlos mejor?</strong>
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
+    
     # Call to action final
     st.markdown('''
     <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
