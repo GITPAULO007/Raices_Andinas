@@ -383,14 +383,14 @@ if "🚀 Hook y Oportunidad" in selected:
             📌 ¿POR QUÉ ESTE PROYECTO?
         </h3>
         <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
-            Miles de migrantes sostienen nuestras economías locales con sus remesas. Aunque tenemos millones de registros sobre ellos, aún no sabemos con certeza quiénes son, qué perfil tienen ni cómo evolucionan.
+            Miles de migrantes desde EE.UU. sostienen nuestras economías locales con sus remesas. Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, es una oportunidad estratégica.
         </p>
         <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
-            Por eso, este proyecto busca segmentarlos para identificarlos, entenderlos y atenderlos mejor.
+            Este proyecto identifica tipologías claras de socios migrantes, reconociendo patrones clave en su comportamiento transaccional.
         </p>
         <div style="background: rgba(0, 128, 128, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #008080;">
             <p style="color: #008080; font-size: 1.4rem; margin: 0; font-weight: bold;">
-                ¿Qué tipo de socios migrantes tenemos y cómo podemos atenderlos mejor?
+                ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
             </p>
         </div>
     </div>
