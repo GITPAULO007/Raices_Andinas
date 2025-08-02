@@ -549,7 +549,7 @@ elif "🔬 Metodología" in selected:
     # Explicación del enfoque metodológico
     st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos")
     
-    metodologia_tabs = st.tabs(["🎯 Enfoque", "📋 Datos", "⚙️ Procesamiento", "🔍 Modelo", "📊 Validación"])
+    metodologia_tabs = st.tabs(["🎯 Enfoque", "📋 Datos", "⚙️ Procesamiento", "🔍 Modelo", "📊 Validación", "👥 Clúster"])
     
     with metodologia_tabs[0]:
         st.markdown("""
@@ -819,6 +819,27 @@ elif "🔬 Metodología" in selected:
         - **⚡ Dask:** Manejo eficiente de big data
         - **📈 Power BI:** Visualización exploratoria inicial
         - **📓 Jupyter Notebook:** Entorno de desarrollo analítico
+        """)
+
+    with metodologia_tabs[5]:
+        st.markdown("### 👥 Visualización de Clústeres")
+        
+        try:
+            cluster_img = Image.open("cluster.png")
+            st.image(cluster_img, use_container_width=True, caption="Distribución de Clústeres - Análisis PCA")
+        except:
+            st.error("📷 Imagen cluster.png no encontrada. Asegúrate de que el archivo esté en el repositorio.")
+            st.info("💡 La imagen debería mostrar la visualización de los 3 clústeres identificados en el espacio PCA.")
+        
+        st.markdown("""
+        **📊 Interpretación de la Visualización:**
+        
+        Esta gráfica muestra la distribución espacial de los tres clústeres identificados mediante el algoritmo K-Means 
+        después de aplicar PCA (Análisis de Componentes Principales) para reducir la dimensionalidad de los datos.
+        
+        - **🟢 Clúster 0:** Socios Tradicionales  
+        - **🔴 Clúster 1:** Riesgo Financiero
+        - **🔵 Clúster 2:** Tecnológico Multiservicios
         """)
 
 elif "🎯 Perfilamientos" in selected:
