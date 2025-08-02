@@ -121,12 +121,7 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#667eea"},
         }
     )
-
-    st.markdown("---")
-
-    }
-    )
-
+    
     # POPUP INFORMATIVO DEL PROYECTO
     st.markdown("<br>", unsafe_allow_html=True)
     if st.sidebar.button("ℹ️ Información del Proyecto", use_container_width=True):
