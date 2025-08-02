@@ -1033,8 +1033,10 @@ elif "🎯 Perfilamientos" in selected:
             y=['Tradicionales', 'Riesgo Financiero', 'Tecnológico'],
             text=[[f'{v:.0%}' for v in row] for row in matrix_values],
             texttemplate='%{text}',
-            colorscale='RdYlBu_r',
-            showscale=True
+            colorscale=[[0, '#f0f0f0'], [0.2, '#ffcccc'], [0.5, '#ff6666'], [0.8, '#ff0000'], [1, '#990000']],
+            showscale=True,
+            zmin=0,
+            zmax=1
         ))
         
         fig_heatmap.update_layout(
