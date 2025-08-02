@@ -133,12 +133,12 @@ with st.sidebar:
             </h3>
             <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 12px;">
                 <h4 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; text-align: center;">👥 EQUIPO DE INVESTIGACIÓN</h4>
-                <ul style="color: white; font-size: 1.1rem; margin: 0; padding-left: 0; list-style: none; line-height: 2;">
-                    <li>🔹 <strong>Ariana Abad</strong></li>
-                    <li>🔹 <strong>David Alvarado</strong></li>
-                    <li>🔹 <strong>Grace Arce</strong></li>
-                    <li>🔹 <strong>Paúl Guichay</strong></li>
-                    <li>🔹 <strong>Alejandra Zambrano</strong></li>
+                <ul style="color: white; font-size: 1.1rem; margin: 0; padding-left: 1rem; list-style: none; line-height: 2; text-align: left;">
+                    <li style="text-align: left;">🔹 <strong>Ariana Abad</strong></li>
+                    <li style="text-align: left;">🔹 <strong>David Alvarado</strong></li>
+                    <li style="text-align: left;">🔹 <strong>Grace Arce</strong></li>
+                    <li style="text-align: left;">🔹 <strong>Paúl Guichay</strong></li>
+                    <li style="text-align: left;">🔹 <strong>Alejandra Zambrano</strong></li>
                 </ul>
             </div>
         </div>
