@@ -578,7 +578,7 @@ elif "🔬 Metodología" in selected:
     # Explicación del enfoque metodológico
     st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos")
     
-    metodologia_tabs = st.tabs(["🎯 Enfoque", "📋 Datos", "⚙️ Procesamiento", "🔍 Modelo", "📊 Validación", "👥 Clúster"])
+    metodologia_tabs = st.tabs(["1️⃣ 🎯Enfoque", "2️⃣ 📋Datos", "3️⃣ ⚙️Procesamiento", "4️⃣ 🔍Modelo", "5️⃣ 📊Validación", "6️⃣ 👥Clúster"])
     
     with metodologia_tabs[0]:
         st.markdown("""
