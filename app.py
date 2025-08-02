@@ -673,11 +673,113 @@ elif "🔬 Metodología" in selected:
         """)
     
     with metodologia_tabs[4]:
-        st.markdown("""
-        #### 📊 Determinación del Número Óptimo de Clústeres
+    st.markdown("### 🔬 Metodología de Segmentación")
+    
+    method_col1, method_col2 = st.columns(2)
+    
+    with method_col1:
+        st.info("""
+        **📊 Proceso de Análisis en 2 Etapas:**
         
-        **Criterios de Validación Aplicados:**
+        1. **PCA (Análisis de Componentes Principales)**
+           - Reducción de dimensionalidad
+           - Eliminación de multicolinealidad
+           - Identificación de patrones latentes
+        
+        2. **K-Means Clustering**
+           - Segmentación no supervisada
+           - Identificación de grupos homogéneos
+           - K=3 clústeres óptimos
         """)
+        
+    with method_col2:
+        # Visualización del proceso
+        st.markdown("**🎯 Determinación del Número Óptimo de Clústeres**")
+        
+        # Simulación del método del codo
+        k_values = list(range(2, 11))
+        sse_values = [3.0, 2.8, 2.4, 2.35, 2.3, 2.25, 2.2, 2.15, 2.1]
+        
+        fig_elbow = go.Figure()
+        fig_elbow.add_trace(go.Scatter(
+            x=k_values, y=sse_values,
+            mode='lines+markers',
+            name='SSE',
+            line=dict(color='#2196F3', width=3),
+            marker=dict(size=10)
+        ))
+        
+        # Marcar el punto óptimo
+        fig_elbow.add_trace(go.Scatter(
+            x=[3], y=[2.4],
+            mode='markers',
+            name='K Óptimo',
+            marker=dict(size=15, color='#FF4444', symbol='star')
+        ))
+        
+        fig_elbow.update_layout(
+            title="Método del Codo",
+            xaxis_title="Número de Clústeres (K)",
+            yaxis_title="SSE (Inercia)",
+            height=300,
+            showlegend=True
+        )
+        
+        st.plotly_chart(fig_elbow, use_container_width=True)
+        
+        # Métricas de validación
+        val_col1, val_col2 = st.columns(2)
+        with val_col1:
+            st.metric("Coeficiente Silueta", "0.40", "Separación aceptable")
+        with val_col2:
+            st.metric("Reducción Inercia", "65%", "hasta K=3")
+    
+    # CONTENIDO ORIGINAL QUE SIGUE
+    st.markdown("""
+    #### 📊 Determinación del Número Óptimo de Clústeres
+    
+    **Criterios de Validación Aplicados:**
+    """)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""
+        **📈 Método del Codo**
+        - Análisis de inercia (SSE)
+        - Identificación del punto de inflexión
+        - Equilibrio complejidad-interpretabilidad
+        """)
+    with col2:
+        st.markdown("""
+        **🎯 Coeficiente de Silueta**
+        - Evaluación de cohesión interna
+        - Medición de separación entre grupos
+        - Validación de calidad del clustering
+        """)
+    
+    # Simulación de métricas de validación
+    st.markdown("##### 🏆 Resultados de Validación")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("K Óptimo", "3", "clústeres seleccionados")
+    with col2:
+        st.metric("Coeficiente Silueta", "0.40", "separación aceptable")
+    with col3:
+        st.metric("Reducción Inercia", "65%", "hasta K=3")
+    
+    st.success("✅ **Decisión Final:** Se seleccionó K=3 como equilibrio entre robustez estadística y utilidad práctica para el análisis de perfiles.")
+    
+    st.markdown("""
+    ##### 🛠️ Herramientas Tecnológicas Utilizadas
+    
+    **Stack Tecnológico:**
+    - **🐍 Python:** Procesamiento y análisis de datos
+    - **📊 Pandas/NumPy:** Manipulación de grandes volúmenes de datos  
+    - **🔬 Scikit-Learn:** Implementación de PCA y K-Means
+    - **⚡ Dask:** Manejo eficiente de big data
+    - **📈 Power BI:** Visualización exploratoria inicial
+    - **📓 Jupyter Notebook:** Entorno de desarrollo analítico
+    """)
         
         col1, col2 = st.columns(2)
         with col1:
@@ -739,69 +841,7 @@ elif "🎯 Perfilamientos" in selected:
     
     # Tabs principales
     main_tabs = st.tabs(["🔍 Metodología", "👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
-    
-    with main_tabs[0]:
-        st.markdown("### 🔬 Metodología de Segmentación")
-        
-        method_col1, method_col2 = st.columns(2)
-        
-        with method_col1:
-            st.info("""
-            **📊 Proceso de Análisis en 2 Etapas:**
-            
-            1. **PCA (Análisis de Componentes Principales)**
-               - Reducción de dimensionalidad
-               - Eliminación de multicolinealidad
-               - Identificación de patrones latentes
-            
-            2. **K-Means Clustering**
-               - Segmentación no supervisada
-               - Identificación de grupos homogéneos
-               - K=3 clústeres óptimos
-            """)
-            
-        with method_col2:
-            # Visualización del proceso
-            st.markdown("**🎯 Determinación del Número Óptimo de Clústeres**")
-            
-            # Simulación del método del codo
-            k_values = list(range(2, 11))
-            sse_values = [3.0, 2.8, 2.4, 2.35, 2.3, 2.25, 2.2, 2.15, 2.1]
-            
-            fig_elbow = go.Figure()
-            fig_elbow.add_trace(go.Scatter(
-                x=k_values, y=sse_values,
-                mode='lines+markers',
-                name='SSE',
-                line=dict(color='#2196F3', width=3),
-                marker=dict(size=10)
-            ))
-            
-            # Marcar el punto óptimo
-            fig_elbow.add_trace(go.Scatter(
-                x=[3], y=[2.4],
-                mode='markers',
-                name='K Óptimo',
-                marker=dict(size=15, color='#FF4444', symbol='star')
-            ))
-            
-            fig_elbow.update_layout(
-                title="Método del Codo",
-                xaxis_title="Número de Clústeres (K)",
-                yaxis_title="SSE (Inercia)",
-                height=300,
-                showlegend=True
-            )
-            
-            st.plotly_chart(fig_elbow, use_container_width=True)
-            
-            # Métricas de validación
-            val_col1, val_col2 = st.columns(2)
-            with val_col1:
-                st.metric("Coeficiente Silueta", "0.40", "Separación aceptable")
-            with val_col2:
-                st.metric("Reducción Inercia", "65%", "hasta K=3")
-    
+          
     with main_tabs[1]:
         st.markdown("### 👥 Tres Perfiles de Socios Identificados")
         
