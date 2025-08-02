@@ -123,6 +123,33 @@ with st.sidebar:
     )
 
     st.markdown("---")
+
+    }
+    )
+
+    # POPUP INFORMATIVO DEL PROYECTO
+    st.markdown("<br>", unsafe_allow_html=True)
+    if st.sidebar.button("ℹ️ Información del Proyecto", use_container_width=True):
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; color: white; margin: 1.5rem 0; box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);">
+            <h2 style="color: white; text-align: center; margin-bottom: 1.5rem; font-size: 1.8rem;">📊 TIPOLOGÍA DE SOCIOS</h2>
+            <h3 style="color: #FFD700; text-align: center; font-size: 1.4rem; margin-bottom: 1.5rem;">
+                Cooperativa de Ahorro y Crédito<br><strong>RAÍCES ANDINAS</strong>
+            </h3>
+            <div style="background: rgba(255,255,255,0.15); padding: 1.5rem; border-radius: 12px;">
+                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; text-align: center;">👥 EQUIPO DE INVESTIGACIÓN</h4>
+                <ul style="color: white; font-size: 1.1rem; margin: 0; padding-left: 0; list-style: none; line-height: 2;">
+                    <li>🔹 <strong>Ariana Abad</strong></li>
+                    <li>🔹 <strong>David Alvarado</strong></li>
+                    <li>🔹 <strong>Grace Arce</strong></li>
+                    <li>🔹 <strong>Paúl Guichay</strong></li>
+                    <li>🔹 <strong>Alejandra Zambrano</strong></li>
+                </ul>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
     
     # Métricas en tiempo real en sidebar
     st.markdown("### 📈 Dashboard en Vivo")
