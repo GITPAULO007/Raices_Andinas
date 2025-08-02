@@ -202,13 +202,13 @@ if "🚀 Hook y Oportunidad" in selected:
     # Hook emocional y datos impactantes
     st.markdown('''
     <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; border-left: 6px solid #ff6b6b;">
-        <h2 style="color: #2c3e50; font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">
+        <h2 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">
             💰 LA REALIDAD QUE CAMBIA TODO
         </h2>
-        <div style="font-size: 1.3rem; color: #2c3e50; line-height: 1.8; text-align: center;">
+        <div style="font-size: 1.4rem; color: #2c3e50; line-height: 1.8; text-align: center;">
             <strong>Cada 24 horas, los ecuatorianos en EE.UU. envían más de <span style="color:#e74c3c;">US$18 millones</span> a casa.</strong><br>
-            <span style="font-size: 1.1rem; color: #e74c3c;">Eso es más que el PIB diario de varias provincias ecuatorianas.</span><br><br>
-            <em style="font-size: 1.2rem; color: #8e44ad;">"No son solo números... son cientos de miles de ecuatorianos construyendo el futuro desde la distancia"</em>
+            <span style="font-size: 1.2rem; color: #e74c3c;">Eso es más que el PIB diario de varias provincias ecuatorianas.</span><br><br>
+            <em style="font-size: 1.3rem; color: #8e44ad;">"No son solo números... son cientos de miles de ecuatorianos construyendo el futuro desde la distancia"</em>
         </div>
         <div style="text-align: right; margin-top: 0.8rem;">
             <small style="color: #bdbdbd;">Fuente: Banco Central del Ecuador (Q1 2025)</small>
@@ -282,26 +282,26 @@ if "🚀 Hook y Oportunidad" in selected:
     # Comparativa impactante
     st.markdown('''
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-        <h3 style="color: white; text-align: center; font-size: 1.8rem; margin-bottom: 1.5rem;">
+        <h3 style="color: white; text-align: center; font-size: 2rem; margin-bottom: 1.5rem;">
             🥊 REMESAS vs. EXPORTACIONES TRADICIONALES
         </h3>
         <div style="display: flex; justify-content: space-around; text-align: center;">
             <div>
-                <h4 style="color: #4CAF50; font-size: 1.5rem; margin: 0;">$5.491M</h4>
-                <p style="color: white; margin: 0;">💸 REMESAS</p>
+                <h4 style="color: #4CAF50; font-size: 1.8rem; margin: 0;">$5.491M</h4>
+                <p style="color: white; margin: 0; font-size: 1.2rem;">💸 REMESAS</p>
             </div>
             <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
             <div>
-                <h4 style="color: #FF9800; font-size: 1.2rem; margin: 0;">$5.191M</h4>
-                <p style="color: white; margin: 0;">🦐 Camarón</p>
+                <h4 style="color: #FF9800; font-size: 1.5rem; margin: 0;">$5.191M</h4>
+                <p style="color: white; margin: 0; font-size: 1.2rem;">🦐 Camarón</p>
             </div>
             <div style="color: white; font-size: 2rem; align-self: center;">VS</div>
             <div>
-                <h4 style="color: #FFC107; font-size: 1.2rem; margin: 0;">$3.600M</h4>
-                <p style="color: white; margin: 0;">🍌 Banano</p>
+                <h4 style="color: #FFC107; font-size: 1.5rem; margin: 0;">$3.600M</h4>
+                <p style="color: white; margin: 0; font-size: 1.2rem;">🍌 Banano</p>
             </div>
         </div>
-        <p style="color: #e8eaf6; text-align: center; margin-top: 1rem; font-style: italic;">
+        <p style="color: #e8eaf6; text-align: center; margin-top: 1rem; font-style: italic; font-size: 1.2rem;">
             Los migrantes son el motor económico #1 del país
         </p>
         <div style="text-align: right; margin-top: 0.3rem;">
@@ -352,8 +352,8 @@ if "🚀 Hook y Oportunidad" in selected:
     with col_insight1:
         st.markdown('''
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
-            <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">💡 INSIGHT DEMOGRÁFICO</h4>
-            <p style="color: #e8eaf6; font-size: 1.1rem; line-height: 1.7;">
+            <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.5rem;">💡 INSIGHT DEMOGRÁFICO</h4>
+            <p style="color: #e8eaf6; font-size: 1.2rem; line-height: 1.7;">
                 Los socios migrantes de RAÍCES ANDINAS (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
                 superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
             </p>
@@ -366,8 +366,8 @@ if "🚀 Hook y Oportunidad" in selected:
     with col_insight2:
         st.markdown('''
         <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
-            <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.3rem;">🎯 VENTAJA GEOGRÁFICA</h4>
-            <p style="color: #2c3e50; font-size: 1.1rem; line-height: 1.7;">
+            <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.5rem;">🎯 VENTAJA GEOGRÁFICA</h4>
+            <p style="color: #2c3e50; font-size: 1.2rem; line-height: 1.7;">
                 El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas fomente alianzas financieras y capture remesas directamente desde el origen.
             </p>
             <div style="text-align: right; margin-top: 1rem;">
@@ -379,14 +379,14 @@ if "🚀 Hook y Oportunidad" in selected:
     # Call to action final
     st.markdown('''
     <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
-        <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">
+        <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
             🚀 EL MOMENTO ES AHORA
         </h3>
-        <p style="color: #bdc3c7; font-size: 1.2rem; margin-bottom: 1.5rem;">
+        <p style="color: #bdc3c7; font-size: 1.3rem; margin-bottom: 1.5rem;">
             RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
         </p>
         <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
-            <p style="color: #ecf0f1; font-size: 1.1rem; margin: 0; font-style: italic;">
+            <p style="color: #ecf0f1; font-size: 1.2rem; margin: 0; font-style: italic;">
                 "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
             </p>
         </div>
