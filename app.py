@@ -346,55 +346,55 @@ if "🚀 Hook y Oportunidad" in selected:
     )
     st.plotly_chart(fig, use_container_width=True)
 
-# Insights estratégicos
-col_insight1, col_insight2 = st.columns(2)
+    # Insights estratégicos
+    col_insight1, col_insight2 = st.columns(2)
 
-with col_insight1:
+    with col_insight1:
+        st.markdown('''
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+            <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.5rem;">💡 INSIGHT DEMOGRÁFICO</h4>
+            <p style="color: #e8eaf6; font-size: 1.2rem; line-height: 1.7;">
+                Los socios migrantes de RAÍCES ANDINAS (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
+                superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
+            </p>
+            <div style="text-align: right; margin-top: 1rem;">
+                <small style="color: #c8d0ff; font-size: 0.8rem;">Fuente: Pew Research Center</small>
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+
+    with col_insight2:
+        st.markdown('''
+        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
+            <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.5rem;">🎯 VENTAJA GEOGRÁFICA</h4>
+            <p style="color: #2c3e50; font-size: 1.2rem; line-height: 1.7;">
+                El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas fomente alianzas financieras y capture remesas directamente desde el origen.
+            </p>
+            <div style="text-align: right; margin-top: 1rem;">
+                <small style="color: #999; font-size: 0.8rem;">Fuente: Migration Policy Institute</small>
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+
+    # ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
     st.markdown('''
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
-        <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.5rem;">💡 INSIGHT DEMOGRÁFICO</h4>
-        <p style="color: #e8eaf6; font-size: 1.2rem; line-height: 1.7;">
-            Los socios migrantes de RAÍCES ANDINAS (39 años promedio) están en su <strong>pico de productividad financiera</strong>,
-            superando la edad promedio del migrante ecuatoriano (33 años). Esto significa mayor capacidad de ahorro y planificación a largo plazo.
+    <div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 2rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
+        <h3 style="color: #2c3e50; font-size: 2rem; margin-bottom: 1rem;">
+            📌 ¿POR QUÉ ESTE PROYECTO?
+        </h3>
+        <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
+            Miles de migrantes sostienen nuestras economías locales con sus remesas. Aunque tenemos millones de registros sobre ellos, aún no sabemos con certeza quiénes son, qué perfil tienen ni cómo evolucionan.
         </p>
-        <div style="text-align: right; margin-top: 1rem;">
-            <small style="color: #c8d0ff; font-size: 0.8rem;">Fuente: Pew Research Center</small>
+        <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
+            Por eso, este proyecto busca segmentarlos para identificarlos, entenderlos y atenderlos mejor.
+        </p>
+        <div style="background: rgba(0, 128, 128, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #008080;">
+            <p style="color: #008080; font-size: 1.4rem; margin: 0; font-weight: bold;">
+                ¿Qué tipo de socios migrantes tenemos y cómo podemos atenderlos mejor?
+            </p>
         </div>
     </div>
     ''', unsafe_allow_html=True)
-
-with col_insight2:
-    st.markdown('''
-    <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 2rem; border-radius: 15px; min-height: 280px;">
-        <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.5rem;">🎯 VENTAJA GEOGRÁFICA</h4>
-        <p style="color: #2c3e50; font-size: 1.2rem; line-height: 1.7;">
-            El 59% de los ecuatorianos en EE.UU., cerca de 550,000 personas, reside en NY y NJ. Esta concentración representa una oportunidad estratégica para que Raíces Andinas fomente alianzas financieras y capture remesas directamente desde el origen.
-        </p>
-        <div style="text-align: right; margin-top: 1rem;">
-            <small style="color: #999; font-size: 0.8rem;">Fuente: Migration Policy Institute</small>
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
-
-# ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
-st.markdown('''
-<div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 2rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
-    <h3 style="color: #2c3e50; font-size: 2rem; margin-bottom: 1rem;">
-        📌 ¿POR QUÉ ESTE PROYECTO?
-    </h3>
-    <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
-        Miles de migrantes sostienen nuestras economías locales con sus remesas. Aunque tenemos millones de registros sobre ellos, aún no sabemos con certeza quiénes son, qué perfil tienen ni cómo evolucionan.
-    </p>
-    <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
-        Por eso, este proyecto busca segmentarlos para identificarlos, entenderlos y atenderlos mejor.
-    </p>
-    <div style="background: rgba(0, 128, 128, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #008080;">
-        <p style="color: #008080; font-size: 1.4rem; margin: 0; font-weight: bold;">
-            ¿Qué tipo de socios migrantes tenemos y cómo podemos atenderlos mejor?
-        </p>
-    </div>
-</div>
-''', unsafe_allow_html=True)
 
     # Call to action final
     st.markdown('''
