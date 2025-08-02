@@ -708,17 +708,17 @@ elif "🔬 Metodología" in selected:
     
         with method_col1:
             st.info("""
-            **📊 Proceso de Análisis en 2 Etapas:**
+            **📊 Determinación del Número Óptimo de Clústeres:**
         
-            1. **PCA (Análisis de Componentes Principales)**
-               - Reducción de dimensionalidad
-               - Eliminación de multicolinealidad
-               - Identificación de patrones latentes
+            1. **📈 Método del Codo**
+               - Análisis de inercia (SSE)
+               - Identificación del punto de inflexión
+               - Equilibrio complejidad-interpretabilidad
         
-            2. **K-Means Clustering**
-               - Segmentación no supervisada
-               - Identificación de grupos homogéneos
-               - K=3 clústeres óptimos
+            2. **🎯 Coeficiente de Silueta**
+               - Evaluación de cohesión interna
+               - Medición de separación entre grupos
+               - Validación de calidad del clustering
             """)
         
         with method_col2:
@@ -762,29 +762,6 @@ elif "🔬 Metodología" in selected:
                 st.metric("Coeficiente Silueta", "0.40", "Separación aceptable")
             with val_col2:
                 st.metric("Reducción Inercia", "65%", "hasta K=3")
-    
-    # CONTENIDO ORIGINAL QUE SIGUE
-        st.markdown("""
-        #### 📊 Determinación del Número Óptimo de Clústeres
-    
-        **Criterios de Validación Aplicados:**
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("""
-            **📈 Método del Codo**
-            - Análisis de inercia (SSE)
-            - Identificación del punto de inflexión
-            - Equilibrio complejidad-interpretabilidad
-            """)
-        with col2:
-            st.markdown("""
-            **🎯 Coeficiente de Silueta**
-            - Evaluación de cohesión interna
-            - Medición de separación entre grupos
-            - Validación de calidad del clustering
-            """)
     
     # Simulación de métricas de validación
         st.markdown("##### 🏆 Resultados de Validación")
