@@ -407,38 +407,38 @@ st.markdown(
     unsafe_allow_html=True
     )
 
-    # Call to action final
-    st.markdown('''
-    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
-        <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
-            🚀 EL MOMENTO ES AHORA
-        </h3>
-        <p style="color: #bdc3c7; font-size: 1.3rem; margin-bottom: 1.5rem;">
-            RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
-        </p>
-        <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
-            <p style="color: #ecf0f1; font-size: 1.2rem; margin: 0; font-style: italic;">
-                "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
-            </p>
-        </div>
-    </div>
-    ''', unsafe_allow_html=True)
+# Call to action final
+ st.markdown('''
+ <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
+     <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
+           🚀 EL MOMENTO ES AHORA
+     </h3>
+      <p style="color: #bdc3c7; font-size: 1.3rem; margin-bottom: 1.5rem;">
+        RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
+     </p>
+     <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
+          <p style="color: #ecf0f1; font-size: 1.2rem; margin: 0; font-style: italic;">
+               "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
+         </p>
+     </div>
+ </div>
+''', unsafe_allow_html=True)
 
-    # Próximo paso
-    st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.800M proyectados para 2025.")
+ # Próximo paso
+ st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.800M proyectados para 2025.")
 
-    # Métricas adicionales en sidebar o expandible
-    with st.expander("📊 Datos Adicionales de Soporte"):
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
-            st.metric("Pagos Digitales", "51%", "49% usa efectivo")
-        with col2:
-            st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
-            st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
-        with col3:
-            st.metric("Destino Vivienda", "21%", "$1.154B anuales")
-            st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
+ # Métricas adicionales en sidebar o expandible
+with st.expander("📊 Datos Adicionales de Soporte"):
+    col1, col2, col3 = st.columns(3)
+     with col1:
+           st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
+          st.metric("Pagos Digitales", "51%", "49% usa efectivo")
+     with col2:
+          st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
+          st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
+    with col3:
+         st.metric("Destino Vivienda", "21%", "$1.154B anuales")
+         st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
 
 elif "🏦 Quiénes Somos" in selected:
     st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
