@@ -842,7 +842,7 @@ elif "🎯 Perfilamientos" in selected:
     # Tabs principales
     main_tabs = st.tabs(["👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
           
-    with main_tabs[1]:
+    with main_tabs[0]:
         st.markdown("### 👥 Tres Perfiles de Socios Identificados")
         
         # Selector de perfil
@@ -982,7 +982,7 @@ elif "🎯 Perfilamientos" in selected:
                     st.metric("Capital Promedio", "$27,802", "el más alto")
                     st.metric("Riesgo", "Moderado", "10.2 días mora")
     
-    with main_tabs[2]:
+    with main_tabs[1]:
         st.markdown("### 📈 Análisis de Transición Temporal")
         
         # Matriz de transición
@@ -1081,7 +1081,7 @@ elif "🎯 Perfilamientos" in selected:
         
         st.plotly_chart(fig_evolution, use_container_width=True)
     
-    with main_tabs[3]:
+    with main_tabs[2]:
         st.markdown("### 💡 Estrategias Recomendadas por Perfil")
         
         strategy_tabs = st.tabs(["Tradicionales", "Riesgo Financiero", "Tecnológico Multiservicios"])
