@@ -840,7 +840,7 @@ elif "🎯 Perfilamientos" in selected:
     st.markdown("---")
     
     # Tabs principales
-    main_tabs = st.tabs(["🔍 Metodología", "👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
+    main_tabs = st.tabs(["👥 Perfiles Identificados", "📈 Análisis Temporal", "💡 Estrategias"])
           
     with main_tabs[1]:
         st.markdown("### 👥 Tres Perfiles de Socios Identificados")
