@@ -396,7 +396,7 @@ st.markdown('''
 </div>
 ''', unsafe_allow_html=True)
 
-# Call to action final
+    # Call to action final
     st.markdown('''
     <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
         <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
