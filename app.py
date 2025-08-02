@@ -1207,33 +1207,6 @@ elif "🎯 Perfilamientos" in selected:
             with impact_col3:
                 st.metric("Retención VIP", "85%", "tecnológicos")
                 
-    # Footer con recomendaciones
-    st.markdown("---")
-    st.markdown("### 🎯 Recomendaciones Clave")
-    
-    rec_col1, rec_col2, rec_col3 = st.columns(3)
-    with rec_col1:
-        st.markdown("""
-        **📊 Gestión de Datos**
-        - Actualización periódica de información
-        - Enriquecimiento de variables
-        - Monitoreo en tiempo real
-        """)
-    with rec_col2:
-        st.markdown("""
-        **💰 Análisis Financiero**
-        - Evaluar costo por clúster
-        - Medir rentabilidad real
-        - Optimizar recursos
-        """)
-    with rec_col3:
-        st.markdown("""
-        **🔄 Mejora Continua**
-        - Validar estrategias trimestralmente
-        - Ajustar según resultados
-        - Escalar iniciativas exitosas
-        """)
-
 elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
     st.markdown('<h1 class="main-header">📋 Conclusiones y Recomendaciones Estratégicas</h1>', unsafe_allow_html=True)
     
