@@ -347,7 +347,7 @@ if "🚀 Hook y Oportunidad" in selected:
     st.plotly_chart(fig, use_container_width=True)
 
     # Insights estratégicos
-    col_insight1, col_insight2 = st.columns(2)
+    col_insight1, col_insight2, col_insight3 = st.columns(3)
     
     with col_insight1:
         st.markdown('''
