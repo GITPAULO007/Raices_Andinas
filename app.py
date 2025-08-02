@@ -377,42 +377,35 @@ if "🚀 Hook y Oportunidad" in selected:
         ''', unsafe_allow_html=True)
 
     # ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: 20px; text-align: center; margin: 3rem 0; box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;">
-    
-        <div style="position: relative; z-index: 2;">
-            <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-                📌 ¿POR QUÉ ESTE PROYECTO?
-            </h2>
+st.markdown(
+    """
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 15px; text-align: center; margin: 2rem 0; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+        <h2 style="color: white; font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: bold;">
+            📌 ¿POR QUÉ ESTE PROYECTO?
+        </h2>
+        
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+            <p style="color: white; font-size: 1.2rem; margin-bottom: 1rem; line-height: 1.6;">
+                Miles de migrantes desde <strong>EE.UU.</strong> sostienen nuestras economías locales con sus remesas. 
+                Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, 
+                <strong>es una oportunidad estratégica.</strong>
+            </p>
             
-            <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 15px; margin: 2rem 0; border: 1px solid rgba(255,255,255,0.2);">
-                <p style="color: #f8f9ff; font-size: 1.4rem; margin-bottom: 1.5rem; line-height: 1.8; font-weight: 300;">
-                    Miles de migrantes desde <strong style="color: #FFD700;">EE.UU.</strong> sostienen nuestras economías locales con sus remesas. Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, <strong style="color: #FFD700;">es una oportunidad estratégica.</strong>
-                </p>
-                
-                <div style="display: flex; align-items: center; justify-content: center; margin: 2rem 0;">
-                    <div style="height: 2px; flex: 1; background: linear-gradient(90deg, transparent, #FFD700, transparent);"></div>
-                    <div style="margin: 0 1rem; color: #FFD700; font-size: 1.5rem;">✨</div>
-                    <div style="height: 2px; flex: 1; background: linear-gradient(90deg, transparent, #FFD700, transparent);"></div>
-                </div>
-                
-                <p style="color: #f8f9ff; font-size: 1.3rem; margin-bottom: 2rem; line-height: 1.7; font-weight: 400;">
-                    Este proyecto identifica <strong style="color: #FFD700;">tipologías claras</strong> de socios migrantes, reconociendo patrones clave en su comportamiento transaccional.
-                </p>
-            </div>
-            
-            <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA726 100%); padding: 1.5rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);">
-                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
-                    <span style="font-size: 1.5rem; margin-right: 0.5rem;">🔹</span>
-                    <strong style="color: #2c3e50; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">PREGUNTA CLAVE</strong>
-                </div>
-                <p style="color: #2c3e50; font-size: 1.4rem; margin: 0; font-weight: 700; line-height: 1.5;">
-                    ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
-                </p>
-            </div>
+            <p style="color: white; font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                Este proyecto identifica <strong>tipologías claras</strong> de socios migrantes, 
+                reconociendo patrones clave en su comportamiento transaccional.
+            </p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA726 100%); padding: 1.2rem; border-radius: 10px; margin-top: 1.5rem;">
+            <p style="color: #2c3e50; font-size: 1.2rem; margin: 0; font-weight: bold;">
+                🔹 ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
+            </p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """, 
+    unsafe_allow_html=True
+)
 
     # Call to action final
     st.markdown('''
