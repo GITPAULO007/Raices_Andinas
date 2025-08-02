@@ -376,38 +376,38 @@ if "🚀 Hook y Oportunidad" in selected:
         </div>
         ''', unsafe_allow_html=True)
         
-# ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
-st.markdown(
-    """
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 15px; text-align: center; margin: 2rem 0; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
-        <h2 style="color: white; font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: bold;">
-            📌 ¿POR QUÉ ESTE PROYECTO?
-        </h2>
+    # ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
+    st.markdown(
+        """
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 15px; text-align: center; margin: 2rem 0; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+            <h2 style="color: white; font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: bold;">
+                📌 ¿POR QUÉ ESTE PROYECTO?
+            </h2>
     
-        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-            <p style="color: white; font-size: 1.2rem; margin-bottom: 1rem; line-height: 1.6;">
-                Miles de migrantes desde <strong>EE.UU.</strong> sostienen nuestras economías locales con sus remesas. 
-                Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, 
-                <strong>es una oportunidad estratégica.</strong>
-            </p>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+                <p style="color: white; font-size: 1.2rem; margin-bottom: 1rem; line-height: 1.6;">
+                    Miles de migrantes desde <strong>EE.UU.</strong> sostienen nuestras economías locales con sus remesas. 
+                    Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, 
+                    <strong>es una oportunidad estratégica.</strong>
+                </p>
             
-            <p style="color: white; font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
-                Este proyecto identifica <strong>tipologías claras</strong> de socios migrantes, 
-                reconociendo patrones clave en su comportamiento transaccional.
-            </p>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                    Este proyecto identifica <strong>tipologías claras</strong> de socios migrantes, 
+                    reconociendo patrones clave en su comportamiento transaccional.
+                </p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA726 100%); padding: 1.2rem; border-radius: 10px; margin-top: 1.5rem;">
+                <p style="color: #2c3e50; font-size: 1.2rem; margin: 0; font-weight: bold;">
+                    🔹 ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
+                </p>
+            </div>
         </div>
-        
-        <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA726 100%); padding: 1.2rem; border-radius: 10px; margin-top: 1.5rem;">
-            <p style="color: #2c3e50; font-size: 1.2rem; margin: 0; font-weight: bold;">
-                🔹 ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
-            </p>
-        </div>
-    </div>
-    """, 
-    unsafe_allow_html=True
-    )
+        """, 
+        unsafe_allow_html=True
+        )
 
-# Call to action final
+    # Call to action final
     st.markdown('''
     <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
         <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
