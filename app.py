@@ -375,70 +375,59 @@ if "🚀 Hook y Oportunidad" in selected:
             </div>
         </div>
         ''', unsafe_allow_html=True)
-        
+
     # ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
-st.markdown(
-    """
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 15px; text-align: center; margin: 2rem 0; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
-         <h2 style="color: white; font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: bold;">
-             📌 ¿POR QUÉ ESTE PROYECTO?
-         </h2>
-
-         <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-             <p style="color: white; font-size: 1.2rem; margin-bottom: 1rem; line-height: 1.6;">
-                 Miles de migrantes desde <strong>EE.UU.</strong> sostienen nuestras economías locales con sus remesas. 
-                 Entender quiénes son y cómo interactúan con la cooperativa no solo es necesario, 
-                 <strong>es una oportunidad estratégica.</strong>
-             </p>
-        
-             <p style="color: white; font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
-                 Este proyecto identifica <strong>tipologías claras</strong> de socios migrantes, 
-                  reconociendo patrones clave en su comportamiento transaccional.
-              </p>
-           </div>
-           
-          <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA726 100%); padding: 1.2rem; border-radius: 10px; margin-top: 1.5rem;">
-             <p style="color: #2c3e50; font-size: 1.2rem; margin: 0; font-weight: bold;">
-                🔹 ¿Qué características específicas presentan estos socios que debemos considerar para responder mejor a sus necesidades?
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); padding: 2rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
+        <h3 style="color: #2c3e50; font-size: 2rem; margin-bottom: 1rem;">
+            📌 ¿POR QUÉ ESTE PROYECTO?
+        </h3>
+        <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
+            Miles de migrantes sostienen nuestras economías locales con sus remesas. Aunque tenemos millones de registros sobre ellos, aún no sabemos con certeza quiénes son, qué perfil tienen ni cómo evolucionan.
+        </p>
+        <p style="color: #2c3e50; font-size: 1.3rem; margin-bottom: 1.5rem; line-height: 1.7;">
+            Por eso, este proyecto busca segmentarlos para identificarlos, entenderlos y atenderlos mejor.
+        </p>
+        <div style="background: rgba(0, 128, 128, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #008080;">
+            <p style="color: #008080; font-size: 1.4rem; margin: 0; font-weight: bold;">
+                ¿Qué tipo de socios migrantes tenemos y cómo podemos atenderlos mejor?
             </p>
-         </div>
-     </div>
-    """, 
-    unsafe_allow_html=True
-    )
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
 
-# Call to action final
- st.markdown('''
- <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
-     <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
-           🚀 EL MOMENTO ES AHORA
-     </h3>
-      <p style="color: #bdc3c7; font-size: 1.3rem; margin-bottom: 1.5rem;">
-        RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
-     </p>
-     <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
-          <p style="color: #ecf0f1; font-size: 1.2rem; margin: 0; font-style: italic;">
-               "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
-         </p>
-     </div>
- </div>
-''', unsafe_allow_html=True)
+    # Call to action final
+    st.markdown('''
+    <div style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
+        <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">
+            🚀 EL MOMENTO ES AHORA
+        </h3>
+        <p style="color: #bdc3c7; font-size: 1.3rem; margin-bottom: 1.5rem;">
+            RAÍCES ANDINAS puede posicionarse como <strong style="color: #3498db;">EL PUENTE FINANCIERO</strong> entre los sueños migrantes y la realidad familiar.
+        </p>
+        <div style="background: rgba(52, 152, 219, 0.2); padding: 1rem; border-radius: 10px; border-left: 4px solid #3498db;">
+            <p style="color: #ecf0f1; font-size: 1.2rem; margin: 0; font-style: italic;">
+                "No estamos hablando de capturar remesas... estamos hablando de construir el futuro financiero de las familias ecuatorianas"
+            </p>
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
 
- # Próximo paso
- st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.800M proyectados para 2025.")
+    # Próximo paso
+    st.success("🎯 **PRÓXIMO PASO:** Implementar segmentación inteligente de socios migrantes para capturar esta oportunidad de $5.800M proyectados para 2025.")
 
- # Métricas adicionales en sidebar o expandible
-with st.expander("📊 Datos Adicionales de Soporte"):
-    col1, col2, col3 = st.columns(3)
-     with col1:
-           st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
-          st.metric("Pagos Digitales", "51%", "49% usa efectivo")
-     with col2:
-          st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
-          st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
-    with col3:
-         st.metric("Destino Vivienda", "21%", "$1.154B anuales")
-         st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
+    # Métricas adicionales en sidebar o expandible
+    with st.expander("📊 Datos Adicionales de Soporte"):
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Inclusión Financiera Ecuador", "74%", "26% sin bancarizar")
+            st.metric("Pagos Digitales", "51%", "49% usa efectivo")
+        with col2:
+            st.metric("Concentración NY + NJ", "59%", "~550,000 ecuatorianos")
+            st.metric("Crecimiento Q1 2025", "9.5%", "vs Q1 2024")
+        with col3:
+            st.metric("Destino Vivienda", "21%", "$1.154B anuales")
+            st.metric("Sin Crédito Formal", "75%", "Mercado potencial enorme")
 
 elif "🏦 Quiénes Somos" in selected:
     st.markdown('<h1 class="main-header">🏦 COAC Raíces Andinas</h1>', unsafe_allow_html=True)
