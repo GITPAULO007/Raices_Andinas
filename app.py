@@ -1236,7 +1236,6 @@ elif "🏁 Plan de Acción" in selected or selected == "🏁 Plan de Acción":
                 st.info("""
                 **La aplicación del algoritmo K-Means validó la existencia de tres clústeres con perfiles de comportamiento claramente diferenciados:**
                 
-                ✅ **Validación estadística robusta** con coeficiente de silueta de 0.40
                 ✅ **Segmentos bien definidos** con características únicas
                 ✅ **Patrones de comportamiento consistentes** a lo largo del tiempo
                 """)
