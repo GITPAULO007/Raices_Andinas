@@ -478,8 +478,8 @@ elif "🏦 Quiénes Somos" in selected:
     with foda_col1:
         st.markdown("""
         <div style='background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4 style="font-size: 1.5rem;">💪 FORTALEZAS</h4>
-            <ul style="font-size: 1.1rem; line-height: 1.6;">
+            <h4 style="font-size: 1.8rem;">💪 FORTALEZAS</h4>
+            <ul style="font-size: 1.3rem; line-height: 1.6;">
                 <li>Foco territorial en zonas de migración.</li>
                 <li>Modelo cooperativo participativo.</li>
                 <li>Solidez financiera (buen rating, baja mora).</li>
@@ -488,8 +488,8 @@ elif "🏦 Quiénes Somos" in selected:
         </div>
         
         <div style='background: linear-gradient(135deg, #cce5ff 0%, #b3d9ff 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4 style="font-size: 1.5rem;">🌟 OPORTUNIDADES</h4>
-            <ul style="font-size: 1.1rem; line-height: 1.6;">
+            <h4 style="font-size: 1.8rem;">🌟 OPORTUNIDADES</h4>
+            <ul style="font-size: 1.3rem; line-height: 1.6;">
                 <li>Alto volumen de remesas hacia Ecuador.</li>
                 <li>Interés de migrantes por invertir en el país.</li>
                 <li>Avance tecnológico para crear nuevos productos.</li>
@@ -501,8 +501,8 @@ elif "🏦 Quiénes Somos" in selected:
     with foda_col2:
         st.markdown("""
         <div style='background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4 style="font-size: 1.5rem;">⚠️ DEBILIDADES</h4>
-            <ul style="font-size: 1.1rem; line-height: 1.6;">
+            <h4 style="font-size: 1.8rem;">⚠️ DEBILIDADES</h4>
+            <ul style="font-size: 1.3rem; line-height: 1.6;">
                 <li>Segmentación y marketing deficientes.</li>
                 <li>Personal no capacitado para la atención a migrantes.</li>
                 <li>Sin presencia física en el extranjero.</li>
@@ -511,8 +511,8 @@ elif "🏦 Quiénes Somos" in selected:
         </div>
         
         <div style='background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); padding: 20px; border-radius: 15px; margin: 10px 0;'>
-            <h4 style="font-size: 1.5rem;">🚨 AMENAZAS</h4>
-            <ul style="font-size: 1.1rem; line-height: 1.6;">
+            <h4 style="font-size: 1.8rem;">🚨 AMENAZAS</h4>
+            <ul style="font-size: 1.3rem; line-height: 1.6;">
                 <li>Políticas migratorias más restrictivas.</li>
                 <li>Cambios en la regulación financiera (SEPS).</li>
                 <li>Fuerte competencia de las Fintech.</li>
