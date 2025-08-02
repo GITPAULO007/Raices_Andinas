@@ -377,7 +377,7 @@ if "🚀 Hook y Oportunidad" in selected:
         ''', unsafe_allow_html=True)
         
     # ¿POR QUÉ ESTE PROYECTO? - RECUADRO GRANDE COMPLETO
-    st.markdown(
+st.markdown(
         """
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 15px; text-align: center; margin: 2rem 0; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
             <h2 style="color: white; font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: bold;">
