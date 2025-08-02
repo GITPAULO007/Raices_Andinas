@@ -576,7 +576,7 @@ elif "🔬 Metodología" in selected:
     st.markdown('<h1 class="main-header">🔬 Metodología de Investigación</h1>', unsafe_allow_html=True)
     
     # Explicación del enfoque metodológico
-    st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos")
+    st.markdown("### 📊 Enfoque Cuantitativo: De Datos a Insights Estratégicos - EL CAMINO")
     
     metodologia_tabs = st.tabs(["1️⃣ 🎯Enfoque", "2️⃣ 📋Datos", "3️⃣ ⚙️Procesamiento", "4️⃣ 🔍Modelo", "5️⃣ 📊Validación", "6️⃣ 👥Clúster"])
     
